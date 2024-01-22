@@ -1,5 +1,6 @@
 """Routines for analysing precipitation climatology from ESM runs."""
 
+import json
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -308,25 +309,22 @@ def main(
 
 
 if __name__ == "__main__":
-    input_file = (
-        "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc"
-    )
-    season_to_plot = "JJA"
+    # Get config from command line
+    configfile = input("Enter configuration filename: ")
+    if configfile == "":
+        print("Using default configuration in 'config.json'.")
+        configfile = "config.json"
+    with open(configfile, encoding="utf-8") as json_file:
+        config = json.load(json_file)
+
     output_filename = "output.png"
     gridlines_on = True
-    mask_id = "ocean"
     colorbar_levels = None
-    countries_to_record = {
-        "United Kingdom": "GB",
-        "United States of America": "US",
-        "Antarctica": "AQ",
-        "South Africa": "ZA",
-    }
 
     main(
-        input_file,
-        season=season_to_plot,
-        mask=mask_id,
-        gridlines=gridlines_on,
-        countries=countries_to_record,
+        config["input_file"],
+        season=config["season_to_plot"],
+        mask=config["mask_id"],
+        gridlines=config["gridlines_on"],
+        countries=config["countries_to_record"],
     )
