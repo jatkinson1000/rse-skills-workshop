@@ -33,6 +33,7 @@ def apply_mask(darray, sftlf_file, realm):
     #  sftlf_file: Land surface fraction file
     #  realm: Realm to mask
    
+    # This is now done using cartopy package with a single line.
     pass
 
 
@@ -51,7 +52,7 @@ def plot_zonal(data):
     for axis in ax:
         axis.set_ylim(0.0, 1.0e-4)
         axis.grid()
-    plt.savefig("zonal.png", dpi=200)
+    plt.savefig("zonal.png", dpi=200)  # Save figure to file
 
 
 
@@ -59,7 +60,7 @@ def plot_zonal(data):
 
     zonal_pr.T.plot()
 
-    plt.savefig("zonal_map.png", dpi=200)
+    plt.savefig("zonal_map.png", dpi=200)  # Save figure to file
 
 
 
@@ -98,13 +99,12 @@ def get_country_ann_avg(data, countries):
             # gl.yformatter = LATITUDE_FORMATTER
             # gl.xlabel_style = {'size': 15, 'color': 'gray'}
             # gl.ylabel_style = {'size': 15, 'color': 'gray'}
-            # print(f"show {k}")
+            # print("show %s" %k)
             # plt.show()
             
             for yr in data_avg_mask.year.values:
-                # print(f"{k} has {data_avg_mask.sel(year = yr).mean().values} mm/day in {yr}")
                 precip = data_avg_mask.sel(year = yr).mean().values
-                datafile.write(f"{k.ljust(25)} {yr} : {precip:2.3f} mm/day\n")
+                datafile.write("{} {} : {:2.3f} mm/day\n".format(k.ljust(25), yr, precip))
             datafile.write("\n")
 
 
@@ -128,7 +128,7 @@ def plot_enso(data):
     # plot:
     enso.plot()
 
-    plt.savefig("enso.png", dpi=200)
+    plt.savefig("enso.png", dpi=200)  # Save figure to file
 
 
 
@@ -136,14 +136,12 @@ def plot_enso(data):
 def create_plot(clim, model, season, mask=None, gridlines=False, levels=None):
     """Plot the precipitation climatology.
     
-    Args:
-      clim (xarray.DataArray): Precipitation climatology data
-      model (str): Name of the climate model
-      season (str): Season
+       clim (xarray.DataArray): Precipitation climatology data
+       model (str): Name of the climate model
+       season (str): Season
       
-    Kwargs:
-      gridlines (bool): Select whether to plot gridlines
-      levels (list): Tick marks on the colorbar    
+       gridlines (bool): Select whether to plot gridlines
+       levels (list): Tick marks on the colorbar    
     
     """
 
@@ -165,44 +163,48 @@ def create_plot(clim, model, season, mask=None, gridlines=False, levels=None):
                                           extend='max',
                                           transform=ccrs.PlateCarree(),
                                           cbar_kwargs={'label': clim.units},
-                                          cmap=cmocean.cm.haline_r)
+                                          cmap=cmocean.cm.rain)
     
-    geo_axes.add_feature(cfeature.COASTLINE, lw=2)
+    geo_axes.add_feature(cfeature.COASTLINE, lw=2)  # Add coastines using cartopy feature
 
     if mask:
-        #2 if mask == "ocean":
-            #2 mask_feat = cfeature.NaturalEarthFeature("physical", "ocean", "110m")
-            #1 geo_axes.add_feature(cfeature.NaturalEarthFeature("physical", "ocean", "110m"), ec="red", fc="yellow", lw=2, alpha=1.0)
-        #2 elif mask == "land":
-            #2 mask_feat = cfeature.NaturalEarthFeature("physical", "land", "110m")
-            #1 # geo_axes.add_feature(cfeature.NaturalEarthFeature("physical", "ocean", "110m"), ec="red", fc="yellow", lw=2, alpha=1.0)
+        # Old approach of adding mask before combining into the below command.
+        # if mask == "ocean":
+            #old mask_feat = cfeature.NaturalEarthFeature("physical", "ocean", "110m")
+            #oldold geo_axes.add_feature(cfeature.NaturalEarthFeature("physical", "ocean", "110m"),
+            #                      ec="red", fc="yellow", lw=2, alpha=1.0)
+        # elif mask == "land":
+            #old mask_feat = cfeature.NaturalEarthFeature("physical", "land", "110m")
+            #oldold # geo_axes.add_feature(cfeature.NaturalEarthFeature("physical", "ocean", "110m"),
+            #                           ec="red", fc="yellow", lw=2, alpha=1.0)
 
-        #2 else:
-            #2 pass
-            #2 raise ValueError("Unknown ")
+        #oldold else:
+            #oldold pass
+            #oldold raise ValueError("Unknown ")
         
 
+        # Mask out (fade) using 110m resolution data from cartopy.
         geo_axes.add_feature(cfeature.NaturalEarthFeature("physical", mask, "110m"), ec=None, fc="white", lw=2, alpha=0.75)
-        ###### WHAT IF WE PASS INVALID???
 
 
     if gridlines:
+        # If we want gridlines run the code to do this:
         gl = geo_axes.gridlines(crs=ccrs.PlateCarree(), draw_labels=True,
         linewidth=2, color='gray', alpha=0.5, linestyle='--')
         gl.top_labels = False
         gl.left_labels = True
         # gl.xlines = False
         gl.xlocator = mticker.FixedLocator([-180, -90, 0, 90, 180])
-        gl.ylocator = mticker.FixedLocator([-66, -23, 0, 23, 66])
+        gl.ylocator = mticker.FixedLocator([-66, -23, 0, 23, 66])  # Tropics & Polar Circles
         gl.xformatter = LONGITUDE_FORMATTER
         gl.yformatter = LATITUDE_FORMATTER
         gl.xlabel_style = {'size': 15, 'color': 'gray'}
         gl.ylabel_style = {'size': 15, 'color': 'gray'}
 
 
-    title = f'{model} precipitation climatology ({season})'
+    title = '{} precipitation climatology ({})'.format(model, season)
     plt.title(title)
-    # print(f"\n\n{clim.mean()}\n\n")
+    # print("\n\n{}\n\n".format(clim.mean()))
 
 
 
@@ -225,7 +227,6 @@ def main(pr_file, season="DJF", output_file="output.png", gridlines=False, mask=
 
     if input_units == 'kg m-2 s-1':
         clim = convert_pr_units(clim)
-        # logging.info('Units converted from kg m-2 s-1 to mm/day')
     elif input_units == 'mm/day':
         pass
     else:
@@ -234,17 +235,20 @@ def main(pr_file, season="DJF", output_file="output.png", gridlines=False, mask=
     create_plot(clim, dset.attrs['source_id'], season, mask=mask,
                 gridlines=gridlines, levels=cbar_levels)
                 
-    plt.savefig(output_file, dpi=200)
+    plt.savefig(output_file, dpi=200)  # Save figure to file
 
 if __name__ == '__main__':
 
-    pr_file = "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc"
-    season = "JFM"
-    output_file = "output.png"
-    gridlines = True
-    mask = "ocean"
+    input_file = "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc"
+    # season_to_plot = "DJF"
+    # season_to_plot = "MAM"
+    season_to_plot = "JJA"
+    # season_to_plot = "SON"
+    output_filename = "output.png"
+    gridlines_on = True
+    mask_id = "ocean"
     cbar_levels = None
     countries = {"United Kingdom": "GB", "United States of America": "US", "Antarctica": "AQ",
                  "South Africa": "ZA"}
 
-    main(pr_file, mask=mask, gridlines=gridlines, countries=countries)
+    main(input_file, season=season_to_plot, mask=mask_id, gridlines=gridlines_on, countries=countries)
