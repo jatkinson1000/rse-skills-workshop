@@ -22,8 +22,8 @@ Open the source code in your text editor and modifiy it to fix some of
 the linting errors.
 
 We will not deal with all of the errors in this exercise.
-Ignore any warnings about `Missing docstrings` as we'll come to these in the next
-exercise.
+You can ignore any warnings about `Missing docstrings` or `f-strings` as we'll come to
+these in subsequent exercises.
 
 Try and deal with:
 
