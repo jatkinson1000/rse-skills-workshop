@@ -1,0 +1,98 @@
+/*-- scss:defaults --*/
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono');
+$presentation-heading-font: "JetBrains Mono", sans-serif !default;
+
+// $font-family-sans-serif: JetBrains Mono, sans-serif !default;
+// @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn');
+// $font-family-sans-serif: Delicious Handrawn, sans-serif !default;
+
+// Custom colours and variables
+$jet: #131516;
+$accent: #107895;
+$accent2: #9a2515;
+$right-arrow: "\2192"; // Unicode character for right arrow
+$linkcolour: #00ffff;
+
+// colors
+$body-bg: #003350 !default;  // ?
+$body-color: #fffae6 !default;
+$link-color: $linkcolour !default;
+//$selection-bg: #26351c !default;
+
+
+/*-- scss:rules --*/
+
+// title and headings
+
+#title-slide {
+  text-align: center;
+
+  .title {
+    color: $body-color;
+    font-size: 2.2em;
+    font-weight: 350;
+    //line-height: 0;
+  }
+
+  .subtitle {
+    color: $accent;
+    font-style: italic;
+  }
+
+  .author,
+  .quarto-title-author-name {
+    color: $body-color;
+    font-size: 1.2em;
+  }
+
+  .quarto-title-authors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    .quarto-title-author {
+      //padding-left: 0em;
+      //padding-right: 0em;
+      //width: 100%;
+    }
+  }
+
+  .institute,
+  .quarto-title-affiliation,
+  .quarto-title-author-email {
+    font-style: italic;
+    font-size: 80%;
+    color: #fffafa;
+  }
+
+}
+
+
+/*-- vertically center columns (or any container) --*/
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+
+/*-- Logo --*/
+.reveal .slide-logo {
+  max-width: unset !important;
+  max-height: 5% !important;
+}
+
+/*-- Get rid of column margins - quarto revealjs has strange behaviour --*/
+.reveal .columns > {
+  .column,  .column:last-child  {
+
+    > :not(ul, ol) {
+      
+      margin-left: 0em;
+      margin-right: 0em;
+    }
+  }
+}

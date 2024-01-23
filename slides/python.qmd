@@ -1,0 +1,1299 @@
+---
+title: "Powering up python"
+format:
+  revealjs:
+    embed-resources: false
+    slide-number: false
+    chalkboard: false
+    preview-links: auto
+    history: false
+    highlight-style: a11y
+    code-overflow: wrap
+    code-line-numbers: false
+    logo: https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/iccs_ucam_combined_reverse_colour.png
+    theme: [dark, custom.scss]
+revealjs-plugins:
+  - attribution
+authors:
+  - name: Jack Atkinson
+    orcid: 0000-0001-5001-4812
+    affiliations: Senior Research Software Engineer <br> ICCS - University of Cambridge
+date: "2024-01-23"
+bibliography: references.bib
+---
+
+## Precursors {.smaller .nostretch}
+
+:::: {.columns}
+::: {.column width="50%"}
+#### Slides and Materials
+
+To access links or follow on your own device these slides can be found at:  
+[https://jackatkinson.net/slides](https://jackatkinson.net/slides)
+
+\
+
+All materials are available at:
+
+::: {.column style="font-size: 95%;"}
+
+- [gitlab.com/jatkinson1000/power-up-python](https://gitlab.com/jatkinson1000/power-up-python)
+- [github.com/jatkinson1000/power-up-python](https://github.com/jatkinson1000/power-up-python)
+:::
+:::
+::: {.column width="50%"}
+#### Licensing
+
+Except where otherwise noted, these presentation materials are licensed under the Creative Commons
+[Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode) ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)) License.
+
+![]( https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.eu.svg ){width=40% fig-align="center"}
+
+Vectors and icons by [SVG Repo](https://www.svgrepo.com)
+used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
+:::
+::::
+
+
+## Precursors {.smaller}
+
+:::: {.columns}
+::: {.column width="75%"}
+- Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
+- Ask questions whenever they arise.
+  - Someone else is probably wondering the same thing.
+- I will make mistakes.
+  - Not all of them will be intentional.
+:::
+::::
+
+![]( https://1.bp.blogspot.com/-WRHNrOjiZ0I/Xd8_cohyxGI/AAAAAAAAXFU/yVz4iWkRcDwyt86qIlgQ6BU-tH4x7AdNQCLcBGAsYHQ/s1600/Sag%2BNew%2BMoon%2BRedemption4.gif ){.absolute top=35% right=0% width=25%}
+
+::: {.attribution}
+Image from The Shawshank Redemption &copy; Columbia Pictures under fair use.
+:::
+
+
+## whoami {.smaller}
+
+Research background in fluid mechanics and atmosphere:
+
+- Numerics and fluid mechanics in Engineering,
+- Cloud microphysics & volcanic plumes in Geography,
+- Radiation belts and satellite data at BAS.
+
+Now a Research Software Engineer (RSE) at the Institute of Computing for Climate
+Science (ICCS) working with various 
+
+This talk can be summarised as _"things I wish I'd known sooner."_
+
+::: {.notes}
+My background in this is domain science and numerical modelling on HPC.
+:::
+
+
+
+## What is Research Software? {.smaller .nostretch}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment .fade-in}
+Major Computational Programs  
+
+::: {layout="[-10, 28, -5, 28, -10]" layout-valign="center"}
+![]( https://live.staticflickr.com/8571/16376102935_a638e8f2f1_k.jpg )
+
+![]( https://www.hpc.cam.ac.uk/sites/default/files/inline-images/image_0.jpeg )
+:::
+:::
+::: {.fragment .fade-in}
+Data processing
+
+::: {layout="[-30, 40, -30]" layout-valign="center"}
+![]( https://scrippsco2.ucsd.edu/assets/graphics/display/mlo_record.png?1699885043170 )
+:::
+
+:::
+::: {.fragment .fade-in}
+Experiment support
+
+::: {layout="[-10, 28, -5, 32, -10]" layout-valign="center"}
+![]( https://www.whoi.edu/wp-content/uploads/2022/12/ctd-over-side.jpg )
+
+![]( https://aambpublicoceanservice.blob.core.windows.net/oceanserviceprod/facts/efgboblique.jpg )
+:::
+
+:::
+
+:::
+
+:::{.column}
+:::
+::::
+
+![]( https://www.software.ac.uk/sites/default/files/images/content/BetterSoftwareBetterResearchImage.jpg ){.absolute top=25% right=0% height=50%}
+
+
+::: {.attribution}
+Bathymetry by NOAA under public domain  
+CTD Bottles by WHOI under public domain  
+Keeling Curve by Scripps under public domain  
+Climate simulation by [Los Alamos National Laboratory](https://www.flickr.com/photos/losalamosnatlab/16376102935/in/photostream/) under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/2.0/)  
+Dawn HPC by Joe Bishop with permission  
+:::
+
+
+::: {.notes}
+* Data processing - FFT, averaging, etc.
+* Will inevetable be reused - making it good makes your life easier.
+* Software should be valued more than it is.\
+  At time of writing there isn't pressure to write well.\
+  This is not a good long-term strategy, however.
+:::
+
+
+## Why does this matter? {.smaller}
+![](images/Retractions.png){.absolute top=12.5% right=15% width=70%}
+
+
+## Why does this matter?^[For more details I highly recommend the [Writing Clean Scientific Software](https://www.youtube.com/watch?v=Q6Ksu_uX3bc) Webinar [@Murphy_2023]] {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def calc_p(n,t):
+    return n*1.380649e-23*t
+data = np.genfromtxt("mydata.csv")
+p = calc_p(data[0,:],data[1,:]+273.15)
+print(np.sum(p)/len(p))
+```
+What does this code do?
+:::
+::: {.column}
+::: {.fragment .fade-in}
+```python
+# Boltzmann Constant and 0 Kelvin
+Kb = 1.380649e-23
+T0 = 273.15
+
+def calc_pres(n, t):
+    """
+    Calculate pressure using ideal gas law p = nkT
+
+    Parameters:
+        n : array of number densities of molecules [N m-3]
+        t : array of temperatures in [K]
+    Returns:
+         array of pressures [Pa]
+    """
+    return n * Kb * t
+
+
+# Read in data from file and convert T from [oC] to [K]
+data = np.genfromtxt("mydata.csv")
+n = data[0, :]
+temp = data[1, :] + T0
+
+# Calculate pressure, average, and print
+pres = calc_pres(n, temp)
+pres_av = np.sum(pres) / len(pres)
+print(pres_av)
+
+```
+:::
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+# Virtual Environments
+
+## Virtual Environments {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+#### What?
+
+- A self-contained python environment
+- Packages installed in a local folder
+- Advised to use on a per-project basis
+
+:::
+::: {.column}
+#### Why?
+
+- Avoid system pollution
+- Allow different versions
+- Reproducibility - set versions
+
+:::
+::::
+
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+$ python3 -m venv myvenv
+$ source myvenv/bin/activate
+(myvenv) $ pip install <packagename>
+(myvenv) $ deactivate
+$ 
+
+```
+
+### Windows
+
+```powershell
+PS> python -m venv myvenv
+PS> source venv/bin/activate
+(myvenv) PS> pip install <packagename>
+(myvenv) PS> deactivate
+PS> 
+```
+:::
+
+\
+
+For more information see the [Real Python article](https://realpython.com/python-virtual-environments-a-primer/).  
+For those using conda there are also environments, [set up in a slightly different way](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 1 {.smaller}
+
+Scenario: you have just finished some simulations with a climate model that should
+improve precipitation modelling and have the output data as a netCDF file.
+
+You know that your colleague has produced relevant figures and analysis before, so ask
+them for a copy of their code (yay, reuse :+1:).
+
+Go to exercise 1 and:
+
+- Examine the code in `precipitation_climatology.py`
+- Set up a virtual environment
+- Install the necessary dependencies
+- Run the code - does it do what you thought?
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Python PEPs {.smaller}
+
+[Python Enhancement Proposals](https://peps.python.org/)
+
+- Technical documentation for the python community
+- Guidelines, standards, and best-practice
+
+Relevant to us today are:
+
+* PEP8 - Python Style Guide [@PEP8]
+* PEP257 - Docstring Conventions [@PEP257]
+* PEP621 - Packaging [@PEP621]
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+# PEP8 and Formatting
+
+## PEP8 & Formatting {.smaller}
+
+> _“Readability counts”_\
+> &emsp; &emsp; - Tim Peters in the [Zen of Python](https://peps.python.org/pep-0020/)
+
+By ensuring code aligns with PEP8 we:
+
+- standardise style,
+- conform to best-practices, and
+- improve code readability to
+- make code easier to share, and
+- reduce misinterpretation.
+
+::: {.fragment}
+"But I don't have time to read and memorise all of this..."
+:::
+
+
+## PEP8 & Formatting - Black {.smaller}
+
+![]( https://black.readthedocs.io/en/stable/_static/logo2-readme.png ){.absolute top=25% right=0% height=20%}
+
+Black [@black] - [black.readthedocs.io](https://black.readthedocs.io/en/stable/index.html)
+
+- a PEP 8 compliant formatter
+  - Strict subset of PEP8
+  - _"Opinionated so you don't have to be."_
+- For full details see [Black style](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
+- [Try online](https://black.vercel.app/)
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+(myvenv) $ pip install black
+(myvenv) $ black myfile.py
+(myvenv) $ black mydirectory/
+```
+
+### Windows
+
+```powershell
+(myvenv) PS> pip install black
+(myvenv) PS> black myfile.py
+(myvenv) PS> black mydirectory/
+```
+:::
+
+::: {.notes}
+May look odd at first, but you soon get used to it.\
+Makes life so much easier after a while.
+:::
+
+
+## PEP8 & Formatting - Black - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(x, param_one, param_two=[], param_three=24, param_four=None,
+        param_five="Empty Report", param_six=123456):
+
+
+    val = 12*16 +(24) -10*param_one +  param_six
+
+    if x > 5:
+        
+        print("x is greater than 5")
+
+
+    else:
+        print("x is less than or equal to 5")
+
+
+    if param_four:
+        print(param_five)
+
+
+
+    print('You have called long_func.')
+    print("This function has several params.")
+
+    param_2.append(x*val)
+    return param_2
+
+```
+:::
+::: {.column}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::::
+
+
+## PEP8 & Formatting - Black {.smaller}
+
+- I suggest incorporating into your projects now
+  - Well suited to incorporation into continuous integration of git hooks.
+  - Widely-used standard^[[Black - used by](https://github.com/psf/black#used-by)]
+
+- A version for jupyter notebooks exists.
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 2 {.smaller}
+
+Go to exercise 2 and:
+
+- install black
+- run black on `precipitation_climatology.py`
+- examine the output
+  - Is it more readable?
+  - Is there any aspect of the formatting style you find unintuitive?is it better?
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## PEP8 & Formatting - PyLint {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+Static Analysis
+
+- Check the code without running it
+- Catch issues before you run any code
+- Improve code quality^[beyond simply formatting and readability]
+:::
+::: {.column width="50%"}
+There are various tools available:
+
+- pycodestyle
+- flake8
+- Pylint
+- ruff
+:::
+::::
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+(myvenv) $ pip install pylint
+(myvenv) $ pylint myfile.py
+(myvenv) $ pylint mydirectory/
+```
+
+### Windows
+
+```powershell
+(myvenv) PS> pip install pylint
+(myvenv) PS> pylint myfile.py
+(myvenv) PS> pylint mydirectory/
+```
+:::
+
+
+## PEP8 & Formatting - PyLint - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::: {.column style="font-size: 75%;"}
+```bash
+(myvenv) $ pylint long_func.py
+************* Module long_func
+long_func.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+long_func.py:1:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+long_func.py:1:0: R0913: Too many arguments (7/5) (too-many-arguments)
+long_func.py:24:4: E0602: Undefined variable 'param_2' (undefined-variable)
+long_func.py:25:11: E0602: Undefined variable 'param_2' (undefined-variable)
+long_func.py:4:4: W0613: Unused argument 'param_two' (unused-argument)
+long_func.py:5:4: W0613: Unused argument 'param_three' (unused-argument)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10
+
+(myvenv) $
+
+```
+:::
+::::
+
+::: {.notes}
+Caught a bug - param2\
+Caught unused variable param_three\
+0.0 rating because this is unrunnable!
+:::
+
+## PEP8 & Formatting - PyLint - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_two.append(x * val)
+    return param_two
+```
+:::
+::: {.column style="font-size: 75%;"}
+```bash
+(myvenv) $ pylint long_func.py
+************* Module long_func
+long_func.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long_func.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+long_func.py:1:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+long_func.py:1:0: R0913: Too many arguments (6/5) (too-many-arguments)
+
+------------------------------------------------------------------
+Your code has been rated at 6.36/10 (previous run: 0.00/10, +6.36)
+
+(myvenv) $
+
+```
+\
+Search the error code to understand the issue:
+
+- [docs for W0102](https://pylint.pycqa.org/en/latest/user_guide/messages/warning/dangerous-default-value.html)
+
+:::
+::::
+
+::: {.notes}
+We now have runnable code!\
+Get a rating.
+:::
+
+
+## IDE Integration {.smaller}
+
+- Catch issues before running PyLint
+- Gradually coerces you to become a better programmer
+- Available on all good text editors and emacs:
+  - [Vim](https://www.vimfromscratch.com/articles/vim-for-python)
+  - [pycharm](https://www.jetbrains.com/pycharm/)
+  - [Sublime](https://packagecontrol.io/packages/SublimeLinter-pylint)
+  - [VSCode](https://code.visualstudio.com/docs/python/linting)
+  - [emacs](https://www.emacswiki.org/emacs/PythonProgrammingInEmacs)
+
+
+## Exercise 3 {.smaller}
+
+Go to exercise 3 and:
+
+- install pylint
+- run pylint on `precipitation_climatology.py`
+- examine the report and try and address some of the issues.
+  - Ignore missing docstrings and f-strings for now - we'll come to them later.
+  - Try and deal with: `W0611` Unused imports, `C0412` Ungrouped imports, `W0102` Dangerous default
+  - If you feel like it you could try and fix: `W0621` Redefining name, `W1514` Unexplicit open
+  - Unless you are really keen don't worry about: `R0913` Too many arguments, `C0103` Unconforming naming style.
+
+Extensions:
+
+- try and add linting to your preferred text editor or IDE
+- explore the option to supress pylint warnings
+- explore the configuration options for pylint
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+# Comments and Docstrings
+
+
+## Comments {.smaller}
+
+:::: {.columns}
+::: {.column width="66%"}
+
+Comments are tricky, and very much to taste.
+
+Some thoughts:[^1]
+
+> "Programs must be written for people to read and [...] machines to execute."\
+> &emsp; - Hal Abelson
+
+> "A bad comment is worse than no comment at all."
+
+> "A comment is a lie waiting to happen."
+
+=> Comments have to be maintained, just like the code, and there is no way to check them!
+:::
+::::
+
+![]( https://cdn.stackoverflow.co/images/jo7n4k8s/production/e487213c090116f194f2ed4fc6b0bfbece5258be-531x563.png ){.absolute top=25% right=0% height=50%}
+
+[^1]: Stackoverflow blog [@stackoverflow_comments], and [RealPython comments lesson](https://realpython.com/lessons/importance-writing-good-code-comments/)
+
+::: {.attribution}
+Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/comments/8w54mx/code_comments_be_like/)
+:::
+
+## Comments to avoid {.smaller}
+
+- Dead code e.g.
+  ```python
+  # plt.plot(time, velocity, "r0")
+  plt.plot(time, velocity, "kx")
+  # plt.plot(time, acceleration, "kx")
+  # plt.ylabel("acceleration")
+  plt.ylabel("velocity")
+  ```
+- Variable definitions e.g.
+  ```python
+  # Set Force
+  f = m * a
+  ```
+- Redundant comments e.g. `i += 1  # Increment i`
+
+
+
+## Comments - some thoughts^[Adapted from [@stackoverflow_comments]] {.smaller}
+
+::: {.incremental}
+
+- Comments should not duplicate the code.
+- Good comments do not excuse unclear code.
+  - Comments should dispel confusion, not cause it.
+  - If you can't write a clear comment, there may be a problem with the code.
+- Explain unidiomatic code in comments.
+- Provide links to:
+  - the original source of copied code.
+  - external references where they will be most helpful.
+- Use comments to mark incomplete implementations.
+- Comments are not documentation.
+  - Read by developers, documentation is for...
+
+:::
+
+
+
+## Docstrings {.smaller}
+
+**These are what make your code reusable (by you and others).**
+
+- In python docstrings are designated at the start of _'things'_ using triple
+quotes: `"""..."""`.
+- PEP257 [@PEP257] tells us _what_ docstrings should say.\
+  Specific conventions tell us _how_ they should say it.
+- Where comments describe how it works, docstrings describe how to use it.\
+  Unlike comments, docstrings follow a set format.
+
+Various formatting options exist: numpy, Google, reST, etc.\
+We will use numpydoc it is readable and widely used in scientific code.\
+Full guidance for [numpydoc is available](https://numpydoc.readthedocs.io/en/latest/format.html).
+
+
+
+## Docstrings {.smaller auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Key components:
+
+- A description of what the thing is.
+- A description of any inputs (`Parameters`).
+- A description of any outputs (`Returns`).
+
+Consider also:
+
+- Extended summary
+- Errors raised
+- Usage examples
+- Key references
+:::
+
+::: {.column}
+```python {code-line-numbers="|2|4-7|9-12"}
+"""
+Short one-line description.
+
+Parameters
+----------
+name : type
+    description of parameter
+
+Returns
+-------
+name : type
+    description of return value
+"""
+```
+:::
+::::
+
+
+## Docstrings {.smaller auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Key components:
+
+- A description of what the thing is.
+- A description of any inputs (`Parameters`).
+- A description of any outputs (`Returns`).
+:::
+
+::: {.column}
+:::{ style="font-size: 75%;"}
+```python {code-line-numbers="|1,3|1,5-16|1,7-8|18-21,34|23-26"}
+def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
+    """
+    Calculates the gyroradius of a charged particle in a magnetic field
+
+    Parameters
+    ----------
+    mass : float
+        The mass of the particle [kg]
+    v_perp : float
+        velocity perpendicular to magnetic field [m/s]
+    charge : float
+        particle charge [coulombs]
+    B : float
+        Magnetic field strength [teslas]
+    gamma : float, optional
+        Lorentz factor for relativistic case. default=None for non-relativistic case.
+
+    Returns
+    -------
+    r_g : float
+        Gyroradius of particle [m]
+
+    Notes
+    -----
+    .. [1]  Walt, M, "Introduction to Geomagnetically Trapped Radiation,"
+       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.
+    """
+
+    r_g = mass * v_perp / (abs(charge) * B)
+
+    if gamma:
+        r_g = r_g * gamma
+
+    return r_g
+```
+:::
+:::
+::::
+
+
+## Docstrings - pydocstyle {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+[pydocstyle](https://www.pydocstyle.org/en/stable/) is a tool we can use to help
+ensure the quality of our docstrings.[^2]
+
+:::{ style="font-size: 75%;"}
+
+```bash
+(myvenv) $ pip install pydocstyle
+(myvenv) $ pydocstyle myfile.py
+(myvenv) $ pydocstyle mydirectory/
+(myvenv) $
+(myvenv) $
+(myvenv) $ pydocstyle gyroradius.py
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D202: No blank lines allowed after function docstring (found 1)
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D400: First line should end with a period (not 'd')
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D401: First line should be in imperative mood (perhaps 'Calculate', not 'Calculates')
+(myvenv) $
+```
+:::
+
+Note: pydocstyle does not catch missing variables in docstrings.
+This can be done with [Pylint's docparams and docstyle extensions](https://pylint.pycqa.org/en/latest/user_guide/checkers/extensions.html)
+but is left as an exercise to the reader.
+:::
+::: {.column}
+:::{ style="font-size: 75%;"}
+```python
+def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
+    """
+    Calculates the gyroradius of a charged particle in a magnetic field
+
+    Parameters
+    ----------
+    mass : float
+        The mass of the particle [kg]
+    v_perp : float
+        velocity perpendicular to magnetic field [m/s]
+    charge : float
+        particle charge [coulombs]
+    B : float
+        Magnetic field strength [teslas]
+    gamma : float, optional
+        Lorentz factor for relativistic case. default=None for non-relativistic case.
+
+    Returns
+    -------
+    r_g : float
+        Gyroradius of particle [m]
+
+    Notes
+    -----
+    .. [1]  Walt, M, "Introduction to Geomagnetically Trapped Radiation,"
+       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.
+    """
+
+    r_g = mass * v_perp / (abs(charge) * B)
+
+    if gamma:
+        r_g = r_g * gamma
+
+    return r_g
+```
+:::
+:::
+::::
+
+
+[^2]: Note that pydocstyle is [deprecated](https://github.com/PyCQA/pydocstyle/pull/658) as of the end of 2023. Longer-term look out for a replacement (likely Ruff or Pylint extension).
+
+
+
+## Exercise 4 {.smaller}
+
+Go to exercise 4 and examine the comments:
+
+- Is there any dead code?
+  - How is it best to handle it?
+- Are comments used sensibly?
+  - Are any redundant and better off being removed?
+  - Is there anywhere that would benefit from a comment?
+
+Docstrings:
+
+- Work through the file adding docstrings where they are missing.
+- If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 5.
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+# Writing better (Python) code
+
+## f-strings {.smaller}
+
+A better way to format strings since Python 3.6\
+Not catching on because of self-teaching from old code.
+
+Strings are prepended with an `f` allowing variables to be used in-place:
+
+```python {code-line-numbers="|4-5|7-8|10-11"}
+name = "electron"
+mass = 9.1093837015E-31
+
+# modulo
+print("The mass of an %s is %.3e kg." % (name, mass))
+
+# format
+print("The mass of an {} is {:.3e} kg.".format(name, mass))
+
+# f-string
+print(f"The mass of an {name} is {mass:.3e} kg.")
+```
+
+f-strings can take expressions:
+
+```python
+print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a / b}.")
+```
+
+See [Real Python](https://realpython.com/python-f-strings/) for more information.
+
+
+## Remove Magic Numbers {.smaller}
+
+Numbers in code that are not immediately obvious.
+
+- Hard to read
+- Hard to maintain
+- Hard to adapt
+
+Instead:
+
+- Name a variable conveying meaning
+- Set to a constant
+- Use a comment to explain
+
+![]( https://vignette.wikia.nocookie.net/thatmitchellandwebb/images/1/13/Numberwang.jpg ){.absolute top=33% right=0% height=33%}
+
+::: {.attribution}
+numberwang by Mitchell and Webb under fair use
+:::
+
+
+## Remove Magic Numbers {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers=True}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / 9.81)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * 9.81 * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * 9.81 * max_height(l, theta)
+
+def check_small_angle(theta):
+    """..."""
+    if theta <= np.pi / 1800.0:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    return 60.0 / get_period(l)
+
+
+
+
+```
+:::
+:::
+::: {.column}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|4,8,16,20|22,24|30,31"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+GRAV = 9.81
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / GRAV)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * GRAV * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * GRAV * max_height(l, theta)
+
+def check_small_angle(theta, small_ang=np.pi/1800.0):
+    """..."""
+    if theta <= small_ang:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    # Divide 60 seconds by period [s] for beats per minute
+    return 60.0 / get_period(l)
+```
+:::
+:::
+::::
+
+
+## Put config in a config file {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Ideally we shouldn't have hop in and out of the code (and recompile in higher level
+langs) every time we change a runtime setting
+- No easy record of runs
+
+Instead:
+
+- It's easy to read a json file into python as a dictionary
+  Handle as you wish - create a class, read to variables etc.
+- Could even make config filename a command line argument
+
+:::
+::: {.column width="50%"}
+```json
+{
+  "config_name": "June 2022 m01 n19 run",
+  "start_date": "2022-05-28 00:00:00",
+  "end_date": "2022-06-12 23:59:59",
+  "satellites": ["m01", "n19"],
+  "noise_floor": [3.0, 3.0, 3.0],
+  "check_SNR": true,
+  "L_lim": [1.5, 8.0],
+  "telescopes": [90],
+  "n_bins": 27
+}
+```
+
+
+```python
+import json
+
+
+with open('config.json') as json_file:
+    config = json.load(json_file)
+
+print(config)
+```
+
+```
+{'config_name': 'June 2022 m01 n19 run', 'start_date': '2022-05-28 00:00:00', 'end_date': '2022-06-12 23:59:59', 'satellites': ['m01', 'n19'], 'noise_floor': [3.0, 3.0, 3.0], 'check_SNR': True, 'L_lim': [1.5, 8.0], 'telescopes': [90], 'n_bins': 27}
+```
+
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 5 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Magic Numbers
+
+- Look through the code and identify any magic numbers.
+- Implement what you feel is the best approach in each case
+
+
+f-strings
+
+- Look for any string handling (currently using the .format() approach) and update it
+  to use f-strings.
+  - Is the intent clearer?
+  - Is the layout of the data written to file easier to understand?
+:::
+::: {.column width="50%"}
+Configuration settings
+
+- There is helpfully a list of configurable inputs at the end of the file under `"__main__"`.\
+  We can improve on this, however, by placing them in a configuration file.
+- Create an appropriate json file to be read in as a dictionary and passed to the main function.
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Other things {.smaller}
+
+Beyond the scope of today are a few other honourable mentions:
+
+- Functions and modules
+- Packaging
+  - Breaking projects into modules and `__init__.py`
+  - Distributing projects with `pyproject.toml`
+- Documentation
+  - Auto-generation from docstrings with sphinx or mkdocs
+- Type hinting
+  - Adding type hinting to python code - how and why?
+  - Type checking with mypy
+
+These lessons will be added to the course content in future but are beyond the scope
+of today.
+
+
+
+<!-- ------------------------------------------------------------------------------ 
+
+
+## Functions and modules
+
+
+
+# Documentation
+
+## Documentation
+
+- Take the time now, it'll pay dividends later.
+- The docstring payoff.
+
+
+
+# Packaging
+
+## Packaging {.smaller}
+
+- Making people's life easier.
+- Historically a mess in python.
+  - The community has now standardised through PEP621 [@PEP621] on the pyproject.toml
+
+
+setup.py
+```python
+#!usr/bin/env python
+
+from setuptools import setup
+
+if __name__ == "__main__":
+    setup()
+```
+
+__init__.py files for each module.
+
+A minimal example:
+
+```toml
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myproject"
+version = "0.1.0"
+description = "What my code does"
+authors = [
+  { name="M.E. Myself", email="m.myself@myemail.com" },
+]
+license = "LICENSE"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy",
+]
+```
+
+The Python Packaging Authority has a [guide](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/) to writing the pyproject.toml file.
+
+
+
+
+
+# Type Hinting
+
+## Type Hinting {.smaller}
+
+- PEP484
+- A solution to statically indicate the type of a value.
+
+
+
+- Yes in larger collaborative projects
+- Not in scripts and hacking
+
+
+ ------------------------------------------------------------------------------ -->
+
+# Closing
+
+## Where can I get help?
+
+BAS's new RSE Team:
+
+- currently part of innovation
+- 1 Senior and 3 RSEs
+- [James Byrne (jambyr)](mailto:jambyr@bas.ac.uk)
+
+Look out for future training events including
+[Software in Polar Science](https://software-in-polar-science.github.io/) in February.
+
+
+## Where can I learn more? {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+- References and links in these slides
+- Writing Clean Scientific Software Webinar [@Murphy_2023]
+- Cambridge RSE Seminars
+  - Weekly presentations in West Cambridge
+  - [rse.group.cam.ac.uk](https://rse.group.cam.ac.uk/)
+- RSE slack workspace
+:::
+
+::: {.column width="20%"}
+Get in touch:
+:::
+::: {.column width="80%"}
+{{< fa pencil >}} \ Jack Atkinson
+
+{{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
+
+{{< fa solid envelope >}} \ [jwa34[AT]cam.ac.uk](mailto:jwa34@cam.ac.uk)
+
+{{< fa brands github >}} \ [jatkinson1000](https://github.com/jatkinson1000)
+
+{{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
+:::
+::::
+
+
+## References {.smaller}
+
+The code in this workshop is based on a script from [@Irving_2019].
+
+::: {#refs}
+:::
+
+## ICCS ReproHack {.smaller}
+
+- March 12th 2024
+- Climate science reproducibility hackathon
+- [reprohack.org/event/27](https://www.reprohack.org/event/27/)
+- Fully online
+
+Come and learn more about software reproducibility by trying to reproduce results from papers. No advanced programming skills needed, you will work in teams and won't do actual coding, just trying to get submitted codes to run (with our support).\
+If you would like some friendly feedback on your own code's reproducibility, please submit a paper.
