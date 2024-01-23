@@ -1,0 +1,14 @@
+{
+  "input_file": "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc",
+  "season_to_plot": "JJA",
+  "output_filename": "output.png",
+  "gridlines_on": true,
+  "mask_id": "ocean",
+  "colorbar_levels": null,
+  "countries_to_record": {
+      "United Kingdom": "GB",
+      "United States of America": "US",
+      "Antarctica": "AQ",
+      "South Africa": "ZA"
+  }
+}
