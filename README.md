@@ -29,7 +29,15 @@ made available under a Creative Commons [CC BY 4.0](https://creativecommons.org/
 license for which the full legal text is [available online](https://creativecommons.org/licenses/by/4.0/legalcode).
 
 
+## Acknowledgments
+
+The code used in this teaching is adapted from a script in\
+Irving, (2019). Python for Atmosphere and Ocean Scientists.
+Journal of Open Source Education, 2(11), 37,
+[doi.org/10.21105/jose.00037](https://doi.org/10.21105/jose.00037)
+
 ## Contributions
+
 Contributions and collaborations are welcome from anyone with an
 interest in RSE education.
 
@@ -40,9 +48,13 @@ If you built something upon this that would be useful to others, or can
 address an [open issue](https://gitlab.com/jatkinson1000/power-up-python/-/issues),
 please [fork the repository](https://gitlab.com/jatkinson1000/power-up-python/-/forks/new)
 and open a merge request.
+If you wish to contribute a new exercise you think would be useful please follow the
+existing format in [exercises/](exercises/), and also try and update the slides in
+[slides/](slides/).
 
 
 ### Code of Conduct
+
 Everyone participating in this project, including as a participant at a workshop,
 is expected to treat other people with respect and more generally to follow
 the guidelines articulated in the
