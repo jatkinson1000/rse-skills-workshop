@@ -2,7 +2,7 @@
 title: "Powering up python"
 format:
   revealjs:
-    embed-resources: false
+    embed-resources: true
     slide-number: false
     chalkboard: false
     preview-links: auto
@@ -1239,13 +1239,17 @@ The Python Packaging Authority has a [guide](https://packaging.python.org/en/lat
 
 # Closing
 
-## Where can I get help?
+## Where can I get help? {.smaller}
 
-BAS's new RSE Team:
+BAS is developing a new Digital Innovation Team who can help with software engineering tasks and training:
 
-- currently part of innovation
-- 1 Senior and 3 RSEs
-- [James Byrne (jambyr)](mailto:jambyr@bas.ac.uk)
+* Tasked with developing common digital infrastructure
+* Composed of four Research Software Engineers
+* Contact [digitalinnovation@bas.ac.uk](mailto:digitalinnovation@bas.ac.uk)
+  or [James Byrne (jambyr)](mailto:jambyr@bas.ac.uk) directly
+
+The Technical Development Community (in Teams) can assist with general enquiries.\
+For all IT requests, please use the IT ServiceDesk 
 
 Look out for future training events including
 [Software in Polar Science](https://software-in-polar-science.github.io/) in February.
