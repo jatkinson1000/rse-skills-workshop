@@ -17,8 +17,8 @@ Please open issues and contributions on gitlab.
 
 
 ## License
-Copyright &copy; Jack Atkinson
 
+Copyright &copy; Jack Atkinson
 
 Unless otherwise noted the programs and other software provided in this repository are
 made available under an [OSI](https://opensource.org/)-approved
