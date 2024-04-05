@@ -310,20 +310,24 @@ def main(
 
 if __name__ == "__main__":
     # Get config from command line
-    configfile = input("Enter configuration filename: ")
-    if configfile == "":
-        print("Using default configuration in 'config.json'.")
-        configfile = "config.json"
+    config_name = input("Enter configuration name: ")
+    if config_name == "":
+        print("Using default configuration in 'default_config.json'.")
+        config_name = "default_config"
+    else:
+        print(f"Using configuration in '{config_name}.json'.")
+    configfile = config_name + ".json"
     with open(configfile, encoding="utf-8") as json_file:
         config = json.load(json_file)
 
-    output_filename = "output.png"
+    output_filename = f"{config_name}_output.png"
     gridlines_on = True
     colorbar_levels = None
 
     main(
         config["input_file"],
         season=config["season_to_plot"],
+        output_file=output_filename,
         mask=config["mask_id"],
         gridlines=config["gridlines_on"],
         countries=config["countries_to_record"],
