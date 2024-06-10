@@ -917,6 +917,35 @@ Docstrings:
 - If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 5.
 
 
+
+<!-- -------------------------------------------------------------------------------->
+
+## READMEs {.smaller}
+
+- First point of contact for a new user/contributor with the code repository
+- Should give essential information on 
+   - what this is 
+   - what it's for 
+   - how to get started
+- In the best case it also tells you
+   - who built/is building this
+   - how to contribute
+   - how to reuse
+
+## Recommended README Content {.smaller}
+
+ - Overview of software, including relevant papers
+ - Project/release status
+ - Requirements and environment
+ - Installation
+ - Building
+ - Usage/Quick start guide (incl. simple example with expected output)
+ - Documentation and Support: User Guide/Website/Help/Discussion forum
+ - Contributing guide
+ - Authors and Acknowledgement
+ - Licence
+ - Known Issues
+
 <!-- ------------------------------------------------------------------------------ -->
 
 # Writing better (Python) code
@@ -1234,12 +1263,11 @@ The Python Packaging Authority has a [guide](https://packaging.python.org/en/lat
 - Yes in larger collaborative projects
 - Not in scripts and hacking
 
-
- ------------------------------------------------------------------------------ -->
+<!------------------------------------------------------------------------------ -->
 
 # Closing
 
-## Where can I get help? {.smaller}
+## Where can I get help?
 
 BAS is developing a new Digital Innovation Team who can help with software engineering tasks and training:
 
