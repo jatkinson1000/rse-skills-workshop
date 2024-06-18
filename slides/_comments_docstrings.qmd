@@ -1,0 +1,274 @@
+
+# Comments and Docstrings
+
+
+## Comments {.smaller}
+
+:::: {.columns}
+::: {.column width="66%"}
+
+Comments are tricky, and very much to taste.
+
+Some thoughts:[^1]
+
+> "Programs must be written for people to read and [...] machines to execute."\
+> &emsp; - Hal Abelson
+
+> "A bad comment is worse than no comment at all."
+
+> "A comment is a lie waiting to happen."
+
+=> Comments have to be maintained, just like the code, and there is no way to check them!
+:::
+::::
+
+![]( https://cdn.stackoverflow.co/images/jo7n4k8s/production/e487213c090116f194f2ed4fc6b0bfbece5258be-531x563.png ){.absolute top=25% right=0% height=50%}
+
+[^1]: Stackoverflow blog [@stackoverflow_comments], and [RealPython comments lesson](https://realpython.com/lessons/importance-writing-good-code-comments/)
+
+::: {.attribution}
+Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/comments/8w54mx/code_comments_be_like/)
+:::
+
+## Comments to avoid {.smaller}
+
+- Dead code e.g.
+  ```python
+  # plt.plot(time, velocity, "r0")
+  plt.plot(time, velocity, "kx")
+  # plt.plot(time, acceleration, "kx")
+  # plt.ylabel("acceleration")
+  plt.ylabel("velocity")
+  ```
+- Variable definitions e.g.
+  ```python
+  # Set Force
+  f = m * a
+  ```
+- Redundant comments e.g. `i += 1  # Increment i`
+
+
+
+## Comments - some thoughts^[Adapted from [@stackoverflow_comments]] {.smaller}
+
+::: {.incremental}
+
+- Comments should not duplicate the code.
+- Good comments do not excuse unclear code.
+  - Comments should dispel confusion, not cause it.
+  - If you can't write a clear comment, there may be a problem with the code.
+- Explain unidiomatic code in comments.
+- Provide links to:
+  - the original source of copied code.
+  - external references where they will be most helpful.
+- Use comments to mark incomplete implementations.
+- Comments are not documentation.
+  - Read by developers, documentation is for...
+
+:::
+
+
+
+## Docstrings {.smaller}
+
+**These are what make your code reusable (by you and others).**
+
+- In python docstrings are designated at the start of _'things'_ using triple
+quotes: `"""..."""`.
+- PEP257 [@PEP257] tells us _what_ docstrings should say.\
+  Specific conventions tell us _how_ they should say it.
+- Where comments describe how it works, docstrings describe how to use it.\
+  Unlike comments, docstrings follow a set format.
+
+Various formatting options exist: numpy, Google, reST, etc.\
+We will use numpydoc it is readable and widely used in scientific code.\
+Full guidance for [numpydoc is available](https://numpydoc.readthedocs.io/en/latest/format.html).
+
+
+
+## Docstrings {.smaller auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Key components:
+
+- A description of what the thing is.
+- A description of any inputs (`Parameters`).
+- A description of any outputs (`Returns`).
+
+Consider also:
+
+- Extended summary
+- Errors raised
+- Usage examples
+- Key references
+:::
+
+::: {.column}
+```python {code-line-numbers="|2|4-7|9-12"}
+"""
+Short one-line description.
+
+Parameters
+----------
+name : type
+    description of parameter
+
+Returns
+-------
+name : type
+    description of return value
+"""
+```
+:::
+::::
+
+
+## Docstrings {.smaller auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Key components:
+
+- A description of what the thing is.
+- A description of any inputs (`Parameters`).
+- A description of any outputs (`Returns`).
+:::
+
+::: {.column}
+:::{ style="font-size: 75%;"}
+```python {code-line-numbers="|1,3|1,5-16|1,7-8|18-21,34|23-26"}
+def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
+    """
+    Calculates the gyroradius of a charged particle in a magnetic field
+
+    Parameters
+    ----------
+    mass : float
+        The mass of the particle [kg]
+    v_perp : float
+        velocity perpendicular to magnetic field [m/s]
+    charge : float
+        particle charge [coulombs]
+    B : float
+        Magnetic field strength [teslas]
+    gamma : float, optional
+        Lorentz factor for relativistic case. default=None for non-relativistic case.
+
+    Returns
+    -------
+    r_g : float
+        Gyroradius of particle [m]
+
+    Notes
+    -----
+    .. [1]  Walt, M, "Introduction to Geomagnetically Trapped Radiation,"
+       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.
+    """
+
+    r_g = mass * v_perp / (abs(charge) * B)
+
+    if gamma:
+        r_g = r_g * gamma
+
+    return r_g
+```
+:::
+:::
+::::
+
+
+## Docstrings - pydocstyle {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+[pydocstyle](https://www.pydocstyle.org/en/stable/) is a tool we can use to help
+ensure the quality of our docstrings.[^2]
+
+:::{ style="font-size: 75%;"}
+
+```bash
+(myvenv) $ pip install pydocstyle
+(myvenv) $ pydocstyle myfile.py
+(myvenv) $ pydocstyle mydirectory/
+(myvenv) $
+(myvenv) $
+(myvenv) $ pydocstyle gyroradius.py
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D202: No blank lines allowed after function docstring (found 1)
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D400: First line should end with a period (not 'd')
+gyroradius.py:2 in public function `calculate_gyroradius`:
+        D401: First line should be in imperative mood (perhaps 'Calculate', not 'Calculates')
+(myvenv) $
+```
+:::
+
+Note: pydocstyle does not catch missing variables in docstrings.
+This can be done with [Pylint's docparams and docstyle extensions](https://pylint.pycqa.org/en/latest/user_guide/checkers/extensions.html)
+but is left as an exercise to the reader.
+:::
+::: {.column}
+:::{ style="font-size: 75%;"}
+```python
+def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
+    """
+    Calculates the gyroradius of a charged particle in a magnetic field
+
+    Parameters
+    ----------
+    mass : float
+        The mass of the particle [kg]
+    v_perp : float
+        velocity perpendicular to magnetic field [m/s]
+    charge : float
+        particle charge [coulombs]
+    B : float
+        Magnetic field strength [teslas]
+    gamma : float, optional
+        Lorentz factor for relativistic case. default=None for non-relativistic case.
+
+    Returns
+    -------
+    r_g : float
+        Gyroradius of particle [m]
+
+    Notes
+    -----
+    .. [1]  Walt, M, "Introduction to Geomagnetically Trapped Radiation,"
+       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.
+    """
+
+    r_g = mass * v_perp / (abs(charge) * B)
+
+    if gamma:
+        r_g = r_g * gamma
+
+    return r_g
+```
+:::
+:::
+::::
+
+
+[^2]: Note that pydocstyle is [deprecated](https://github.com/PyCQA/pydocstyle/pull/658) as of the end of 2023. Longer-term look out for a replacement (likely Ruff or Pylint extension).
+
+
+
+## Exercise 4 {.smaller}
+
+Go to exercise 4 and examine the comments:
+
+- Is there any dead code?
+  - How is it best to handle it?
+- Are comments used sensibly?
+  - Are any redundant and better off being removed?
+  - Is there anywhere that would benefit from a comment?
+
+Docstrings:
+
+- Work through the file adding docstrings where they are missing.
+- If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 5.
