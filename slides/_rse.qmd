@@ -1,0 +1,113 @@
+## What is Research Software? {.smaller .nostretch}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.fragment .fade-in}
+Major Computational Programs  
+
+::: {layout="[-10, 28, -5, 28, -10]" layout-valign="center"}
+![]( https://live.staticflickr.com/8571/16376102935_a638e8f2f1_k.jpg )
+
+![]( https://www.hpc.cam.ac.uk/sites/default/files/inline-images/image_0.jpeg )
+:::
+:::
+::: {.fragment .fade-in}
+Data processing
+
+::: {layout="[-30, 40, -30]" layout-valign="center"}
+![]( https://scrippsco2.ucsd.edu/assets/graphics/display/mlo_record.png?1699885043170 )
+:::
+
+:::
+::: {.fragment .fade-in}
+Experiment support
+
+::: {layout="[-10, 28, -5, 32, -10]" layout-valign="center"}
+![]( https://www.whoi.edu/wp-content/uploads/2022/12/ctd-over-side.jpg )
+
+![]( https://aambpublicoceanservice.blob.core.windows.net/oceanserviceprod/facts/efgboblique.jpg )
+:::
+
+:::
+
+:::
+
+:::{.column}
+:::
+::::
+
+![]( https://www.software.ac.uk/sites/default/files/images/content/BetterSoftwareBetterResearchImage.jpg ){.absolute top=25% right=0% height=50%}
+
+
+::: {.attribution}
+Bathymetry by NOAA under public domain  
+CTD Bottles by WHOI under public domain  
+Keeling Curve by Scripps under public domain  
+Climate simulation by [Los Alamos National Laboratory](https://www.flickr.com/photos/losalamosnatlab/16376102935/in/photostream/) under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/2.0/)  
+Dawn HPC by Joe Bishop with permission  
+:::
+
+
+::: {.notes}
+* Data processing - FFT, averaging, etc.
+* Will inevetable be reused - making it good makes your life easier.
+* Software should be valued more than it is.\
+  At time of writing there isn't pressure to write well.\
+  This is not a good long-term strategy, however.
+:::
+
+
+## Why does this matter? {.smaller}
+![](images/Retractions.png){.absolute top=12.5% right=15% width=70%}
+
+
+## Why does this matter?^[For more details I highly recommend the [Writing Clean Scientific Software](https://www.youtube.com/watch?v=Q6Ksu_uX3bc) Webinar [@Murphy_2023]] {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def calc_p(n,t):
+    return n*1.380649e-23*t
+data = np.genfromtxt("mydata.csv")
+p = calc_p(data[0,:],data[1,:]+273.15)
+print(np.sum(p)/len(p))
+```
+What does this code do?
+:::
+::: {.column}
+::: {.fragment .fade-in}
+```python
+# Boltzmann Constant and 0 Kelvin
+Kb = 1.380649e-23
+T0 = 273.15
+
+def calc_pres(n, t):
+    """
+    Calculate pressure using ideal gas law p = nkT
+
+    Parameters:
+        n : array of number densities of molecules [N m-3]
+        t : array of temperatures in [K]
+    Returns:
+         array of pressures [Pa]
+    """
+    return n * Kb * t
+
+
+# Read in data from file and convert T from [oC] to [K]
+data = np.genfromtxt("mydata.csv")
+n = data[0, :]
+temp = data[1, :] + T0
+
+# Calculate pressure, average, and print
+pres = calc_pres(n, temp)
+pres_av = np.sum(pres) / len(pres)
+print(pres_av)
+
+```
+:::
+:::
+::::
+
+

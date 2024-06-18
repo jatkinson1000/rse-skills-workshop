@@ -1,0 +1,215 @@
+# Writing better (Python) code
+
+## f-strings {.smaller}
+
+A better way to format strings since Python 3.6\
+Not catching on because of self-teaching from old code.
+
+Strings are prepended with an `f` allowing variables to be used in-place:
+
+```python {code-line-numbers="|4-5|7-8|10-11"}
+name = "electron"
+mass = 9.1093837015E-31
+
+# modulo
+print("The mass of an %s is %.3e kg." % (name, mass))
+
+# format
+print("The mass of an {} is {:.3e} kg.".format(name, mass))
+
+# f-string
+print(f"The mass of an {name} is {mass:.3e} kg.")
+```
+
+f-strings can take expressions:
+
+```python
+print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a / b}.")
+```
+
+See [Real Python](https://realpython.com/python-f-strings/) for more information.
+
+
+## Remove Magic Numbers {.smaller}
+
+Numbers in code that are not immediately obvious.
+
+- Hard to read
+- Hard to maintain
+- Hard to adapt
+
+Instead:
+
+- Name a variable conveying meaning
+- Set to a constant
+- Use a comment to explain
+
+![]( https://vignette.wikia.nocookie.net/thatmitchellandwebb/images/1/13/Numberwang.jpg ){.absolute top=33% right=0% height=33%}
+
+::: {.attribution}
+numberwang by Mitchell and Webb under fair use
+:::
+
+
+## Remove Magic Numbers {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers=True}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / 9.81)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * 9.81 * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * 9.81 * max_height(l, theta)
+
+def check_small_angle(theta):
+    """..."""
+    if theta <= np.pi / 1800.0:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    return 60.0 / get_period(l)
+
+
+
+
+```
+:::
+:::
+::: {.column}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|4,8,16,20|22,24|30,31"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+GRAV = 9.81
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / GRAV)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * GRAV * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * GRAV * max_height(l, theta)
+
+def check_small_angle(theta, small_ang=np.pi/1800.0):
+    """..."""
+    if theta <= small_ang:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    # Divide 60 seconds by period [s] for beats per minute
+    return 60.0 / get_period(l)
+```
+:::
+:::
+::::
+
+
+## Put config in a config file {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Ideally we shouldn't have hop in and out of the code (and recompile in higher level
+langs) every time we change a runtime setting
+- No easy record of runs
+
+Instead:
+
+- It's easy to read a json file into python as a dictionary
+  Handle as you wish - create a class, read to variables etc.
+- Could even make config filename a command line argument
+
+:::
+::: {.column width="50%"}
+```json
+{
+  "config_name": "June 2022 m01 n19 run",
+  "start_date": "2022-05-28 00:00:00",
+  "end_date": "2022-06-12 23:59:59",
+  "satellites": ["m01", "n19"],
+  "noise_floor": [3.0, 3.0, 3.0],
+  "check_SNR": true,
+  "L_lim": [1.5, 8.0],
+  "telescopes": [90],
+  "n_bins": 27
+}
+```
+
+
+```python
+import json
+
+
+with open('config.json') as json_file:
+    config = json.load(json_file)
+
+print(config)
+```
+
+```
+{'config_name': 'June 2022 m01 n19 run', 'start_date': '2022-05-28 00:00:00', 'end_date': '2022-06-12 23:59:59', 'satellites': ['m01', 'n19'], 'noise_floor': [3.0, 3.0, 3.0], 'check_SNR': True, 'L_lim': [1.5, 8.0], 'telescopes': [90], 'n_bins': 27}
+```
+
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 5 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Magic Numbers
+
+- Look through the code and identify any magic numbers.
+- Implement what you feel is the best approach in each case
+
+
+f-strings
+
+- Look for any string handling (currently using the .format() approach) and update it
+  to use f-strings.
+  - Is the intent clearer?
+  - Is the layout of the data written to file easier to understand?
+:::
+::: {.column width="50%"}
+Configuration settings
+
+- There is helpfully a list of configurable inputs at the end of the file under `"__main__"`.\
+  We can improve on this, however, by placing them in a configuration file.
+- Create an appropriate json file to be read in as a dictionary and passed to the main function.
+:::
+::::
