@@ -12,32 +12,32 @@ import cmocean
 import regionmask
 
 
-def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
+def convert_precipitation_units(precip_values_in_kg_per_m_squared_s):
     """
     Convert precipitation units from [kg m-2 s-1] to [mm day-1].
 
     Parameters
     ----------
-    precipitation_in_kg_per_m_squared_s : xarray.DataArray
+    precip_values_in_kg_per_m_squared_s : xarray.DataArray
         xarray DataArray containing model precipitation data
 
     Returns
     -------
-    precipitation_in_mm_per_day : xarray.DataArray
+    precip_values_in_mm_per_day : xarray.DataArray
         the input DataArray with precipitation units modified
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
-    precipitation_in_mm_per_day = xr.DataArray(precipitation_in_kg_per_m_squared_s * 86400)
+    precip_values_in_mm_per_day = xr.DataArray(precip_values_in_kg_per_m_squared_s * 86400)
 
-    precipitation_in_mm_per_day.attrs["units"] = "mm/day"
+    precip_values_in_mm_per_day.attrs["units"] = "mm/day"
 
-    if precipitation_in_mm_per_day.data.min() < 0.0:
+    if precip_values_in_mm_per_day.data.min() < 0.0:
         print("There is at least one negative precipitation value")
-    if precipitation_in_mm_per_day.data.max() > 2000:
+    if precip_values_in_mm_per_day.data.max() > 2000:
         print("There is a precipitation value/s > 2000 mm/day")
 
-    return precipitation_in_mm_per_day
+    return precip_values_in_mm_per_day
 
 
 # I think it would be good to give more detail here about what the dimensions and
