@@ -18,6 +18,13 @@ Is the intent clearer?\
 Is the layout of the data written to file easier to understand?
 
 
+## Naming
+
+Look through the code for any names of methods or variables that could be improved or 
+clarified and update them. Note if you are using an IDE you can use automatic renaming.
+Does this make the code easier to follow?
+
+
 ## Configuration settings
 
 The original author of the code has helpfully put a list of the configurable
