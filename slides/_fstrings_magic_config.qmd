@@ -29,6 +29,22 @@ print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a
 
 See [Real Python](https://realpython.com/python-f-strings/) for more information.
 
+## Naming Standards
+
+It may seem inconsequential, but carefully naming variables and methods can improve the
+readability of code massively and can help to make code self documenting.
+
+A few naming tips and conventions:
+
+- The name should show the intention concisely, think about the reader
+- Use pronounceable names e.g. `mass` not `ms`, `stem` not `stm`
+- avoid abbreviations and single letter variable names where possible
+- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
+- Use names that can be searched
+- Describe content rather than storage type
+- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
+- Keep it simple and use technical terms where appropriate
+- Use explaining variables
 
 ## Remove Magic Numbers {.smaller}
 
