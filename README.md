@@ -5,7 +5,7 @@ but the material is generally suited for people with various backgrounds.
 
 Prerequisites: Some general programming knowledge (transferrable to Python programming).  
 
-Information on how to generate the slides can be found [in the slides folder](./slides/README.md).
+Information on how to generate the slides can be found [in the slides folder](./slides/README.md). The deployed slides can be found at [https://cambridge-iccs.github.io/rse-skills-python/](https://cambridge-iccs.github.io/rse-skills-python/).
 
 ### A note on mirrors
 
