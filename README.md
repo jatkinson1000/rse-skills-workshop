@@ -1,9 +1,11 @@
 # power-up-python
 
-Materials for a workshop for educating academic researchers in research software
-engineering (RSE) principles.
+Materials (slides and exercises) for a workshop for educating academic researchers in research software engineering (RSE) principles. The examples shown are geared towards climate scientists, 
+but the material is generally suited for people with various backgrounds. 
 
-Longer description
+Prerequisites: Some general programming knowledge (transferrable to Python programming).  
+
+Information on how to generate the slides can be found [in the slides folder](./slides/README.md).
 
 ### A note on mirrors
 
@@ -22,7 +24,7 @@ Copyright &copy; Jack Atkinson
 
 Unless otherwise noted the programs and other software provided in this repository are
 made available under an [OSI](https://opensource.org/)-approved
-[GPL-3.0-only](https://opensource.org/license/gpl-3-0/) license.
+[GPL-3.0-only](https://opensource.org/license/gpl-3-0/) license. See also [LICENSE](./LICENSE).
 
 Unless otherwise noted the teaching materials provided in this repository are
 made available under a Creative Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
