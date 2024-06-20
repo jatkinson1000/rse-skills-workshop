@@ -1,5 +1,7 @@
 ---
-title: "Powering up python"
+title: "RSE Skills"
+subtitle: "(in Python)"
+
 format:
   revealjs:
     embed-resources: true
@@ -14,11 +16,25 @@ format:
     theme: [dark, custom.scss]
 revealjs-plugins:
   - attribution
+
 authors:
   - name: Jack Atkinson
     orcid: 0000-0001-5001-4812
-    affiliations: Senior Research Software Engineer <br> ICCS - University of Cambridge
-date: "2024-01-23"
+    affiliations:
+      - ref: iccs
+  - name: Amy Pike
+    orcid: 0000-0001-5001-4812
+    affiliations:
+      - ref: iccs
+  - name: Marion Weinzierl
+    orcid: 0000-0002-2302-5476
+    affiliations:
+      - ref: iccs
+affiliations:
+  - id: iccs
+    name: ICCS RSE Team <br> University of Cambridge
+
+date: "2024-07-11"
 bibliography: references.bib
 ---
 
@@ -28,10 +44,12 @@ bibliography: references.bib
 ::: {.column width="50%"}
 #### Slides and Materials
 
+<!--
 To access links or follow on your own device these slides can be found at:  
 [https://jackatkinson.net/slides](https://jackatkinson.net/slides)
 
 \
+-->
 
 All materials are available at:
 
@@ -62,12 +80,13 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
 - Ask questions whenever they arise.
   - Someone else is probably wondering the same thing.
-- I will make mistakes.
+- We will make mistakes.
   - Not all of them will be intentional.
 :::
 ::::
 
 
+<!--
 ## whoami {.smaller}
 
 Research background in fluid mechanics and atmosphere:
@@ -84,6 +103,9 @@ This talk can be summarised as _"things I wish I'd known sooner."_
 ::: {.notes}
 My background in this is domain science and numerical modelling on HPC.
 :::
+-->
+
+<!-- ------------------------------------------------------------------------------ -->
 
 {{< include _rse.qmd >}}
 
