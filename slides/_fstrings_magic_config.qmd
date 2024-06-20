@@ -37,7 +37,7 @@ readability of code massively and can help to make code self documenting.
 
 A few naming tips and conventions:
 
-- The name should show the intention, think about how someone else might read it
+- The name should show the intention, think about how someone else might read it (this could be future you)
 - Use pronounceable names e.g. `mass` not `ms`, `stem` not `stm`
 - avoid abbreviations and single letter variable names where possible
 - One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
