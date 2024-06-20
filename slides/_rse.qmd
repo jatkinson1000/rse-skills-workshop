@@ -6,8 +6,8 @@
 ::: {.fragment .fade-in}
 Major Computational Programs  
 
-::: {layout="[-10, 28, -5, 28, -10]" layout-valign="center"}
-![]( https://live.staticflickr.com/8571/16376102935_a638e8f2f1_k.jpg )
+::: {layout="[-10, 22, -5, 28, -10]" layout-valign="center"}
+![]( https://www.nsf.gov/news/mmg/media/images/easm1_h.jpg )
 
 ![]( https://www.hpc.cam.ac.uk/sites/default/files/inline-images/image_0.jpeg )
 :::
@@ -41,11 +41,11 @@ Experiment support
 
 
 ::: {.attribution}
-Bathymetry by NOAA under public domain  
-CTD Bottles by WHOI under public domain  
-Keeling Curve by Scripps under public domain  
-Climate simulation by [Los Alamos National Laboratory](https://www.flickr.com/photos/losalamosnatlab/16376102935/in/photostream/) under [CC BY-NC-ND](https://creativecommons.org/licenses/by-nc-nd/2.0/)  
-Dawn HPC by Joe Bishop with permission  
+Bathymetry by NOAA under public domain
+CTD Bottles by WHOI under public domain\
+Keeling Curve by Scripps under public domain\
+Dawn HPC by Joe Bishop with permission\
+Climate simulation by NSF under public domain\
 :::
 
 
