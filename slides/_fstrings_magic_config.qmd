@@ -30,6 +30,7 @@ print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a
 See [Real Python](https://realpython.com/python-f-strings/) for more information.
 Note: pylint W1203 recommends against using f-strings in logging calls.
 
+
 ## Remove Magic Numbers {.smaller}
 
 Numbers in code that are not immediately obvious.
