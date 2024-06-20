@@ -121,7 +121,7 @@ def get_country_annual_average(data, countries):
 
 # could data be named more specifically and more detail be given in the docstring about
 # what the dimension and contents of the array are?
-def plot_hovmoller_diagram(data):
+def plot_enso_hovmoller_diagram(data):
     """
     Plot Hovmöller diagram of equatorial precipitation to visualise ENSO.
 
