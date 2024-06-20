@@ -1,15 +1,24 @@
  
 ## How to choose a license
  
- - https://choosealicense.com/licenses/
- - Recommended to use copyleft licenses for (open) research software
-    - Means that copy/adaption has to use the same license
+ 
+:::: {.columns}
+::: {.column width="70%"}
+ - [https://choosealicense.com/licenses/](https://choosealicense.com/licenses/)
  - Permissive licenses:
     - Apache License 2.0 
     - MIT License
- - No closed source allowed:
+ - Copyleft:
+    - Means that copy/adaption has to use the same license
     - GNU General Public License v3.0
+:::
 
+::: {.column}
+![](images/apache.png){.absolute top=12.5% right=5% width=20%}
+![](images/mit_license.png){.absolute top=35% right=10% width=20%}
+![](images/gpl3.png){.absolute top=70% right=5% width=20%}
+:::
+:::: 
     
 ## Example: MIT License
  
