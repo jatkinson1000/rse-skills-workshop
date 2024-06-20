@@ -1,5 +1,6 @@
 ---
 title: "Powering up python"
+output-file: index
 format:
   revealjs:
     embed-resources: true
