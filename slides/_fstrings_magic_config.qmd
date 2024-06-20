@@ -33,7 +33,7 @@ Note: pylint W1203 recommends against using f-strings in logging calls.
 ## Naming Standards
 
 It may seem inconsequential, but carefully naming variables and methods can improve the
-readability of code massively and can help to make code self documenting.
+readability of code massively and can help to make code self-documenting.
 
 A few naming tips and conventions:
 
