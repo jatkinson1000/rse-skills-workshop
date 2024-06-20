@@ -33,9 +33,9 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
     if precipitation_in_mm_per_day.data.min() < 0.0:
-        print("There is at least one negative precipitation value")
+        raise ValueError("There is at least one negative precipitation value")
     if precipitation_in_mm_per_day.data.max() > 2000:
-        print("There is a precipitation value/s > 2000 mm/day")
+        raise ValueError("There is a precipitation value/s > 2000 mm/day")
 
     return precipitation_in_mm_per_day
 
