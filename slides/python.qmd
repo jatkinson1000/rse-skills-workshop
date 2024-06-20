@@ -23,7 +23,6 @@ authors:
     affiliations:
       - ref: iccs
   - name: Amy Pike
-    orcid: 0000-0001-5001-4812
     affiliations:
       - ref: iccs
   - name: Marion Weinzierl
