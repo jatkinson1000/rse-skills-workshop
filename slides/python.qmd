@@ -218,18 +218,15 @@ The Python Packaging Authority has a [guide](https://packaging.python.org/en/lat
 
 ## Where can I get help? {.smaller}
 
-BAS is developing a new Digital Innovation Team who can help with software engineering tasks and training:
+The ICCS RSE team are always keen to support researchers with developing and applying
+the principles discussed today.
 
-* Tasked with developing common digital infrastructure
-* Composed of four Research Software Engineers
-* Contact [digitalinnovation@bas.ac.uk](mailto:digitalinnovation@bas.ac.uk)
-  or [James Byrne (jambyr)](mailto:jambyr@bas.ac.uk) directly
+If you would like to discuss applying this to your own codebase consider signing up for
+an ICCS Climate Code Clinic:
 
-The Technical Development Community (in Teams) can assist with general enquiries.\
-For all IT requests, please use the IT ServiceDesk 
-
-Look out for future training events including
-[Software in Polar Science](https://software-in-polar-science.github.io/) in February.
+- 1hr slot
+- RSEs will review code in advance and provide feedback and guidance.
+- [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
 
 
 ## Where can I learn more? {.smaller}
@@ -239,16 +236,15 @@ Look out for future training events including
 ::: {.column width="100%"}
 - References and links in these slides
 - Writing Clean Scientific Software Webinar [@Murphy_2023]
-- Cambridge RSE Seminars
-  - Weekly presentations in West Cambridge
-  - [rse.group.cam.ac.uk](https://rse.group.cam.ac.uk/)
 - RSE slack workspace
 :::
+
+\
 
 ::: {.column width="20%"}
 Get in touch:
 :::
-::: {.column width="80%"}
+::: {.column width="45%"}
 {{< fa pencil >}} \ Jack Atkinson
 
 {{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
@@ -259,6 +255,22 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
 :::
+::: {.column width="35%"}
+{{< fa pencil >}} \ Amy Pike
+
+{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
+
+{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
+
+\
+
+{{< fa pencil >}} \ Marion Weinzierl
+
+{{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
+
+{{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
+
+:::
 ::::
 
 
@@ -268,13 +280,3 @@ The code in this workshop is based on a script from [@Irving_2019].
 
 ::: {#refs}
 :::
-
-## ICCS ReproHack {.smaller}
-
-- March 12th 2024
-- Climate science reproducibility hackathon
-- [reprohack.org/event/27](https://www.reprohack.org/event/27/)
-- Fully online
-
-Come and learn more about software reproducibility by trying to reproduce results from papers. No advanced programming skills needed, you will work in teams and won't do actual coding, just trying to get submitted codes to run (with our support).\
-If you would like some friendly feedback on your own code's reproducibility, please submit a paper.
