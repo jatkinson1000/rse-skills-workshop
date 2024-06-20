@@ -299,3 +299,18 @@ Docstrings:
  - Authors and Acknowledgement
  - Licence
  - Known Issues
+ 
+## Other potential files in your repository {.smaller}
+ 
+ - LICENSE
+ - CONTRIBUTING.md
+ - CITATION.cff
+ - CODE_OF_CONDUCT.md
+ - CHANGES.md
+
+
+
+
+
+
+
