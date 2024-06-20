@@ -2,7 +2,7 @@
 
 import json
 import numpy as np
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
 import xarray as xr
 import cartopy.crs as ccrs
@@ -60,24 +60,24 @@ def plot_zonally_averaged_precipitation(data):
     """
     zonal_precipitation = data["precipitation"].mean("longitude", keep_attrs=True)
 
-    figure, axes = plot.subplots(nrows=4, ncols=1, figsize=(12, 8))
+    figure, axes = plt.subplots(nrows=4, ncols=1, figsize=(12, 8))
 
     zonal_precipitation.sel(lat=[0]).plot.line(ax=axes[0], hue="latitude")
     zonal_precipitation.sel(lat=[-20, 20]).plot.line(ax=axes[1], hue="latitude")
     zonal_precipitation.sel(lat=[-45, 45]).plot.line(ax=axes[2], hue="latitude")
     zonal_precipitation.sel(lat=[-70, 70]).plot.line(ax=axes[3], hue="latitude")
 
-    plot.tight_layout()
+    plt.tight_layout()
     for axis in axes:
         axis.set_ylim(0.0, 1.0e-4)
         axis.grid()
-    plot.savefig("zonal.png", dpi=200)  # Save figure to file
+    plt.savefig("zonal.png", dpi=200)  # Save figure to file
 
-    figure, axes = plot.subplots(nrows=1, ncols=1, figsize=(12, 5))
+    figure, axes = plt.subplots(nrows=1, ncols=1, figsize=(12, 5))
 
     zonal_precipitation.T.plot()
 
-    plot.savefig("zonal_map.png", dpi=200)  # Save figure to file
+    plt.savefig("zonal_map.png", dpi=200)  # Save figure to file
 
 # could data be named more specifically and more detail be given in the docstring about
 # what the dimension and contents of the array are?
@@ -143,7 +143,7 @@ def plot_enso_hovmoller_diagram(data):
     )
 
     enso.plot()
-    plot.savefig("enso.png", dpi=200)  # Save figure to file
+    plt.savefig("enso.png", dpi=200)  # Save figure to file
 
 
 def create_precipitation_climatology_plot(climatology_data, model_name, season, mask=None, plot_gridlines=False, levels=None):
@@ -174,7 +174,7 @@ def create_precipitation_climatology_plot(climatology_data, model_name, season, 
     if not levels:
         levels = np.arange(0, 13.5, 1.5)
 
-    fig, geo_axes = plot.subplots(
+    fig, geo_axes = plt.subplots(
         nrows=1,
         ncols=1,
         figsize=(12, 5),
@@ -226,7 +226,7 @@ def create_precipitation_climatology_plot(climatology_data, model_name, season, 
         gridlines.ylabel_style = {"size": 15, "color": "gray"}
 
     title = f"{model_name} precipitation climatology ({season})"
-    plot.title(title)
+    plt.title(title)
 
 
 def main(
@@ -270,7 +270,7 @@ def main(
     input_data = xr.open_dataset(precipitation_netcdf_file)
 
     plot_zonally_averaged_precipitation(input_data)
-    plot_hovmoller_diagram(input_data)
+    plot_enso_hovmoller_diagram(input_data)
     get_country_annual_average(input_data, countries)
 
     climatology = input_data["precipitation"].groupby("time.season").mean("time", keep_attrs=True)
@@ -298,7 +298,7 @@ def main(
         levels=cbar_levels,
     )
 
-    plot.savefig(output_file, dpi=200)
+    plt.savefig(output_file, dpi=200)
 
 
 if __name__ == "__main__":
