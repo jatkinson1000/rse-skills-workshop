@@ -1,4 +1,8 @@
-# power-up-python
+<img src="https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/logo2_1.png"  width="355" align="left">
+
+<br><br><br><br><br>
+
+# ICCS RSE Skills (in Python) Workshop
 
 Materials (slides and exercises) for a workshop for educating academic researchers in research software engineering (RSE) principles. The examples shown are geared towards climate scientists, 
 but the material is generally suited for people with various backgrounds. 
