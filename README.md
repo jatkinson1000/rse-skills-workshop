@@ -1,9 +1,15 @@
-# power-up-python
+<img src="https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/logo2_1.png"  width="355" align="left">
 
-Materials for a workshop for educating academic researchers in research software
-engineering (RSE) principles.
+<br><br><br><br><br>
 
-Longer description
+# ICCS RSE Skills (in Python) Workshop
+
+Materials (slides and exercises) for a workshop for educating academic researchers in research software engineering (RSE) principles. The examples shown are geared towards climate scientists, 
+but the material is generally suited for people with various backgrounds. 
+
+Prerequisites: Some general programming knowledge (transferrable to Python programming).  
+
+Information on how to generate the slides can be found [in the slides folder](./slides/README.md). The deployed slides can be found at [https://cambridge-iccs.github.io/rse-skills-python/](https://cambridge-iccs.github.io/rse-skills-python/).
 
 ### A note on mirrors
 
@@ -22,7 +28,7 @@ Copyright &copy; Jack Atkinson
 
 Unless otherwise noted the programs and other software provided in this repository are
 made available under an [OSI](https://opensource.org/)-approved
-[GPL-3.0-only](https://opensource.org/license/gpl-3-0/) license.
+[GPL-3.0-only](https://opensource.org/license/gpl-3-0/) license. See also [LICENSE](./LICENSE).
 
 Unless otherwise noted the teaching materials provided in this repository are
 made available under a Creative Commons [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
