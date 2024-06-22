@@ -272,3 +272,43 @@ Docstrings:
 
 - Work through the file adding docstrings where they are missing.
 - If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 5.
+
+
+## READMEs {.smaller}
+
+- First point of contact for a new user/contributor with the code repository
+- Should give essential information on 
+   - what this is 
+   - what it's for 
+   - how to get started
+- In the best case it also tells you
+   - who built/is building this
+   - how to contribute
+   - how to reuse
+- Usually written in Markdown
+- See also, e.g., [https://www.makeareadme.com/](https://www.makeareadme.com/) and [https://readme.so/](https://readme.so/)
+   
+
+## Recommended README Content {.smaller}
+
+ - Overview of software, including relevant papers
+ - Project/release status
+ - Requirements and environment
+ - Installation
+ - Building
+ - Usage/Quick start guide (incl. simple example with expected output)
+ - Documentation and Support: User Guide/Website/Help/Discussion forum
+ - Contributing guide
+ - Authors and Acknowledgement
+ - Licence
+ - Known Issues
+ 
+## Other potential files in your repository {.smaller}
+ 
+ - LICENSE
+ - CONTRIBUTING.md
+ - CITATION.cff
+ - CODE_OF_CONDUCT.md
+ - CHANGES.md
+
+

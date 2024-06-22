@@ -1,0 +1,48 @@
+## Types of Licenses
+
+![](https://cdn.ttgtmedia.com/rms/onlineimages/5_types_of_software_licenses-f.png){width=80% fig-align="center"}
+
+[https://www.techtarget.com/searchcio/definition/software-license](https://www.techtarget.com/searchcio/definition/software-license)
+
+
+## How to choose a license
+ 
+:::: {.columns}
+::: {.column width="70%"}
+ - [https://choosealicense.com/licenses/](https://choosealicense.com/licenses/)
+ - Permissive licenses:
+    - Apache License 2.0 
+    - MIT License
+ - Copyleft:
+    - Means that copy/adaption has to use the same license
+    - GNU General Public License v3.0
+:::
+
+::: {.column}
+![](images/apache.png){.absolute top=12.5% right=5% width=20%}
+![](images/mit_license.png){.absolute top=35% right=10% width=20%}
+![](images/gpl3.png){.absolute top=70% right=5% width=20%}
+:::
+:::: 
+    
+## Example: MIT License
+ 
+ ```
+Copyright <YEAR> <COPYRIGHT HOLDER>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ ```
+
+## Add a license in Github 
+
+![](images/github_license.png){width=80% fig-align="center"}
+
+## Add a license in Gitlab 
+
+![](images/gitlab_license.png){width=80% fig-align="center"}
+
+
