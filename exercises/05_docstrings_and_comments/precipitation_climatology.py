@@ -13,7 +13,8 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """Convert kg m-2 s-1 to mm day-1."""
 
     precipitation_in_mm_per_day = xr.DataArray(
-        precipitation_in_kg_per_m_squared_s * 86400)
+        precipitation_in_kg_per_m_squared_s * 86400
+    )
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
@@ -50,13 +51,16 @@ def plot_zonally_averaged_precipitation(precipitation_data):
 
 
 def get_country_annual_average(precipitation_data, countries):
-    annual_average_precipitation = precipitation_data["pr"].groupby("time.year").mean("time", keep_attrs=True)
-    annual_average_precipitation = convert_precipitation_units(annual_average_precipitation)
+    annual_average_precipitation = (
+        precipitation_data["pr"].groupby("time.year").mean("time", keep_attrs=True)
+    )
+    annual_average_precipitation = convert_precipitation_units(
+        annual_average_precipitation
+    )
 
-    country_mask = (regionmask
-                    .defined_regions
-                    .natural_earth_v5_0_0.countries_110
-                    .mask(annual_average_precipitation))
+    country_mask = regionmask.defined_regions.natural_earth_v5_0_0.countries_110.mask(
+        annual_average_precipitation
+    )
 
     # List possible locations to plot
     # [print(k, v) for k, v in regionmask.defined_regions.natural_earth_v5_0_0.countries_110.regions.items()]
@@ -65,7 +69,9 @@ def get_country_annual_average(precipitation_data, countries):
         for country_name, country_code in countries.items():
             # land.plot(ax=geo_axes, add_label=False, fc="white", lw=2, alpha=0.5)
             # clim = clim.where(ocean == "South Pacific Ocean")
-            country_annual_average_precipitation = annual_average_precipitation.where(country_mask.cf == country_code)
+            country_annual_average_precipitation = annual_average_precipitation.where(
+                country_mask.cf == country_code
+            )
 
             # Debugging - plot countries to make sure mask works correctly
             # fig, geo_axes = plt.subplots(nrows=1, ncols=1, figsize=(12,5),
@@ -90,9 +96,13 @@ def get_country_annual_average(precipitation_data, countries):
             # plt.show()
 
             for year in country_annual_average_precipitation.year.values:
-                precip = country_annual_average_precipitation.sel(year=year).mean().values
+                precip = (
+                    country_annual_average_precipitation.sel(year=year).mean().values
+                )
                 datafile.write(
-                    "{} {} : {:2.3f} mm/day\n".format(country_name.ljust(25), year, precip)
+                    "{} {} : {:2.3f} mm/day\n".format(
+                        country_name.ljust(25), year, precip
+                    )
                 )
             datafile.write("\n")
 
@@ -120,7 +130,14 @@ def plot_enso_hovmoller_diagram(precipitation_data):
     plt.savefig("enso.png", dpi=200)  # Save figure to file
 
 
-def create_precipitation_climatology_plot(seasonal_average_precipitation, model_name, season, mask=None, plot_gridlines=False, levels=None):
+def create_precipitation_climatology_plot(
+    seasonal_average_precipitation,
+    model_name,
+    season,
+    mask=None,
+    plot_gridlines=False,
+    levels=None,
+):
     """Plot the precipitation climatology.
 
     clim (xarray.DataArray): Precipitation climatology data
@@ -230,7 +247,9 @@ def main(
     plot_enso_hovmoller_diagram(precipitation_data)
     get_country_annual_average(precipitation_data, countries)
 
-    seasonal_average_precipitation = precipitation_data["pr"].groupby("time.season").mean("time", keep_attrs=True)
+    seasonal_average_precipitation = (
+        precipitation_data["pr"].groupby("time.season").mean("time", keep_attrs=True)
+    )
 
     try:
         input_units = seasonal_average_precipitation.attrs["units"]
@@ -240,7 +259,9 @@ def main(
         ) from exc
 
     if input_units == "kg m-2 s-1":
-        seasonal_average_precipitation = convert_precipitation_units(seasonal_average_precipitation)
+        seasonal_average_precipitation = convert_precipitation_units(
+            seasonal_average_precipitation
+        )
     elif input_units == "mm/day":
         pass
     else:
