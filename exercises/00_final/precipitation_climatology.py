@@ -111,7 +111,7 @@ def get_country_annual_average(precipitation_data, countries):
                     .countries_110
                     .mask(annual_average_precipitation))
 
-    with open("data.txt", "w", encoding="utf-8") as datafile:
+    with open("annual_average_precipitation_by_country.txt", "w", encoding="utf-8") as datafile:
         for country_name, country_code in countries.items():
             country_annual_average_precipitation = annual_average_precipitation.where(
                 country_mask.cf == country_code)
