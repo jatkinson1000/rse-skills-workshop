@@ -3,13 +3,13 @@
 import numpy as np
 
 
-def get_period(l):
+def get_period(length):
     """
     Calculate the period of a pendulum.
 
     Parameters
     ----------
-    l : float
+    length : float
         length of the pendulum [m]
 
     Returns
@@ -17,16 +17,16 @@ def get_period(l):
     float
         period [s] for a swing of the pendulum
     """
-    return 2.0 * np.pi * np.sqrt(l / 9.81)
+    return 2.0 * np.pi * np.sqrt(length / 9.81)
 
 
-def max_height(l, theta):
+def max_height(length, theta):
     """
     Calculate the maximum height reached by a pendulum.
 
     Parameters
     ----------
-    l : float
+    length : float
         length of the pendulum [m]
     theta : float
         maximum angle of displacment of the pendulum [radians]
@@ -36,16 +36,16 @@ def max_height(l, theta):
     float
         maximum vertical height [m] of the pendulum
     """
-    return l * np.cos(theta)
+    return length * np.cos(theta)
 
 
-def max_speed(l, theta):
+def max_speed(length, theta):
     """
     Calculate the maximum speed of a pendulum.
 
     Parameters
     ----------
-    l : float
+    length : float
         length of the pendulum [m]
     theta : float
         maximum angle of displacment of the pendulum [radians]
@@ -55,18 +55,18 @@ def max_speed(l, theta):
     float
         maximum speed [m/s] of the pendulum
     """
-    return np.sqrt(2.0 * 9.81 * max_height(l, theta))
+    return np.sqrt(2.0 * 9.81 * max_height(length, theta))
 
 
-def energy(m, l, theta):
+def energy(mass, length, theta):
     """
     Calculate the energy of a pendulum.
 
     Parameters
     ----------
-    m : float
+    mass : float
         mass of the pendulum bob [kg]
-    l : float
+    length : float
         length of the pendulum [m]
     theta : float
         maximum angle of displacment of the pendulum [radians]
@@ -76,7 +76,7 @@ def energy(m, l, theta):
     float
         energy [kg . m2 /s2] of the pendulum
     """
-    return m * 9.81 * max_height(l, theta)
+    return mass * 9.81 * max_height(length, theta)
 
 
 def check_small_angle(theta):
@@ -98,13 +98,13 @@ def check_small_angle(theta):
     return False
 
 
-def bpm(l):
+def bpm(length):
     """
     Calculate pendulum frequency in beats per minute.
 
     Parameters
     ----------
-    l : float
+    length : float
         length of the pendulum [m]
 
     Returns
@@ -112,4 +112,4 @@ def bpm(l):
     float
         pendulum frequency in beats per minute [1 / min]
     """
-    return 60.0 / get_period(l)
+    return 60.0 / get_period(length)
