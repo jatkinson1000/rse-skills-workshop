@@ -19,12 +19,12 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     Parameters
     ----------
     precipitation_in_kg_per_m_squared_s : xarray.DataArray
-        xarray DataArray containing model precipitation data
+        xarray DataArray containing model precipitation data in kg m-2 s-1
 
     Returns
     -------
     precipitation_in_mm_per_day : xarray.DataArray
-        the input DataArray with precipitation units modified
+        the input DataArray with precipitation units modified to mm day-1
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
@@ -40,25 +40,23 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     return precipitation_in_mm_per_day
 
 
-# I think it would be good to give more detail here about what the dimensions and
-# content of the input array needs to be, to save the reader having to go through
-# the code and infer it in order to use the method. Would it also be possible to give
-# the input variable a more specific name?
-def plot_zonally_averaged_precipitation(data):
+def plot_zonally_averaged_precipitation(precipitation_data):
     """
     Plot zonally-averaged precipitation data and save to file.
 
     Parameters
     ----------
-    data : xarray.DataArray
-        xarray DataArray containing model data
+    precipitation_data : xarray.DataSet
+        xarray DataSet containing precipitation model data, specifying precipitation in
+        [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
+        four aligned DataArrays: precipitation, latitude, longitude and time.
 
     Returns
     -------
     None
 
     """
-    zonal_precipitation = data["precipitation"].mean("longitude", keep_attrs=True)
+    zonal_precipitation = precipitation_data["precipitation"].mean("longitude", keep_attrs=True)
 
     figure, axes = plt.subplots(nrows=4, ncols=1, figsize=(12, 8))
 
@@ -79,16 +77,17 @@ def plot_zonally_averaged_precipitation(data):
 
     plt.savefig("zonal_map.png", dpi=200)  # Save figure to file
 
-# could data be named more specifically and more detail be given in the docstring about
-# what the dimension and contents of the array are?
-def get_country_annual_average(data, countries):
+
+def get_country_annual_average(precipitation_data, countries):
     """
     Calculate annual precipitation averages for countries and save to file.
 
     Parameters
     ----------
-    data : xarray.DataArray
-        xarray DataArray containing model data
+    precipitation_data : xarray.DataSet
+        xarray DataSet containing precipitation model data, specifying precipitation in
+        [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
+        four aligned DataArrays: precipitation, latitude, longitude and time.
     countries : dict(str: str)
         dictionary mapping country names to regionmask codes. For a list see:
         regionmask.defined_regions.natural_earth_v5_0_0.countries_110.regions
@@ -98,20 +97,21 @@ def get_country_annual_average(data, countries):
     None
 
     """
-    data_average = data["precipitation"].groupby("time.year").mean("time",
-                                                                   keep_attrs=True)
-    data_average = convert_precipitation_units(data_average)
+    annual_average_precipitation = (precipitation_data["precipitation"]
+                                    .groupby("time.year")
+                                    .mean("time", keep_attrs=True))
+    annual_average_precipitation = convert_precipitation_units(annual_average_precipitation)
 
     # would it be possible to give land a more specific name?
     land = (regionmask.
             defined_regions.
             natural_earth_v5_0_0
-            .countries_110.mask(data_average))
+            .countries_110.mask(annual_average_precipitation))
 
     with open("data.txt", "w", encoding="utf-8") as datafile:
         # could k and v be named more specifically?
         for k, v in countries.items():
-            data_avg_mask = data_average.where(land.cf == v)
+            data_avg_mask = annual_average_precipitation.where(land.cf == v)
 
             for year in data_avg_mask.year.values:
                 precipitation = data_avg_mask.sel(year=year).mean().values
@@ -121,14 +121,16 @@ def get_country_annual_average(data, countries):
 
 # could data be named more specifically and more detail be given in the docstring about
 # what the dimension and contents of the array are?
-def plot_enso_hovmoller_diagram(data):
+def plot_enso_hovmoller_diagram(precipitation_data):
     """
     Plot Hovmöller diagram of equatorial precipitation to visualise ENSO.
 
     Parameters
     ----------
-    data : xarray.DataArray
-        xarray DataArray containing model data
+    precipitation_data : xarray.DataSet
+       xarray DataSet containing precipitation model data, specifying precipitation in
+        [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
+        four aligned DataArrays: precipitation, latitude, longitude and time.
 
     Returns
     -------
@@ -136,7 +138,7 @@ def plot_enso_hovmoller_diagram(data):
 
     """
     enso = (
-        data["precipitation"]
+        precipitation_data["precipitation"]
         .sel(lat=slice(-1, 1))
         .sel(lon=slice(120, 280))
         .mean(dim="latitude", keep_attrs=True)
@@ -153,7 +155,7 @@ def create_precipitation_climatology_plot(climatology_data, model_name, season, 
     Parameters
     ----------
     climatology_data : xarray.DataArray
-        Precipitation climatology data
+        Precipitation climatology data. Seasonally averaged precipitation data.
     model_name : str
         Name of the climate model
     season : str
@@ -267,31 +269,34 @@ def main(
     if countries is None:
         countries = {"United Kingdom": "GB"}
 
-    input_data = xr.open_dataset(precipitation_netcdf_file)
+    precipitation_data = xr.open_dataset(precipitation_netcdf_file)
 
-    plot_zonally_averaged_precipitation(input_data)
-    plot_enso_hovmoller_diagram(input_data)
-    get_country_annual_average(input_data, countries)
+    plot_zonally_averaged_precipitation(precipitation_data)
+    plot_enso_hovmoller_diagram(precipitation_data)
+    get_country_annual_average(precipitation_data, countries)
 
-    climatology = input_data["precipitation"].groupby("time.season").mean("time", keep_attrs=True)
+    seasonal_average_precipitation = (precipitation_data["precipitation"]
+                                         .groupby("time.season")
+                                         .mean("time", keep_attrs=True))
 
     try:
-        input_units = climatology.attrs["units"]
+        input_units = seasonal_average_precipitation.attrs["units"]
     except KeyError as exc:
         raise KeyError(
             "Precipitation variable in {pr_file} must have a units attribute"
         ) from exc
 
     if input_units == "kg m-2 s-1":
-        climatology = convert_precipitation_units(climatology)
+        seasonal_average_precipitation = (
+            convert_precipitation_units(seasonal_average_precipitation))
     elif input_units == "mm/day":
         pass
     else:
         raise ValueError("""Input units are not 'kg m-2 s-1' or 'mm/day'""")
 
     create_precipitation_climatology_plot(
-        climatology,
-        input_data.attrs["source_id"],
+        seasonal_average_precipitation,
+        precipitation_data.attrs["source_id"],
         season,
         mask=mask,
         plot_gridlines=plot_gridlines,
