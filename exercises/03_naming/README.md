@@ -1,4 +1,4 @@
-# Exercise 2a - Naming for code clarity
+# Exercise 3 - Naming for code clarity
 
 Look through the code for any names of methods or variables that could be improved or
 clarified and update them. Note if you are using an IDE like Intellij or VSCode, 
