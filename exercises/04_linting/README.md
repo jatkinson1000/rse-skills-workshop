@@ -1,4 +1,4 @@
-# Exercise 3 - Linting
+# Exercise 4 - Linting
 
 This exercise contains the original code after applying black.
 

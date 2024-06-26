@@ -1,4 +1,4 @@
-# Exercise 5 - Better Code
+# Exercise 6 - Better Code
 
 This exercise contains the code now complete with docstrings.
 
