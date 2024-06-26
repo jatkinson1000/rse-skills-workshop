@@ -28,6 +28,7 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
+    #TODO Check this hasn't introduced a bug, also check the values in netcdf file. Run this to make sure.
     precipitation_in_mm_per_day = xr.DataArray(
         precipitation_in_kg_per_m_squared_s * 86400)
 
@@ -57,15 +58,14 @@ def plot_zonally_averaged_precipitation(precipitation_data):
     None
 
     """
-    zonal_precipitation = precipitation_data["precipitation"].mean("longitude",
-                                                                   keep_attrs=True)
+    zonal_precipitation = precipitation_data["pr"].mean("lon", keep_attrs=True)
 
     figure, axes = plt.subplots(nrows=4, ncols=1, figsize=(12, 8))
 
-    zonal_precipitation.sel(lat=[0]).plot.line(ax=axes[0], hue="latitude")
-    zonal_precipitation.sel(lat=[-20, 20]).plot.line(ax=axes[1], hue="latitude")
-    zonal_precipitation.sel(lat=[-45, 45]).plot.line(ax=axes[2], hue="latitude")
-    zonal_precipitation.sel(lat=[-70, 70]).plot.line(ax=axes[3], hue="latitude")
+    zonal_precipitation.sel(lat=[0]).plot.line(ax=axes[0], hue="lat")
+    zonal_precipitation.sel(lat=[-20, 20]).plot.line(ax=axes[1], hue="lat")
+    zonal_precipitation.sel(lat=[-45, 45]).plot.line(ax=axes[2], hue="lat")
+    zonal_precipitation.sel(lat=[-70, 70]).plot.line(ax=axes[3], hue="lat")
 
     plt.tight_layout()
     for axis in axes:
@@ -99,7 +99,7 @@ def get_country_annual_average(precipitation_data, countries):
     None
 
     """
-    annual_average_precipitation = (precipitation_data["precipitation"]
+    annual_average_precipitation = (precipitation_data["pr"]
                                     .groupby("time.year")
                                     .mean("time", keep_attrs=True))
     annual_average_precipitation = convert_precipitation_units(
@@ -140,10 +140,10 @@ def plot_enso_hovmoller_diagram(precipitation_data):
 
     """
     enso = (
-        precipitation_data["precipitation"]
+        precipitation_data["pr"]
         .sel(lat=slice(-1, 1))
         .sel(lon=slice(120, 280))
-        .mean(dim="latitude", keep_attrs=True)
+        .mean(dim="lat", keep_attrs=True)
     )
 
     enso.plot()
@@ -279,7 +279,7 @@ def main(
     plot_enso_hovmoller_diagram(precipitation_data)
     get_country_annual_average(precipitation_data, countries)
 
-    seasonal_average_precipitation = (precipitation_data["precipitation"]
+    seasonal_average_precipitation = (precipitation_data["pr"]
                                       .groupby("time.season")
                                       .mean("time", keep_attrs=True))
 
