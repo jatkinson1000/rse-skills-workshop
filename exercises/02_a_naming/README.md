@@ -3,6 +3,7 @@
 Look through the code for any names of methods or variables that could be improved or
 clarified and update them. Note if you are using an IDE like Intellij or VSCode, 
 you can use automatic renaming.
+Can you find an example from each of the suggestions listed below?
 Does this make the code easier to follow?
 
 Consider the following:
