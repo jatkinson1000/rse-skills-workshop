@@ -248,6 +248,7 @@ Get in touch:
 
 {{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
 
+{{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
 :::
 ::::
 
