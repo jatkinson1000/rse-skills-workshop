@@ -1,6 +1,7 @@
 ---
-title: "Powering up python"
-output-file: index
+title: "RSE Skills"
+subtitle: "(in Python)"
+
 format:
   revealjs:
     embed-resources: true
@@ -15,11 +16,24 @@ format:
     theme: [dark, custom.scss]
 revealjs-plugins:
   - attribution
+
 authors:
   - name: Jack Atkinson
     orcid: 0000-0001-5001-4812
-    affiliations: Senior Research Software Engineer <br> ICCS - University of Cambridge
-date: "2024-01-23"
+    affiliations:
+      - ref: iccs
+  - name: Amy Pike
+    affiliations:
+      - ref: iccs
+  - name: Marion Weinzierl
+    orcid: 0000-0002-2302-5476
+    affiliations:
+      - ref: iccs
+affiliations:
+  - id: iccs
+    name: ICCS RSE Team <br> University of Cambridge
+
+date: "2024-07-11"
 bibliography: references.bib
 ---
 
@@ -29,17 +43,18 @@ bibliography: references.bib
 ::: {.column width="50%"}
 #### Slides and Materials
 
+<!--
 To access links or follow on your own device these slides can be found at:  
 [https://jackatkinson.net/slides](https://jackatkinson.net/slides)
 
 \
+-->
 
 All materials are available at:
 
 ::: {.column style="font-size: 95%;"}
 
-- [gitlab.com/jatkinson1000/power-up-python](https://gitlab.com/jatkinson1000/power-up-python)
-- [github.com/jatkinson1000/power-up-python](https://github.com/jatkinson1000/power-up-python)
+- [github.com/Cambridge-ICCS/rse-skills-python](https://github.com/Cambridge-ICCS/rse-skills-python)
 :::
 :::
 ::: {.column width="50%"}
@@ -63,28 +78,12 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
 - Ask questions whenever they arise.
   - Someone else is probably wondering the same thing.
-- I will make mistakes.
+- We will make mistakes.
   - Not all of them will be intentional.
 :::
 ::::
 
-
-## whoami {.smaller}
-
-Research background in fluid mechanics and atmosphere:
-
-- Numerics and fluid mechanics in Engineering,
-- Cloud microphysics & volcanic plumes in Geography,
-- Radiation belts and satellite data at BAS.
-
-Now a Research Software Engineer (RSE) at the Institute of Computing for Climate
-Science (ICCS) working with various 
-
-This talk can be summarised as _"things I wish I'd known sooner."_
-
-::: {.notes}
-My background in this is domain science and numerical modelling on HPC.
-:::
+<!-- ------------------------------------------------------------------------------ -->
 
 {{< include _rse.qmd >}}
 
@@ -200,18 +199,15 @@ The Python Packaging Authority has a [guide](https://packaging.python.org/en/lat
 
 ## Where can I get help? {.smaller}
 
-BAS is developing a new Digital Innovation Team who can help with software engineering tasks and training:
+The ICCS RSE team are always keen to support researchers with developing and applying
+the principles discussed today.
 
-* Tasked with developing common digital infrastructure
-* Composed of four Research Software Engineers
-* Contact [digitalinnovation@bas.ac.uk](mailto:digitalinnovation@bas.ac.uk)
-  or [James Byrne (jambyr)](mailto:jambyr@bas.ac.uk) directly
+If you would like to discuss applying this to your own codebase consider signing up for
+an ICCS Climate Code Clinic:
 
-The Technical Development Community (in Teams) can assist with general enquiries.\
-For all IT requests, please use the IT ServiceDesk 
-
-Look out for future training events including
-[Software in Polar Science](https://software-in-polar-science.github.io/) in February.
+- 1hr slot
+- RSEs will review code in advance and provide feedback and guidance.
+- [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
 
 
 ## Where can I learn more? {.smaller}
@@ -221,16 +217,15 @@ Look out for future training events including
 ::: {.column width="100%"}
 - References and links in these slides
 - Writing Clean Scientific Software Webinar [@Murphy_2023]
-- Cambridge RSE Seminars
-  - Weekly presentations in West Cambridge
-  - [rse.group.cam.ac.uk](https://rse.group.cam.ac.uk/)
 - RSE slack workspace
 :::
+
+\
 
 ::: {.column width="20%"}
 Get in touch:
 :::
-::: {.column width="80%"}
+::: {.column width="45%"}
 {{< fa pencil >}} \ Jack Atkinson
 
 {{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
@@ -241,6 +236,23 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
 :::
+::: {.column width="35%"}
+{{< fa pencil >}} \ Amy Pike
+
+{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
+
+{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
+
+\
+
+{{< fa pencil >}} \ Marion Weinzierl
+
+{{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
+
+{{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
+
+{{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
+:::
 ::::
 
 
@@ -250,13 +262,3 @@ The code in this workshop is based on a script from [@Irving_2019].
 
 ::: {#refs}
 :::
-
-## ICCS ReproHack {.smaller}
-
-- March 12th 2024
-- Climate science reproducibility hackathon
-- [reprohack.org/event/27](https://www.reprohack.org/event/27/)
-- Fully online
-
-Come and learn more about software reproducibility by trying to reproduce results from papers. No advanced programming skills needed, you will work in teams and won't do actual coding, just trying to get submitted codes to run (with our support).\
-If you would like some friendly feedback on your own code's reproducibility, please submit a paper.
