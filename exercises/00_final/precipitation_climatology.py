@@ -28,7 +28,8 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
-    precipitation_in_mm_per_day = xr.DataArray(precipitation_in_kg_per_m_squared_s * 86400)
+    precipitation_in_mm_per_day = xr.DataArray(
+        precipitation_in_kg_per_m_squared_s * 86400)
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
@@ -56,7 +57,8 @@ def plot_zonally_averaged_precipitation(precipitation_data):
     None
 
     """
-    zonal_precipitation = precipitation_data["precipitation"].mean("longitude", keep_attrs=True)
+    zonal_precipitation = precipitation_data["precipitation"].mean("longitude",
+                                                                   keep_attrs=True)
 
     figure, axes = plt.subplots(nrows=4, ncols=1, figsize=(12, 8))
 
@@ -100,22 +102,24 @@ def get_country_annual_average(precipitation_data, countries):
     annual_average_precipitation = (precipitation_data["precipitation"]
                                     .groupby("time.year")
                                     .mean("time", keep_attrs=True))
-    annual_average_precipitation = convert_precipitation_units(annual_average_precipitation)
+    annual_average_precipitation = convert_precipitation_units(
+        annual_average_precipitation)
 
-    # would it be possible to give land a more specific name?
-    land = (regionmask.
-            defined_regions.
-            natural_earth_v5_0_0
-            .countries_110.mask(annual_average_precipitation))
+    country_mask = (regionmask
+                    .defined_regions
+                    .natural_earth_v5_0_0
+                    .countries_110
+                    .mask(annual_average_precipitation))
 
     with open("data.txt", "w", encoding="utf-8") as datafile:
-        # could k and v be named more specifically?
-        for k, v in countries.items():
-            data_avg_mask = annual_average_precipitation.where(land.cf == v)
+        for country_name, country_code in countries.items():
+            country_annual_average_precipitation = annual_average_precipitation.where(
+                country_mask.cf == country_code)
 
-            for year in data_avg_mask.year.values:
-                precipitation = data_avg_mask.sel(year=year).mean().values
-                datafile.write(f"{k.ljust(25)} {year} : {precipitation:2.3f} mm/day\n")
+            for year in country_annual_average_precipitation.year.values:
+                precipitation = country_annual_average_precipitation.sel(year=year).mean().values
+                datafile.write(
+                    f"{country_name.ljust(25)} {year} : {precipitation:2.3f} mm/day\n")
             datafile.write("\n")
 
 
@@ -146,7 +150,9 @@ def plot_enso_hovmoller_diagram(precipitation_data):
     plt.savefig("enso.png", dpi=200)  # Save figure to file
 
 
-def create_precipitation_climatology_plot(seasonal_average_precipitation, model_name, season, mask=None, plot_gridlines=False, levels=None):
+def create_precipitation_climatology_plot(seasonal_average_precipitation, model_name,
+                                          season, mask=None, plot_gridlines=False,
+                                          levels=None):
     """
     Plot the precipitation climatology.
 
@@ -274,8 +280,8 @@ def main(
     get_country_annual_average(precipitation_data, countries)
 
     seasonal_average_precipitation = (precipitation_data["precipitation"]
-                                         .groupby("time.season")
-                                         .mean("time", keep_attrs=True))
+                                      .groupby("time.season")
+                                      .mean("time", keep_attrs=True))
 
     try:
         input_units = seasonal_average_precipitation.attrs["units"]
