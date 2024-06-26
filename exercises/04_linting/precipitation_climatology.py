@@ -80,7 +80,7 @@ def get_country_annual_average(data, countries):
     # List possible locations to plot
     # [print(k, v) for k, v in regionmask.defined_regions.natural_earth_v5_0_0.countries_110.regions.items()]
 
-    with open("data.txt", "w") as datafile:
+    with open("annual_average_precipitation_by_country.txt", "w") as datafile:
         for country_name, country_code in countries.items():
             # land.plot(ax=geo_axes, add_label=False, fc="white", lw=2, alpha=0.5)
             # clim = clim.where(ocean == "South Pacific Ocean")
