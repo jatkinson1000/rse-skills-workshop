@@ -119,8 +119,6 @@ def get_country_annual_average(precipitation_data, countries):
             datafile.write("\n")
 
 
-# could data be named more specifically and more detail be given in the docstring about
-# what the dimension and contents of the array are?
 def plot_enso_hovmoller_diagram(precipitation_data):
     """
     Plot Hovmöller diagram of equatorial precipitation to visualise ENSO.
@@ -148,13 +146,13 @@ def plot_enso_hovmoller_diagram(precipitation_data):
     plt.savefig("enso.png", dpi=200)  # Save figure to file
 
 
-def create_precipitation_climatology_plot(climatology_data, model_name, season, mask=None, plot_gridlines=False, levels=None):
+def create_precipitation_climatology_plot(seasonal_average_precipitation, model_name, season, mask=None, plot_gridlines=False, levels=None):
     """
     Plot the precipitation climatology.
 
     Parameters
     ----------
-    climatology_data : xarray.DataArray
+    seasonal_average_precipitation : xarray.DataArray
         Precipitation climatology data. Seasonally averaged precipitation data.
     model_name : str
         Name of the climate model
@@ -183,12 +181,12 @@ def create_precipitation_climatology_plot(climatology_data, model_name, season, 
         subplot_kw={"projection": ccrs.PlateCarree(central_longitude=180)},
     )
 
-    climatology_data.sel(season=season).plot.contourf(
+    seasonal_average_precipitation.sel(season=season).plot.contourf(
         ax=geo_axes,
         levels=levels,
         extend="max",
         transform=ccrs.PlateCarree(),
-        cbar_kwargs={"label": climatology_data.units},
+        cbar_kwargs={"label": seasonal_average_precipitation.units},
         cmap=cmocean.cm.rain,
     )
 
