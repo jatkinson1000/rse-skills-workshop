@@ -34,7 +34,9 @@ import re
 re.match("^\\+?[1-9][0-9]{7,14}$", "+12223334444")
 ```
 
-With explaining variables:
+## With explaining variables:
+
+It is easier to see the intention. The code is more self-documenting.
 
 ```
 import re
