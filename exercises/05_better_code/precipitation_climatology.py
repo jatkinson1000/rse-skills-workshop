@@ -11,31 +11,31 @@ import cmocean
 import regionmask
 
 
-def convert_pr_units(darray):
+def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """
     Convert precipitation units from [kg m-2 s-1] to [mm day-1].
 
     Parameters
     ----------
-    darray : xarray.DataArray
-        xarray DataArray containing model precipitation data
+    precipitation_in_kg_per_m_squared_s : xarray.DataArray
+        xarray DataArray containing model precipitation data in kg m-2 s-1
 
     Returns
     -------
-    darray : xarray.DataArray
-        the input DataArray with precipitation units modified
+    precipitation_in_mm_per_day : xarray.DataArray
+        the input DataArray with precipitation units modified to mm day-1
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
-    darray.data = darray.data * 86400
-    darray.attrs["units"] = "mm/day"
+    precipitation_in_kg_per_m_squared_s.data = precipitation_in_kg_per_m_squared_s.data * 86400
+    precipitation_in_kg_per_m_squared_s.attrs["units"] = "mm/day"
 
     assert (
-        darray.data.min() >= 0.0
+            precipitation_in_kg_per_m_squared_s.data.min() >= 0.0
     ), "There is at least one negative precipitation value"
-    assert darray.data.max() < 2000, "There is a precipitation value/s > 2000 mm/day"
+    assert precipitation_in_kg_per_m_squared_s.data.max() < 2000, "There is a precipitation value/s > 2000 mm/day"
 
-    return darray
+    return precipitation_in_kg_per_m_squared_s
 
 
 def plot_zonal(data):
@@ -92,7 +92,7 @@ def get_country_ann_avg(data, countries):
 
     """
     data_avg = data["pr"].groupby("time.year").mean("time", keep_attrs=True)
-    data_avg = convert_pr_units(data_avg)
+    data_avg = convert_precipitation_units(data_avg)
 
     land = regionmask.defined_regions.natural_earth_v5_0_0.countries_110.mask(data_avg)
 
@@ -291,7 +291,7 @@ def main(
         ) from exc
 
     if input_units == "kg m-2 s-1":
-        clim = convert_pr_units(clim)
+        clim = convert_precipitation_units(clim)
     elif input_units == "mm/day":
         pass
     else:

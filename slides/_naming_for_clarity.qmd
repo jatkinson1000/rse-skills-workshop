@@ -19,3 +19,27 @@ A few naming tips and conventions:
 ## Naming For Clarity
 
 Some examples:
+
+- `ms`, `chclt`, `stm` --> `mass`, `chocolate`, `stem`
+- `array`, `list`, `age_int`, `country_set` --> `dogs`, `cats`, `age`, `countries`
+- `purple`, `not_plant`, `sidekick` --> `is_purple`, `is_plant`, `has_sidekick`
+
+## Explaining Variables
+
+Without explaining variables, it is hard to see what this code is doing:
+
+```
+import re
+
+re.match("^\\+?[1-9][0-9]{7,14}$", "+12223334444")
+```
+
+With explaining variables:
+
+```
+import re
+
+validate_phone_number_pattern = "^\\+?[1-9][0-9]{7,14}$"
+re.match(validate_phone_number_pattern, "+12223334444")
+```
+
