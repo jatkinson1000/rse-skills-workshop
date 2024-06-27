@@ -1,4 +1,5 @@
 ---
+output-file: index
 title: "RSE Skills"
 subtitle: "(in Python)"
 
