@@ -331,9 +331,9 @@ Get a rating.
   - [emacs](https://www.emacswiki.org/emacs/PythonProgrammingInEmacs)
 
 
-## Exercise 3 {.smaller}
+## Exercise 4 {.smaller}
 
-Go to exercise 3 and:
+Go to exercise 4 and:
 
 - install pylint
 - run pylint on `precipitation_climatology.py`
