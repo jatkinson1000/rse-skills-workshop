@@ -258,9 +258,9 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 
 
 
-## Exercise 4 {.smaller}
+## Exercise 5 {.smaller}
 
-Go to exercise 4 and examine the comments:
+Go to exercise 5 and examine the comments:
 
 - Is there any dead code?
   - How is it best to handle it?
