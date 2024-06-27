@@ -1,4 +1,4 @@
-## Naming For Clarity
+## Naming For Clarity {.smaller}
 
 It may seem inconsequential, but carefully naming variables and methods can improve the
 readability of code massively and can help to make code self documenting.
