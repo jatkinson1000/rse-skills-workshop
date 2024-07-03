@@ -25,11 +25,25 @@ A few naming tips and conventions:
 Some examples:
 
 - Pronounceable names without abbreviations: \
- `ms`, `chclt`, `stm` --> `mass`, `chocolate`, `stem`
+```
+ ms --> mass
+ chclt --> chocolate
+ stm --> stem
+ ```
 - Naming for the content, not the type: \
-`array`, `list`, `age_int`, `country_set` --> `dogs`, `cats`, `age`, `countries`
+```
+array --> dogs
+age_int --> age
+country_set --> countries
+```
 - Naming booleans: \
-`purple`, `not_plant`, `sidekick` --> `is_purple`, `is_plant`, `has_sidekick`
+```
+purple --> is_purple
+not_plant --> is_plant
+sidekick --> has_sidekick
+```
+
+
 
 ## Explaining Variables
 
