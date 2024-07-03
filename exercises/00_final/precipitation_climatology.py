@@ -28,9 +28,7 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """
     # density 1000 kg m-3 => 1 kg m-2 == 1 mm
     # There are 60*60*24 = 86400 seconds per day
-    precipitation_in_mm_per_day = xr.DataArray(
-        precipitation_in_kg_per_m_squared_s * 86400
-    )
+    precipitation_in_mm_per_day = precipitation_in_kg_per_m_squared_s * 86400
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
