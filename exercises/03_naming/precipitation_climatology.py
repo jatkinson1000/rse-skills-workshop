@@ -19,10 +19,10 @@ def convert_pr_units(darray):
     darray.data = darray.data * 86400
     darray.attrs["units"] = "mm/day"
 
-    assert (
-        darray.data.min() >= 0.0
-    ), "There is at least one negative precipitation value"
-    assert darray.data.max() < 2000, "There is a precipitation value/s > 2000 mm/day"
+    if darray.data.min() < 0.0:
+        raise ValueError("There is at least one negative precipitation value")
+    if darray.data.max() > 2000:
+        raise ValueError("There is a precipitation value/s > 2000 mm/day")
 
     return darray
 
