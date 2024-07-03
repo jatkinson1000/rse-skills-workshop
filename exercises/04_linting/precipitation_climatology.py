@@ -16,9 +16,7 @@ from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """Convert kg m-2 s-1 to mm day-1."""
 
-    precipitation_in_mm_per_day = xr.DataArray(
-        precipitation_in_kg_per_m_squared_s * 86400
-    )
+    precipitation_in_mm_per_day = precipitation_in_kg_per_m_squared_s * 86400
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
