@@ -1,5 +1,7 @@
 ## Naming For Clarity {.smaller}
 
+::: {style="font-size: 90%;"}
+
 It may seem inconsequential, but carefully naming variables and methods can improve the
 readability of code massively and can help to make code self documenting.
 
@@ -15,6 +17,8 @@ A few naming tips and conventions:
 - Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
 - Keep it simple and use technical terms where appropriate
 - Use explaining variables
+
+:::
 
 ## Naming For Clarity
 
@@ -50,6 +54,8 @@ re.match(validate_phone_number_pattern, "+12223334444")
 
 ## Exercise 3 {.smaller}
 
+::: {style="font-size: 80%;"}
+
 Look through the code for any names of methods or variables that could be improved or
 clarified and update them. Note if you are using an IDE like Intellij or VSCode,
 you can use automatic renaming.
@@ -68,3 +74,5 @@ Consider the following:
 - Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
 - Keep it simple and use technical terms where appropriate
 - Use explaining variables
+
+:::
