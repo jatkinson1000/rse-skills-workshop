@@ -1,20 +1,20 @@
 ## Naming For Clarity {.smaller}
 
 It may seem inconsequential, but carefully naming variables and methods can improve the
-readability of code massively and can help to make code self documenting.
-#TODO make the code blocks pop up at the right time
+readability of code massively and can help to make code self-documenting.
+
 A few naming tips and conventions:
 
 ::: {.incremental}
 - The name should show the intention, think about how someone else might read it (this could be future you)
-- Use pronounceable names e.g. \
-```
+- Use pronounceable names e.g.
+- ```
  ms    --> mass
  chclt --> chocolate
  stm   --> stem
  ```
-- Use names that can be searched
 - avoid abbreviations and single letter variable names where possible
+- Use names that can be searched
 - One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
 :::
 
@@ -22,14 +22,14 @@ A few naming tips and conventions:
 
 ::: {.incremental}
 - Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
-- Describe content rather than storage type e.g. \
-```
+- Describe content rather than storage type e.g.
+- ```
 array       --> dogs
 age_int     --> age
 country_set --> countries
 ```
-- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green` e.g. \
-```
+- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green` e.g.
+- ```
 purple    --> is_purple
 not_plant --> is_plant
 sidekick  --> has_sidekick
@@ -39,7 +39,7 @@ sidekick  --> has_sidekick
 
 ## Explaining Variables
 
-Without explaining variables, it is hard to see what this code is doing:
+Without an explaining variable, it is hard to see what this code is doing:
 
 ```python
 import re
