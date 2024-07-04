@@ -134,7 +134,7 @@ def bpm(l):
 :::
 ::::
 
-
+<!--
 ## Put config in a config file {.smaller}
 
 :::: {.columns}
@@ -184,7 +184,7 @@ print(config)
 
 :::
 ::::
-
+-->
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -208,14 +208,13 @@ f-strings
   - Is the layout of the data written to file easier to understand?
 :::
 ::: {.column width="50%"}
--->
 
 Configuration settings
 
 - There is helpfully a list of configurable inputs at the end of the file under `"__main__"`.\
   We can improve on this, however, by placing them in a configuration file.
 - Create an appropriate json file to be read in as a dictionary and passed to the main function.
-
+-->
 :::
 ::::
 
