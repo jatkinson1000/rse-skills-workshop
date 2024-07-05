@@ -78,7 +78,7 @@ It is easier to see the intention. The code is more self-documenting.
 import re
 
 phone_number_regex = "^\\+?[1-9][0-9]{7,14}$"
-re.search(phone_number_regex, "+12223334444", "Sophie: CV56 9PQ, +12223334444")
+re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
 ```
 
 ## Exercise 3 {.smaller}
