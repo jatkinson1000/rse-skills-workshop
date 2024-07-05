@@ -51,8 +51,6 @@ Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/
 
 ## Comments - some thoughts^[Adapted from [@stackoverflow_comments]] {.smaller}
 
-::: {.incremental}
-
 - Comments should not duplicate the code.
 - Good comments do not excuse unclear code.
   - Comments should dispel confusion, not cause it.
@@ -64,8 +62,6 @@ Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/
 - Use comments to mark incomplete implementations.
 - Comments are not documentation.
   - Read by developers, documentation is for...
-
-:::
 
 
 
@@ -179,6 +175,7 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 :::
 ::::
 
+<!--
 
 ## Docstrings - pydocstyle {.smaller}
 
@@ -256,8 +253,7 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 
 [^2]: Note that pydocstyle is [deprecated](https://github.com/PyCQA/pydocstyle/pull/658) as of the end of 2023. Longer-term look out for a replacement (likely Ruff or Pylint extension).
 
-
-
+-->
 ## Exercise 5 {.smaller}
 
 Go to exercise 5 and examine the comments:

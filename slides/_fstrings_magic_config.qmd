@@ -1,5 +1,6 @@
 # Writing better (Python) code
 
+<!--
 ## f-strings {.smaller}
 
 A better way to format strings since Python 3.6\
@@ -29,7 +30,7 @@ print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a
 
 See [Real Python](https://realpython.com/python-f-strings/) for more information.
 Note: pylint W1203 recommends against using f-strings in logging calls.
-
+-->
 
 ## Remove Magic Numbers {.smaller}
 
@@ -133,7 +134,7 @@ def bpm(l):
 :::
 ::::
 
-
+<!--
 ## Put config in a config file {.smaller}
 
 :::: {.columns}
@@ -183,7 +184,7 @@ print(config)
 
 :::
 ::::
-
+-->
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -198,7 +199,7 @@ Magic Numbers
 - Look through the code and identify any magic numbers.
 - Implement what you feel is the best approach in each case
 
-
+<!--
 f-strings
 
 - Look for any string handling (currently using the .format() approach) and update it
@@ -207,10 +208,13 @@ f-strings
   - Is the layout of the data written to file easier to understand?
 :::
 ::: {.column width="50%"}
+
 Configuration settings
 
 - There is helpfully a list of configurable inputs at the end of the file under `"__main__"`.\
   We can improve on this, however, by placing them in a configuration file.
 - Create an appropriate json file to be read in as a dictionary and passed to the main function.
+-->
 :::
 ::::
+
