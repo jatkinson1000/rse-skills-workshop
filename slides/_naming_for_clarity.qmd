@@ -39,12 +39,35 @@ sidekick  --> has_sidekick
 
 ## Explaining Variables
 
+Without explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    if (age < 14):
+        return 3
+        ...
+```
+
+With explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    is_child = age < 14
+    if (is_child):
+        return 3
+    ...
+```
+
+## Explaining Variables
+
 Without an explaining variable, it is hard to see what this code is doing:
 
 ```python
 import re
 
-print(re.match("^\\+?[1-9][0-9]{7,14}$", "+12223334444"))
+re.search("^\\+?[1-9][0-9]{7,14}$", "Sophie: CV56 9PQ, +12223334444")
 ```
 
 ## With explaining variables:
@@ -54,9 +77,8 @@ It is easier to see the intention. The code is more self-documenting.
 ```python
 import re
 
-#TODO make this clearer
-valid_phone_number_pattern = "^\\+?[1-9][0-9]{7,14}$"
-print(re.match(valid_phone_number_pattern, "+12223334444"))
+phone_number_regex = "^\\+?[1-9][0-9]{7,14}$"
+re.search(phone_number_regex, "+12223334444", "Sophie: CV56 9PQ, +12223334444")
 ```
 
 ## Exercise 3 {.smaller}
