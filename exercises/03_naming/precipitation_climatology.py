@@ -13,18 +13,18 @@ import matplotlib.ticker as mticker
 from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 
 
-def convert_pr_units(magic):
+def convert_pr_units(darray):
     """Convert kg m-2 s-1 to mm day-1."""
 
-    magic.data = magic.data * 86400
-    magic.attrs["units"] = "mm/day"
+    darray.data = darray.data * 86400
+    darray.attrs["units"] = "mm/day"
 
-    if magic.data.min() < 0.0:
+    if darray.data.min() < 0.0:
         raise ValueError("There is at least one negative precipitation value")
-    if magic.data.max() > 2000:
+    if darray.data.max() > 2000:
         raise ValueError("There is a precipitation value/s > 2000 mm/day")
 
-    return magic
+    return darray
 
 
 def apply_mask(darray, sftlf_file, realm):
