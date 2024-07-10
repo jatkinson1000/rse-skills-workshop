@@ -62,6 +62,36 @@ Climate simulation by NSF under public domain\
 ![](images/Retractions.png){.absolute top=12.5% right=15% width=70%}
 
 
+## Why does this matter? {.smaller}
+
+More widely than publishing papers, code is used in control and decision making:
+
+:::: {.columns}
+::: {.column width="60%"}
+\
+
+- Weather forecasting
+- Climate policy
+- Disease modelling (e.g. Covid)
+- Satellites and spacecraft[^*]
+- Medical Equipment
+
+\
+
+Your code (or its derivatives) may well move from research to operational one day.
+
+:::
+::::
+
+![](images/margaret_hamilton_nasa.jpg){.absolute top=20% right=0% width=35%}
+
+[^*]: If possible to be even more awesome, it was MH [who first coined the term _"Software Engineering"_](https://www.computer.org/publications/tech-news/events/what-to-know-about-the-scientist-who-invented-the-term-software-engineering).]
+
+::: {.attribution}
+Margaret Hamilton and the Apollo XI by NASA under public domain  
+:::
+
+
 ## Why does this matter?^[For more details I highly recommend the [Writing Clean Scientific Software](https://www.youtube.com/watch?v=Q6Ksu_uX3bc) Webinar [@Murphy_2023]] {.smaller}
 
 :::: {.columns}
