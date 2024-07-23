@@ -43,12 +43,10 @@ bibliography: references.bib
 ::: {.column width="50%"}
 #### Slides and Materials
 
-<!--
 To access links or follow on your own device these slides can be found at:  
 [https://jackatkinson.net/slides](https://jackatkinson.net/slides)
 
 \
--->
 
 All materials are available at:
 
