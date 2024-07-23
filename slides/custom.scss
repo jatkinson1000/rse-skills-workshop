@@ -10,7 +10,7 @@ $presentation-heading-font: "JetBrains Mono", sans-serif !default;
 
 // Custom colours and variables
 $jet: #131516;
-$accent: #107895;
+$accent: #509595;
 $accent2: #9a2515;
 $right-arrow: "\2192"; // Unicode character for right arrow
 $linkcolour: #00ffff;
@@ -63,7 +63,7 @@ $link-color: $linkcolour !default;
   .quarto-title-affiliation,
   .quarto-title-author-email {
     font-style: italic;
-    font-size: 80%;
+    font-size: 60%;
     color: #fffafa;
   }
 
