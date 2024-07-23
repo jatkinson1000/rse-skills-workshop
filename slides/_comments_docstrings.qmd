@@ -1,4 +1,3 @@
-
 # Comments and Docstrings
 
 
@@ -51,8 +50,6 @@ Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/
 
 ## Comments - some thoughts^[Adapted from [@stackoverflow_comments]] {.smaller}
 
-::: {.incremental}
-
 - Comments should not duplicate the code.
 - Good comments do not excuse unclear code.
   - Comments should dispel confusion, not cause it.
@@ -64,8 +61,6 @@ Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/
 - Use comments to mark incomplete implementations.
 - Comments are not documentation.
   - Read by developers, documentation is for...
-
-:::
 
 
 
