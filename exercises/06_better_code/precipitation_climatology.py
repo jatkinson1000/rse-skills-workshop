@@ -1,6 +1,5 @@
 """Routines for analysing precipitation climatology from ESM runs."""
 
-import json
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
@@ -46,7 +45,7 @@ def plot_zonally_averaged_precipitation(precipitation_data):
 
     Parameters
     ----------
-    precipitation_data : xarray.DataSet
+    precipitation_data : xarray.DataArray
         xarray DataSet containing precipitation model data, specifying precipitation in
         [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
         four aligned DataArrays: precipitation, latitude, longitude and time.
@@ -84,7 +83,7 @@ def get_country_annual_average(precipitation_data, countries):
 
     Parameters
     ----------
-    precipitation_data : xarray.DataSet
+    precipitation_data : xarray.DataArray
         xarray DataSet containing precipitation model data, specifying precipitation in
         [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
         four aligned DataArrays: precipitation, latitude, longitude and time.
@@ -112,16 +111,16 @@ def get_country_annual_average(precipitation_data, countries):
         "annual_average_precipitation_by_country.txt", "w", encoding="utf-8"
     ) as datafile:
         for country_name, country_code in countries.items():
-            country_annual_average_precipitation = annual_average_precipitation.where(
+            data_avg_mask = annual_average_precipitation.where(
                 country_mask.cf == country_code
             )
 
-            for year in country_annual_average_precipitation.year.values:
-                precipitation = (
-                    country_annual_average_precipitation.sel(year=year).mean().values
-                )
+            for year in data_avg_mask.year.values:
+                precip = data_avg_mask.sel(year=year).mean().values
                 datafile.write(
-                    f"{country_name.ljust(25)} {year} : {precipitation:2.3f} mm/day\n"
+                    "{} {} : {:2.3f} mm/day\n".format(
+                        country_name.ljust(25), year, precip
+                    )
                 )
             datafile.write("\n")
 
@@ -132,8 +131,8 @@ def plot_enso_hovmoller_diagram(precipitation_data):
 
     Parameters
     ----------
-    precipitation_data : xarray.DataSet
-       xarray DataSet containing precipitation model data, specifying precipitation in
+    precipitation_data : xarray.DataArray
+        xarray DataSet containing precipitation model data, specifying precipitation in
         [kg m-2 s-1] at given latitudes, longitudes and time. The Dataset should contain
         four aligned DataArrays: precipitation, latitude, longitude and time.
 
@@ -167,7 +166,7 @@ def create_precipitation_climatology_plot(
     Parameters
     ----------
     seasonal_average_precipitation : xarray.DataArray
-        Precipitation climatology data. Seasonally averaged precipitation data.
+        Precipitation climatology data
     model_name : str
         Name of the climate model
     season : str
@@ -175,7 +174,6 @@ def create_precipitation_climatology_plot(
     mask : optional str
         mask to apply to plot (one of "land" or "ocean")
     plot_gridlines : bool
-
         Select whether to plot gridlines
     levels : list
         Tick mark values for the colorbar
@@ -239,7 +237,7 @@ def create_precipitation_climatology_plot(
         gridlines.xlabel_style = {"size": 15, "color": "gray"}
         gridlines.ylabel_style = {"size": 15, "color": "gray"}
 
-    title = f"{model_name} precipitation climatology ({season})"
+    title = "{} precipitation climatology ({})".format(model_name, season)
     plt.title(title)
 
 
@@ -320,26 +318,25 @@ def main(
 
 
 if __name__ == "__main__":
-    # Get config from command line
-    config_name = input("Enter configuration name: ")
-    if config_name == "":
-        print("Using default configuration in 'default_config.json'.")
-        config_name = "default_config"
-    else:
-        print(f"Using configuration in '{config_name}.json'.")
-    config_file = config_name + ".json"
-    with open(config_file, encoding="utf-8") as json_file:
-        config = json.load(json_file)
-
-    output_filename = f"{config_name}_output.png"
+    input_file = (
+        "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc"
+    )
+    season_to_plot = "JJA"
+    output_filename = "output.png"
     gridlines_on = True
+    mask_id = "ocean"
     colorbar_levels = None
+    countries_to_record = {
+        "United Kingdom": "GB",
+        "United States of America": "US",
+        "Antarctica": "AQ",
+        "South Africa": "ZA",
+    }
 
     main(
-        config["input_file"],
-        season=config["season_to_plot"],
-        output_file=output_filename,
-        mask=config["mask_id"],
-        plot_gridlines=config["gridlines_on"],
-        countries=config["countries_to_record"],
+        input_file,
+        season=season_to_plot,
+        mask=mask_id,
+        plot_gridlines=gridlines_on,
+        countries=countries_to_record,
     )

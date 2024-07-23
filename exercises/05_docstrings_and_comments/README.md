@@ -1,4 +1,4 @@
-# Exercise 4 - Docstrings and Comments
+# Exercise 5 - Docstrings and Comments
 
 This exercise contains the code after addressing some of the issues raised by pylint.
 

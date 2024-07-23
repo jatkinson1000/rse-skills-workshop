@@ -1,0 +1,161 @@
+## Python PEPs {.smaller}
+
+[Python Enhancement Proposals](https://peps.python.org/)
+
+- Technical documentation for the python community
+- Guidelines, standards, and best-practice
+
+Relevant to us today are:
+
+* PEP8 - Python Style Guide [@PEP8]
+* PEP257 - Docstring Conventions [@PEP257]
+* PEP621 - Packaging [@PEP621]
+
+
+
+# PEP8 and Formatting
+
+## PEP8 & Formatting {.smaller}
+
+> _“Readability counts”_\
+> &emsp; &emsp; - Tim Peters in the [Zen of Python](https://peps.python.org/pep-0020/)
+
+By ensuring code aligns with PEP8 we:
+
+- standardise style,
+- conform to best-practices, and
+- improve code readability to
+- make code easier to share, and
+- reduce misinterpretation.
+
+::: {.fragment}
+"But I don't have time to read and memorise all of this..."
+:::
+
+
+## PEP8 & Formatting - Black {.smaller}
+
+![]( https://black.readthedocs.io/en/stable/_static/logo2-readme.png ){.absolute top=25% right=0% height=20%}
+
+Black [@black] - [black.readthedocs.io](https://black.readthedocs.io/en/stable/index.html)
+
+- a PEP 8 compliant formatter
+  - Strict subset of PEP8
+  - _"Opinionated so you don't have to be."_
+- For full details see [Black style](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
+- [Try online](https://black.vercel.app/)
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+(myvenv) $ pip install black
+(myvenv) $ black myfile.py
+(myvenv) $ black mydirectory/
+```
+
+### Windows
+
+```powershell
+(myvenv) PS> pip install black
+(myvenv) PS> black myfile.py
+(myvenv) PS> black mydirectory/
+```
+:::
+
+::: {.notes}
+May look odd at first, but you soon get used to it.\
+Makes life so much easier after a while.
+:::
+
+
+## PEP8 & Formatting - Black - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(x, param_one, param_two=[], param_three=24, param_four=None,
+        param_five="Empty Report", param_six=123456):
+
+
+    val = 12*16 +(24) -10*param_one +  param_six
+
+    if x > 5:
+        
+        print("x is greater than 5")
+
+
+    else:
+        print("x is less than or equal to 5")
+
+
+    if param_four:
+        print(param_five)
+
+
+
+    print('You have called long_func.')
+    print("This function has several params.")
+
+    param_2.append(x*val)
+    return param_2
+
+```
+:::
+::: {.column}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::::
+
+
+## PEP8 & Formatting - Black {.smaller}
+
+- I suggest incorporating into your projects now
+  - Well suited to incorporation into continuous integration of git hooks.
+  - Widely-used standard^[[Black - used by](https://github.com/psf/black#used-by)]
+
+- A version for jupyter notebooks exists.
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 2 {.smaller}
+
+Go to exercise 2 and:
+
+- install black
+- run black on `precipitation_climatology.py`
+- examine the output
+  - Is it more readable?
+  - Is there any aspect of the formatting style you find unintuitive?is it better?
+
+
+<!-- ------------------------------------------------------------------------------ -->

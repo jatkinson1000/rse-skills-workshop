@@ -20,8 +20,10 @@ def convert_pr_units(darray):
     darray.data = darray.data * 86400
     darray.attrs['units'] = 'mm/day'
     
-    assert darray.data.min() >= 0.0, 'There is at least one negative precipitation value'
-    assert darray.data.max() < 2000, 'There is a precipitation value/s > 2000 mm/day'
+    if darray.data.min() < 0.0:
+        raise ValueError('There is at least one negative precipitation value')
+    if darray.data.max() > 2000:
+        raise ValueError('There is a precipitation value/s > 2000 mm/day')
     
     return darray
 
@@ -65,7 +67,6 @@ def plot_zonal(data):
 
 
 def get_country_ann_avg(data, countries):
-
     data_avg = data['pr'].groupby('time.year').mean('time', keep_attrs=True)
     data_avg = convert_pr_units(data_avg)
 
@@ -113,7 +114,6 @@ def get_country_ann_avg(data, countries):
 
 
 def plot_enso(data):
-
     enso = data['pr'].sel(lat=slice(-1, 1)).sel(lon=slice(120, 280)).mean(dim="lat", keep_attrs=True)
     # print(enso)
     # .groupby('time.year').mean('time', keep_attrs=True)
@@ -238,7 +238,6 @@ def main(pr_file, season="DJF", output_file="output.png", gridlines=False, mask=
     plt.savefig(output_file, dpi=200)  # Save figure to file
 
 if __name__ == '__main__':
-
     input_file = "../../data/pr_Amon_ACCESS-ESM1-5_historical_r1i1p1f1_gn_201001-201412.nc"
     # season_to_plot = "DJF"
     # season_to_plot = "MAM"
