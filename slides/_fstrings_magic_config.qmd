@@ -30,23 +30,6 @@ print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a
 See [Real Python](https://realpython.com/python-f-strings/) for more information.
 Note: pylint W1203 recommends against using f-strings in logging calls.
 
-## Naming Standards
-
-It may seem inconsequential, but carefully naming variables and methods can improve the
-readability of code massively and can help to make code self-documenting.
-
-A few naming tips and conventions:
-
-- The name should show the intention, think about how someone else might read it (this could be future you)
-- Use pronounceable names e.g. `mass` not `ms`, `stem` not `stm`
-- avoid abbreviations and single letter variable names where possible
-- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
-- Use names that can be searched
-- Describe content rather than storage type
-- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green`
-- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
-- Keep it simple and use technical terms where appropriate
-- Use explaining variables
 
 ## Remove Magic Numbers {.smaller}
 
