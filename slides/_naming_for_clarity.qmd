@@ -1,60 +1,73 @@
 ## Naming For Clarity {.smaller}
 
-::: {style="font-size: 90%;"}
-
 It may seem inconsequential, but carefully naming variables and methods can improve the
-readability of code massively and can help to make code self documenting.
+readability of code massively and can help to make code self-documenting.
 
 A few naming tips and conventions:
 
 ::: {.incremental}
 - The name should show the intention, think about how someone else might read it (this could be future you)
-- Use pronounceable names e.g. `mass` not `ms`, `stem` not `stm`
-- avoid abbreviations and single letter variable names where possible
-- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
-- Use names that can be searched
-- Describe content rather than storage type
-- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green`
-- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
-- Keep it simple and use technical terms where appropriate
-- Use explaining variables
-:::
-
-:::
-
-## Naming For Clarity {.smaller}
-
-Some examples:
-
-- Pronounceable names without abbreviations: \
-```
+- Use pronounceable names e.g.
+- ```
  ms    --> mass
  chclt --> chocolate
  stm   --> stem
  ```
-- Naming for the content, not the type: \
-```
+- avoid abbreviations and single letter variable names where possible
+- Use names that can be searched
+- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
+:::
+
+## Naming For Clarity {.smaller}
+
+::: {.incremental}
+- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
+- Describe content rather than storage type e.g.
+- ```
 array       --> dogs
 age_int     --> age
 country_set --> countries
 ```
-- Naming booleans: \
-```
+- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green` e.g.
+- ```
 purple    --> is_purple
 not_plant --> is_plant
 sidekick  --> has_sidekick
 ```
-
-
+- Keep it simple and use technical terms where appropriate
+:::
 
 ## Explaining Variables
 
-Without explaining variables, it is hard to see what this code is doing:
+Without explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    if (age < 14):
+        return 3
+        ...
+```
+
+With explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    is_child = age < 14
+    if (is_child):
+        return 3
+    ...
+```
+
+## Explaining Variables
+
+Without an explaining variable, it is hard to see what this code is doing:
 
 ```python
 import re
 
-re.match("^\\+?[1-9][0-9]{7,14}$", "+12223334444")
+re.search("^\\+?[1-9][0-9]{7,14}$", "Sophie: CV56 9PQ, +12223334444")
 ```
 
 ## With explaining variables:
@@ -64,8 +77,8 @@ It is easier to see the intention. The code is more self-documenting.
 ```python
 import re
 
-validate_phone_number_pattern = "^\\+?[1-9][0-9]{7,14}$"
-re.match(validate_phone_number_pattern, "+12223334444")
+phone_number_regex = "^\\+?[1-9][0-9]{7,14}$"
+re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
 ```
 
 ## Exercise 3 {.smaller}
