@@ -26,14 +26,16 @@ bibliography: paper.bib
 # Summary
 
 Research across many domains increasingly relies on software for simulation,
-data processing, analysis, and visualisation.
-This software is often written by those without formal training in software engineering
-leading to ineficciencies, bugs, and poor reproducibility/reuseability.
+data processing, analysis, visualisation, and more.
+This software is often written by individuals without a formal training in software engineering
+leading to inefficiencies, bugs, and poor reproducibility/reuseability.
 
-The course described in this paper is intended to raise awareness of the importance of applying software
-engineering principles to research code, educate on basic techniques to produce FAIR-er code [@barker2022introducing],
-and introduce a software engineering mindset to research developers.
-We hope that it has long-term impact with participants continuing to explore tools and
+The course described in this paper is designed to raise awareness software
+engineering principles and how they can be applied to research code.
+It illustrates, through a series of practical exercises, why these are important and
+introduced basic techniques to produce FAIR-er code [@barker2022introducing].
+We hope that introducing a software engineering mindset, with simple tools and techniques
+to facilitate this will have long-term impact with participants continuing to explore
 ideas in their future work beyond this course.
 
 
@@ -53,6 +55,7 @@ antipatterns are a result of them:
 - learning on the job from old code and emulating habits they observe
 - never having been made aware of the available tools and techniques
 - not keeping up to date with language/package developments
+- not investing time into writing good code, often due to placing priorities elsewhere.
 
 The intent of developing this short course, _RSE Skills (in Python)_, is to educate
 individuals in some basic software engineering principles that they can carry forward
@@ -127,7 +130,7 @@ This was chosen as it features typical applications we expect users to encounter
 (reading from a dataset, processing, and plotting).
 The course was originally designed to be taught to geoscientists, and then at a climate
 science summer school, and we wanted participants to be focussed on the changes to the
-code rather than worrying about 
+code rather than worrying about the application or semantics.
 
 Exercises roughly match the slide sections above:
 
@@ -161,7 +164,7 @@ TODO Slides are interspersed with exercises.
 
 The main aspect we wish to emphasise in delivery is teaching in a _"code-along"_ fashion.
 This helps with engagement, participation, and understanding [@barba2022teaching] and
-is essential, we feel, to having a long-lasting benefit.
+is essential, we feel, to having a long-lasting benefit [@rubin2013effectiveness].
 This approach slows those leading the course towards the rate at which the participants
 are working, and illustrates through errors (whether intentional or not!) that even
 experienced coders are human and make mistakes.
