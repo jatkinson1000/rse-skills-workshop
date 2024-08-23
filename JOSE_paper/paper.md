@@ -146,12 +146,14 @@ Exercises roughly match the slide sections above:
 - 06: General techniques for better code (magic numbers, string formatting).
 - 00: The end point of the workshop - an improved version of the code in exercise 01.
 
-
-### Solutions
-
-Worked solutions to all of the exercises are provided in the form of completed
-notebooks including example output.
-These are available both in the repository and also as Colab instances.
+Each exercises builds upon the results of the previous one, allowing participants to
+apply what they are learning in a continuous fashion to a code.
+However, each exercise has a dedicated subdirectory meaning that success in a previous
+exercise is not a pre-requisite for continuing to the next one.
+Two additional benefits to this approach are that the starting point for a subsequent
+exercise can be viewed as the solution to the current one, allowing participants to
+compare their work to an 'ideal' solution, and that exercises can easily be removed to
+tailor the course to different emphasis or time constraints.
 
 
 
