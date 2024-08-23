@@ -30,8 +30,8 @@ data processing, analysis, and visualisation.
 This software is often written by those without formal training in software engineering
 leading to ineficciencies, bugs, and poor reproducibility/reuseability.
 
-The course described in this paper is intended to raise awareness of the importance of software
-engineering principles, educate on basic techniques to produce FAIR-er code [@barker2022introducing],
+The course described in this paper is intended to raise awareness of the importance of applying software
+engineering principles to research code, educate on basic techniques to produce FAIR-er code [@barker2022introducing],
 and introduce a software engineering mindset to research developers.
 We hope that it has long-term impact with participants continuing to explore tools and
 ideas in their future work beyond this course.
