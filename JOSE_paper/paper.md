@@ -82,6 +82,8 @@ More specifically we cover:
   * Docstrings
   * Advice on commenting
   * The idea of self-documenting code and variable naming
+  * READMEs and other useful files in your repository
+  * Software licenses
 * General principles for better code
   * Magic Numbers
   * Removal of hard-coded content to config files
@@ -162,7 +164,7 @@ tailor the course to different emphasis or time constraints.
 The course has been designed to be flexible in terms of delivery, allowing
 it to be adapted to and reused in various setups.
 
-TODO Slides are interspersed with exercises.
+The slides are interspersed with the exercises, rather than separate from the presentation material, as the exercises are an integral component of the course.
 
 The main aspect we wish to emphasise in delivery is teaching in a _"code-along"_ fashion.
 This helps with engagement, participation, and understanding [@barba2022teaching] and
@@ -204,10 +206,11 @@ understand the broader ideas and how they can be deployed in their own projects.
 
 TODO IDE and vimdiff
 
-TODO Could change the content to be domain specific in another area.
+The content can be easily changed to be domain specific in another area, simply by choosing a different example for the exercises.
 
+We have also adapted a modular design for the course material -- using Markdown with Quarto, to allow easy inclusion and exlusion of individual sections included in the main document. A similar modular design would be possible, for example, with Latex. This means that the content can be adapt
 
-Fimally, we encourage participants to feed experiences back into the project, either via
+Finally, we encourage participants to feed experiences back into the project, either via
 a GitHub issue or pull request.
 This allows us to continually learn from delivery and improve the material for future
 participants, especially if making instructions clearer or providing solutions
