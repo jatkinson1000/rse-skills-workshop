@@ -208,7 +208,7 @@ TODO IDE and vimdiff
 
 The content can be easily changed to be domain specific in another area, simply by choosing a different example for the exercises.
 
-We have also adapted a modular design for the course material -- using Markdown with Quarto, to allow easy inclusion and exlusion of individual sections included in the main document. A similar modular design would be possible, for example, with Latex. This means that the content can be adapt
+We have also adapted a modular design for the course material -- using Markdown with Quarto, to allow easy inclusion and exlusion of individual sections included in the main document. A similar modular design would be possible, for example, with Latex. This means that the content can be adapted to the length and required focus of the sessions, as well as the skill set of the audience.
 
 Finally, we encourage participants to feed experiences back into the project, either via
 a GitHub issue or pull request.
