@@ -2,6 +2,8 @@
 title: "RSE Skills"
 subtitle: "(in Python)"
 
+output: index
+
 format:
   revealjs:
     embed-resources: true
