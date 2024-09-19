@@ -35,6 +35,8 @@ More specifically we cover:
   - Docstrings
   - Advice on commenting
   - The idea of self-documenting code and variable naming
+  - READMEs and other useful files in your repository
+  - Software licenses
 - General principles for better code
   - Magic Numbers
   - Removal of hard-coded content to config files
