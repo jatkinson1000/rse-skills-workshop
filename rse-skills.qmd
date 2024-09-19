@@ -2,7 +2,7 @@
 title: "RSE Skills"
 subtitle: "(in Python)"
 
-output: index
+output-file: index
 
 format:
   revealjs:
