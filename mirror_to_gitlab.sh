@@ -5,7 +5,7 @@
 # Can be run from inside main repo.
 
 rm -rf power-up-python.git
-git clone --mirror git@github.com:jatkinson1000/power-up-python.git
+git clone --mirror git@github.com:jatkinson1000/rse-skills-workshop.git
 cd power-up-python.git
 git remote add gitlab git@gitlab.com:jatkinson1000/power-up-python.git
 git push --mirror gitlab

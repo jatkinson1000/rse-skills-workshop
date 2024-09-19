@@ -1,4 +1,4 @@
-# power-up-python
+# Research Software Engineering Skills Workshop
 
 ![GitLab License](https://img.shields.io/gitlab/license/jatkinson1000%2Fpower-up-python)
 
@@ -14,8 +14,8 @@ the slides and work through the exercises in your own time.
 ### A note on mirrors
 
 This repository exists mainly as a
-[GitLab repository](https://gitlab.com/jatkinson1000/power-up-python)
-with a [mirror on GitHub](https://github.com/jatkinson1000/power-up-python).\
+[GitLab repository](https://gitlab.com/jatkinson1000/rse-skills-workshop)
+with a [mirror on GitHub](https://github.com/jatkinson1000/rse-skills-workshop).\
 Please try to open issues and contributions on GitLab.
 
 
@@ -70,16 +70,16 @@ but in preparation you can complete these steps as follows:
 Navigate to the location you want to install this repository on your system and clone
 via https by running:
 ```
-git clone https://gitlab.com/jatkinson1000/power-up-python.git
+git clone https://gitlab.com/jatkinson1000/rse-skills-workshop.git
 ```
-This will create a directory `power-up-python/` with the contents of this repository.
+This will create a directory `rse-skills-workshop/` with the contents of this repository.
 
 Please note that if you have a GitLab account and want to preserve any work you do
 we suggest you first [fork the repository](https://github.com/Cambridge-ICCS/practical-ml-with-pytorch/fork) 
 and then clone your fork.
 This will allow you to push your changes and progress from the workshop back up to your
 fork for future reference.
-If you would prefer to do this from GitHub you can use the [GitHub mirror](https://github.com/jatkinson1000/power-up-python).
+If you would prefer to do this from GitHub you can use the [GitHub mirror](https://github.com/jatkinson1000/rse-skills-workshop).
 
 You can then instantiate a python virtual environment by running:
 ```
