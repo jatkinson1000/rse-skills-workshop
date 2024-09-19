@@ -46,7 +46,7 @@ bibliography: references.bib
 #### Slides and Materials
 
 To access links or follow on your own device these slides can be found at:  
-[https://jackatkinson.net/slides](https://jackatkinson.net/slides)
+[jatkinson1000.github.io/rse-skills-workshop](https://jatkinson1000.github.io/rse-skills-workshop/)
 
 \
 
@@ -55,7 +55,7 @@ All materials are available at:
 ::: {.column style="font-size: 95%;"}
 
 - [gitlab.com/jatkinson1000/power-up-python](https://gitlab.com/jatkinson1000/power-up-python)
-- [github.com/jatkinson1000/power-up-python](https://github.com/jatkinson1000/power-up-python)
+- [github.com/jatkinson1000/rse-skills-workshop](https://github.com/jatkinson1000/rse-skills-workshop)
 :::
 :::
 ::: {.column width="50%"}
