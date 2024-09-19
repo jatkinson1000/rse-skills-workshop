@@ -1,0 +1,287 @@
+---
+title: "RSE Skills"
+subtitle: "(in Python)"
+
+format:
+  revealjs:
+    embed-resources: true
+    slide-number: false
+    chalkboard: false
+    preview-links: auto
+    history: false
+    highlight-style: a11y
+    code-overflow: wrap
+    code-line-numbers: false
+    logo: https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/iccs_ucam_combined_reverse_colour.png
+    theme: [dark, custom.scss]
+revealjs-plugins:
+  - attribution
+
+authors:
+  - name: Jack Atkinson
+    orcid: 0000-0001-5001-4812
+    affiliations:
+      - ref: iccs
+  - name: Amy Pike
+    affiliations:
+      - ref: iccs
+  - name: Marion Weinzierl
+    orcid: 0000-0002-2302-5476
+    affiliations:
+      - ref: iccs
+affiliations:
+  - id: iccs
+    name: ICCS RSE Team <br> University of Cambridge
+
+date: "2024-07-11"
+bibliography: references.bib
+---
+
+## Precursors {.smaller .nostretch}
+
+:::: {.columns}
+::: {.column width="50%"}
+#### Slides and Materials
+
+To access links or follow on your own device these slides can be found at:  
+[https://jackatkinson.net/slides](https://jackatkinson.net/slides)
+
+\
+
+All materials are available at:
+
+::: {.column style="font-size: 95%;"}
+
+- [gitlab.com/jatkinson1000/power-up-python](https://gitlab.com/jatkinson1000/power-up-python)
+- [github.com/jatkinson1000/power-up-python](https://github.com/jatkinson1000/power-up-python)
+:::
+:::
+::: {.column width="50%"}
+#### Licensing
+
+Except where otherwise noted, these presentation materials are licensed under the Creative Commons
+[Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode) ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)) License.
+
+![]( https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-nc.eu.svg ){width=40% fig-align="center"}
+
+Vectors and icons by [SVG Repo](https://www.svgrepo.com)
+used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
+:::
+::::
+
+
+## Precursors {.smaller}
+
+:::: {.columns}
+::: {.column width="75%"}
+- Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
+- Ask questions whenever they arise.
+  - Someone else is probably wondering the same thing.
+- We will make mistakes.
+  - Not all of them will be intentional.
+:::
+::::
+
+
+<!--
+## whoami {.smaller}
+
+Research background in fluid mechanics and atmosphere:
+
+- Numerics and fluid mechanics in Engineering,
+- Cloud microphysics & volcanic plumes in Geography,
+- Radiation belts and satellite data at BAS.
+
+Now a Research Software Engineer (RSE) at the Institute of Computing for Climate
+Science (ICCS) working with various 
+
+This talk can be summarised as _"things I wish I'd known sooner."_
+
+::: {.notes}
+My background in this is domain science and numerical modelling on HPC.
+:::
+-->
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _rse.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _venv.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _formatting_with_black.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _naming_for_clarity.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _formatting_with_pylint.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+{{< include _comments_docstrings.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _fstrings_magic_config.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Other things {.smaller}
+
+Beyond the scope of today are a few other honourable mentions:
+
+- Functions and modules
+- Packaging
+  - Breaking projects into modules and `__init__.py`
+  - Distributing projects with `pyproject.toml`
+- Documentation
+  - Auto-generation from docstrings with sphinx or mkdocs
+- Type hinting
+  - Adding type hinting to python code - how and why?
+  - Type checking with mypy
+
+These lessons will be added to the course content in future but are beyond the scope
+of today.
+
+<!-- ------------------------------------------------------------------------------ 
+
+## Functions and modules
+
+
+## Documentation
+
+- Take the time now, it'll pay dividends later.
+- The docstring payoff.
+
+
+# Packaging
+
+## Packaging {.smaller}
+
+- Making people's life easier.
+- Historically a mess in python.
+  - The community has now standardised through PEP621 [@PEP621] on the pyproject.toml
+
+setup.py
+```python
+#!usr/bin/env python
+
+from setuptools import setup
+
+if __name__ == "__main__":
+    setup()
+```
+
+__init__.py files for each module.
+
+A minimal example:
+
+```toml
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "myproject"
+version = "0.1.0"
+description = "What my code does"
+authors = [
+  { name="M.E. Myself", email="m.myself@myemail.com" },
+]
+license = "LICENSE"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.20.0",
+    "scipy",
+]
+```
+
+The Python Packaging Authority has a [guide](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/) to writing the pyproject.toml file.
+
+
+# Type Hinting
+
+## Type Hinting {.smaller}
+
+- PEP484
+- A solution to statically indicate the type of a value.
+
+- Yes in larger collaborative projects
+- Not in scripts and hacking
+
+
+ ------------------------------------------------------------------------------ -->
+
+
+# Closing
+
+## Where can I get help? {.smaller}
+
+The ICCS RSE team are always keen to support researchers with developing and applying
+the principles discussed today.
+
+If you would like to discuss applying this to your own codebase consider signing up for
+an ICCS Climate Code Clinic:
+
+- 1hr slot
+- RSEs will review code in advance and provide feedback and guidance.
+- [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
+
+
+## Where can I learn more? {.smaller}
+
+:::: {.columns}
+
+::: {.column width="100%"}
+- References and links in these slides
+- Writing Clean Scientific Software Webinar [@Murphy_2023]
+- RSE slack workspace
+:::
+
+\
+
+::: {.column width="20%"}
+Get in touch:
+:::
+::: {.column width="45%"}
+{{< fa pencil >}} \ Jack Atkinson
+
+{{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
+
+{{< fa solid envelope >}} \ [jwa34[AT]cam.ac.uk](mailto:jwa34@cam.ac.uk)
+
+{{< fa brands github >}} \ [jatkinson1000](https://github.com/jatkinson1000)
+
+{{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
+:::
+::: {.column width="35%"}
+{{< fa pencil >}} \ Amy Pike
+
+{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
+
+{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
+
+\
+
+{{< fa pencil >}} \ Marion Weinzierl
+
+{{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
+
+{{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
+
+{{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
+:::
+::::
+
+
+## References {.smaller}
+
+The code in this workshop is based on a script from [@Irving_2019].
+
+::: {#refs}
+:::

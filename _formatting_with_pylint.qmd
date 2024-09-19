@@ -1,0 +1,190 @@
+## PEP8 & Formatting - PyLint {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+Static Analysis
+
+- Check the code without running it
+- Catch issues before you run any code
+- Improve code quality^[beyond simply formatting and readability]
+:::
+::: {.column width="50%"}
+There are various tools available:
+
+- pycodestyle
+- flake8
+- Pylint
+- ruff
+:::
+::::
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+(myvenv) $ pip install pylint
+(myvenv) $ pylint myfile.py
+(myvenv) $ pylint mydirectory/
+```
+
+### Windows
+
+```powershell
+(myvenv) PS> pip install pylint
+(myvenv) PS> pylint myfile.py
+(myvenv) PS> pylint mydirectory/
+```
+:::
+
+
+## PEP8 & Formatting - PyLint - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::: {.column style="font-size: 75%;"}
+```bash
+(myvenv) $ pylint long_func.py
+************* Module long_func
+long_func.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+long_func.py:1:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+long_func.py:1:0: R0913: Too many arguments (7/5) (too-many-arguments)
+long_func.py:24:4: E0602: Undefined variable 'param_2' (undefined-variable)
+long_func.py:25:11: E0602: Undefined variable 'param_2' (undefined-variable)
+long_func.py:4:4: W0613: Unused argument 'param_two' (unused-argument)
+long_func.py:5:4: W0613: Unused argument 'param_three' (unused-argument)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10
+
+(myvenv) $
+
+```
+:::
+::::
+
+::: {.notes}
+Caught a bug - param2\
+Caught unused variable param_three\
+0.0 rating because this is unrunnable!
+:::
+
+## PEP8 & Formatting - PyLint - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_two.append(x * val)
+    return param_two
+```
+:::
+::: {.column style="font-size: 75%;"}
+```bash
+(myvenv) $ pylint long_func.py
+************* Module long_func
+long_func.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+long_func.py:1:0: C0116: Missing function or method docstring (missing-function-docstring)
+long_func.py:1:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+long_func.py:1:0: R0913: Too many arguments (6/5) (too-many-arguments)
+
+------------------------------------------------------------------
+Your code has been rated at 6.36/10 (previous run: 0.00/10, +6.36)
+
+(myvenv) $
+
+```
+\
+Search the error code to understand the issue:
+
+- [docs for W0102](https://pylint.pycqa.org/en/latest/user_guide/messages/warning/dangerous-default-value.html)
+
+:::
+::::
+
+::: {.notes}
+We now have runnable code!\
+Get a rating.
+:::
+
+
+## IDE Integration {.smaller}
+
+- Catch issues before running PyLint
+- Gradually coerces you to become a better programmer
+- Available on all good text editors and emacs:
+  - [Vim](https://www.vimfromscratch.com/articles/vim-for-python)
+  - [pycharm](https://www.jetbrains.com/pycharm/)
+  - [Sublime](https://packagecontrol.io/packages/SublimeLinter-pylint)
+  - [VSCode](https://code.visualstudio.com/docs/python/linting)
+  - [emacs](https://www.emacswiki.org/emacs/PythonProgrammingInEmacs)
+
+
+## Exercise 4 {.smaller}
+
+Go to exercise 4 and:
+
+- install pylint
+- run pylint on `precipitation_climatology.py`
+- examine the report and try and address some of the issues.
+  - Ignore missing docstrings and f-strings for now - we'll come to them later.
+  - Try and deal with: `W0611` Unused imports, `C0412` Ungrouped imports, `W0102` Dangerous default
+  - If you feel like it you could try and fix: `W0621` Redefining name, `W1514` Unexplicit open
+  - Unless you are really keen don't worry about: `R0913` Too many arguments, `C0103` Unconforming naming style.
+
+Extensions:
+
+- try and add linting to your preferred text editor or IDE
+- explore the option to supress pylint warnings
+- explore the configuration options for pylint
+
+

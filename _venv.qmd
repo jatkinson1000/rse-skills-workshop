@@ -1,0 +1,71 @@
+# Virtual Environments
+
+## Virtual Environments {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+#### What?
+
+- A self-contained python environment
+- Packages installed in a local folder
+- Advised to use on a per-project basis
+
+:::
+::: {.column}
+#### Why?
+
+- Avoid system pollution
+- Allow different versions
+- Reproducibility - set versions
+
+:::
+::::
+
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+```bash
+$ python3 -m venv myvenv
+$ source myvenv/bin/activate
+(myvenv) $ pip install <packagename>
+(myvenv) $ deactivate
+$ 
+
+```
+
+### Windows
+
+```powershell
+PS> python -m venv myvenv
+PS> source venv/bin/activate
+(myvenv) PS> pip install <packagename>
+(myvenv) PS> deactivate
+PS> 
+```
+:::
+
+\
+
+For more information see the [Real Python article](https://realpython.com/python-virtual-environments-a-primer/).  
+For those using conda there are also environments, [set up in a slightly different way](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 1 {.smaller}
+
+Scenario: you have just finished some simulations with a climate model that should
+improve precipitation modelling and have the output data as a netCDF file.
+
+You know that your colleague has produced relevant figures and analysis before, so ask
+them for a copy of their code (yay, reuse :+1:).
+
+Go to exercise 1 and:
+
+- Examine the code in `precipitation_climatology.py`
+- Set up a virtual environment
+- Install the necessary dependencies
+- Run the code - does it do what you thought?
