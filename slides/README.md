@@ -10,14 +10,14 @@ generated using [Quarto](https://quarto.org/).
 
 To build them install Quarto and then run, from this directory:
 ```bash
-quarto render python.qmd
+quarto render rse-skills.qmd
 ```
-to generate `python.html` which can be viewed in any browser.
+to generate `index.html` which can be viewed in any browser.
 
 
 #### Editing slides
 
-To edit the slides please see the contents of `python.qmd` which is a Quarto Markdown
-file.
+To edit the slides please see the contents of `rse-skills.qmd` and the other sub-.qmd files.
+.qmd is a Quarto Markdown file.
 
 Images are placed in `/images/` and BibTeX references are in `references.bib`.
