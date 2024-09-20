@@ -11,12 +11,15 @@ This course is designed to be delivered as a code-along workshop, but you can al
 the slides and work through the exercises in your own time.
 
 
-### A note on mirrors
+## Contents
 
-This repository exists mainly as a
-[GitLab repository](https://gitlab.com/jatkinson1000/rse-skills-workshop)
-with a [mirror on GitHub](https://github.com/jatkinson1000/rse-skills-workshop).\
-Please try to open issues and contributions on GitLab.
+- [Learning Objectives](#learning-objectives)
+- [Materials](#materials)
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
+- [Contribution Guidelines](#contribution-guidelines)
 
 
 ## Learning Objectives
@@ -41,6 +44,32 @@ More specifically we cover:
   - Magic Numbers
   - Removal of hard-coded content to config files
   - use of f-strings in Python.
+
+
+## Materials
+
+### Slides
+
+The main slide deck for the workshop can be viewed [here](https://jatkinson1000.github.io/rse-skills-workshop).
+They are generated from the Quarto materials in the `slides/` directory.
+They are broken into separate sections covering the different topics in the workshop.
+
+### Exercises
+
+A series of practical exercises accompany the teaching material in the slides.
+These are contained in the `exercises/` directory in a series of sub-directories,
+each of which has instructions in a README.
+
+The code used as the starting point for each exercise is the 'solution' to the
+previous exercise allowing participants to validate/compare their work.
+
+- 01: Base code to examine.
+- 02: Apply a formatter to standardise code.
+- 03: Improve code clarity with naming and source changes.
+- 04: Linting and static analysis of code.
+- 05: Writing docstrings and best use of comments.
+- 06: General techniques for better code (magic numbers, string formatting).
+- 00: The end point of the workshop - an improved version of the code in exercise 01.
 
 
 ## Prerequisites
@@ -104,24 +133,6 @@ to deactivate the venv and return to the system python environment.
 You can always boot back into the venv as you left it by running the activate command again.
 
 
-## Exercises
-
-A series of practical exercises accompany the teaching material in the slides.
-These are contained in the `exercises/` directory in a series of sub-directories,
-each of which has instructions in a README.
-
-The code used as the starting point for each exercise is a 'solution' to the
-previous exercise allowing participants to validate/compare their work.
-
-- 01: Base code to examine.
-- 02: Apply a formatter to standardise code.
-- 03: Improve code clarity with naming and source changes.
-- 04: Linting and static analysis of code.
-- 05: Writing docstrings and best use of comments.
-- 06: General techniques for better code (magic numbers, string formatting).
-- 00: The end point of the workshop - an improved version of the code in exercise 01.
-
-
 ## License
 
 Copyright &copy; Jack Atkinson
@@ -143,7 +154,7 @@ Journal of Open Source Education, 2(11), 37,
 [doi.org/10.21105/jose.00037](https://doi.org/10.21105/jose.00037)
 
 
-## Contributions
+## Contribution Guidelines
 
 Contributions and collaborations are welcome from anyone with an
 interest in RSE education.
@@ -158,6 +169,14 @@ and open a merge request.
 If you wish to contribute a new exercise you think would be useful please follow the
 existing format in [exercises/](exercises/), and also try and update the slides in
 [slides/](slides/).
+
+
+### A note on mirrors
+
+This repository exists mainly as a
+[GitLab repository](https://gitlab.com/jatkinson1000/rse-skills-workshop)
+with a [mirror on GitHub](https://github.com/jatkinson1000/rse-skills-workshop).\
+Please try to open issues and contributions on GitLab.
 
 
 ### Code of Conduct
