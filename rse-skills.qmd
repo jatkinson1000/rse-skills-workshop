@@ -152,8 +152,7 @@ Beyond the scope of today are a few other honourable mentions:
   - Adding type hinting to python code - how and why?
   - Type checking with mypy
 
-These lessons will be added to the course content in future but are beyond the scope
-of today.
+These lessons are beyond the scope of today.
 
 <!-- ------------------------------------------------------------------------------ 
 
@@ -227,6 +226,7 @@ The Python Packaging Authority has a [guide](https://packaging.python.org/en/lat
 
 # Closing
 
+<!--
 ## Where can I get help? {.smaller}
 
 The ICCS RSE team are always keen to support researchers with developing and applying
@@ -238,7 +238,7 @@ an ICCS Climate Code Clinic:
 - 1hr slot
 - RSEs will review code in advance and provide feedback and guidance.
 - [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
-
+-->
 
 ## Where can I learn more? {.smaller}
 
@@ -252,10 +252,10 @@ an ICCS Climate Code Clinic:
 
 \
 
-::: {.column width="20%"}
+::: {.column style="width:20%; font-size: 85%;"}
 Get in touch:
 :::
-::: {.column width="45%"}
+::: {.column style="width: 40%; font-size: 85%;"}
 {{< fa pencil >}} \ Jack Atkinson
 
 {{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
@@ -266,15 +266,7 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
 :::
-::: {.column width="35%"}
-{{< fa pencil >}} \ Amy Pike
-
-{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
-
-{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
-
-\
-
+::: {.column style="width: 40%; font-size: 85%;"}
 {{< fa pencil >}} \ Marion Weinzierl
 
 {{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
@@ -282,9 +274,17 @@ Get in touch:
 {{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
 
 {{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
-:::
-::::
 
+\
+
+{{< fa pencil >}} \ Amy Pike
+
+{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
+
+{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
+:::
+
+::::
 
 ## References {.smaller}
 
