@@ -121,11 +121,11 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ## Add a license in Github {.smaller}
 
-![](images/github_license.png){width=80% fig-align="center"}
+![](images/github_license.jpg){width=80% fig-align="center"}
 
 ## Add a license in Gitlab {.smaller}
 
-![](images/gitlab_license.png){width=80% fig-align="center"}
+![](images/gitlab_license.jpg){width=80% fig-align="center"}
 
 
 <!--=================================================================================-->
