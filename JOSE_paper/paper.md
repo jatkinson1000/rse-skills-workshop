@@ -98,8 +98,11 @@ All of the teaching materials for this course are available online in a GitHub r
 
 ## Slides
 
-All of the key material is contained in a slide deck for the course available online
-and linked from the repository README.
+All of the key material is contained in a slide deck for the course
+[available online](https://jatkinson1000.github.io/rse-skills-workshop) and linked
+from the repository README.
+There is a also a [recording of the workshop](https://www.youtube.com/watch?v=nyp9t6mGdsw)
+available.
 The slides are written in [Quarto](https://quarto.org/) markdown [@Allaire_Quarto_2022]
 and rendered as [reveal.js](https://revealjs.com/) html.
 Source and instructions on how to render are included in the repository should
@@ -221,7 +224,7 @@ to previously unencountered problems.
 # Acknowledgments
 
 We thank anyone who has made a contribution to these materials, however small,
-assisted in code review for us, or helped as demonstrators on the course.
+assisted in code review for us, or helped as demonstrators on the courses.
 
 The [Institute of Computing for Climate Science](https://iccs.cam.ac.uk/)
 received support through [Schmidt Sciences](https://www.schmidtsciences.org/).
