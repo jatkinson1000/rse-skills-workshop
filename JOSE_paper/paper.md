@@ -203,15 +203,34 @@ For example, where we introduce environment and dependency management in Python 
 virtual environments, we also mention spack as an analagous approach for those using HPC
 environments.
 We also discuss other language specific tools for formatting and linting/static analysis
-such as `clang-format` for C++.
+such as `ClangFormat` and `Clang-Tidy` for C++.
 We feel that this is important to help participants see past the python specifics and
 understand the broader ideas and how they can be deployed in their own projects.
 
-TODO IDE and vimdiff
+We found that an effective way to increase long-term adoption of some of the tools and
+principles introduced in the talk was to show users how they can integrate them into
+their text editors or IDEs.
+Making these tools a seamless part of the workflow reduces the 'activation energy'
+required to use them so it is worth taking time to show how this is done/used.
+We also found that is was very useful to highlight the use of an IDE, or other tool such
+as `vimdiff`, to compare two files side-by-side.
+This was an invaluable teaching tool for showing the effects of changes made by
+formatters, or allowing participants to compare their work to the example solution for
+each exercise.
 
-The content can be easily changed to be domain specific in another area, simply by choosing a different example for the exercises.
+We have also adapted a modular design for the course material -- using Markdown with
+Quarto, to allow easy inclusion and exlusion of individual sections included in the
+main document.
+This means that the content can be adapted to the length and required focus of the
+sessions, as well as the skill set of the audience.
 
-We have also adapted a modular design for the course material -- using Markdown with Quarto, to allow easy inclusion and exlusion of individual sections included in the main document. A similar modular design would be possible, for example, with Latex. This means that the content can be adapted to the length and required focus of the sessions, as well as the skill set of the audience.
+A more in-depth modification to the course would be to change the domain focus of the
+example code used in the exercises.
+Whilst the course could be taught to any researchers as-is, we felt that that matching
+the code to the domain of the participants allowed them to focus on the content we were
+teaching rather than focussing on the code itself.
+To make this change would require a different example code and then working backwards
+through tthe exercises to introduce 'bad' code to be dealt with.
 
 Finally, we encourage participants to feed experiences back into the project, either via
 a GitHub issue or pull request.
