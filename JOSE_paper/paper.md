@@ -28,7 +28,7 @@ bibliography: paper.bib
 Research across many domains increasingly relies on software for simulation,
 data processing, analysis, visualisation, and more.
 This software is often written by individuals without a formal training in software engineering
-leading to inefficiencies, bugs, and poor reproducibility/reuseability.
+leading to inefficiencies, bugs, and poor reproducibility/re-usability.
 
 The course described in this paper is designed to raise awareness software
 engineering principles and how they can be applied to research code.
@@ -50,7 +50,7 @@ amongst academic developers leading to software that is hard to use and maintain
 presenting a barrier to research.
 
 In our experience working with academic developers many of the bad practices and
-antipatterns are a result of them:
+anti-patterns are a result of them:
 
 - learning on the job from old code and emulating habits they observe
 - never having been made aware of the available tools and techniques
@@ -86,7 +86,7 @@ More specifically we cover:
   * Software licenses
 * General principles for better code
   * Magic Numbers
-  * Removal of hard-coded content to config files
+  * Removal of hard-coded content to configuration files
   * use of f-strings in Python.
 
 
@@ -116,7 +116,7 @@ The slides are broken into separate files by section covering:
 - Naming principles for readable, re-useable code,
 - Linting and static analysis of code,
 - Writing docstrings and comments, and
-- Other general principles including magic numbers, avoiding hardcoded values, etc.
+- Other general principles including magic numbers, avoiding hard-coded values, etc.
 
 This makes it easy to remove sections to tailor the course, or for additional topics to be added in future.
 
@@ -165,11 +165,18 @@ tailor the course to different emphasis or time constraints.
 # Content Delivery
 
 The course has been designed to be flexible in terms of delivery, allowing
-it to be adapted to and reused in various setups.
+it to be adapted to and reused in various environments.
+We have adopted a modular design for the course material -- using Quarto for the slides
+with each section in a separate file, and each associated exercise in a separate
+directory.
+This allows for easy inclusion or exclusion of particular sections in the
+workshop meaning the content can be adapted to the length and focus of the
+sessions and the skills of the audience.
 
-The slides are interspersed with the exercises, rather than separate from the presentation material, as the exercises are an integral component of the course.
-
-The main aspect we wish to emphasise in delivery is teaching in a _"code-along"_ fashion.
+The slides are interspersed with the exercises, rather than being separate from the
+presentation material, as they are an integral component of the course.
+Indeed, the main aspect we wish to emphasise in delivery is teaching in a _"code-along"_
+fashion.
 This helps with engagement, participation, and understanding [@barba2022teaching] and
 is essential, we feel, to having a long-lasting benefit [@rubin2013effectiveness].
 This approach slows those leading the course towards the rate at which the participants
@@ -180,9 +187,9 @@ the teaching of debugging approaches.
 More generally this approach helps emphasise RSE principles, as participants can
 see the live application of these ideas in practise.
 
-We also believe that there is sufficient guidance in the slides and repository
-documentation to follow the course alone, and we include a link to a recording of
-the workshop.
+We believe that there is sufficient guidance in the slides and repository
+documentation to follow the course alone, and we include a link to a
+[recording of the workshop](https://www.youtube.com/watch?v=nyp9t6mGdsw).
 This is, however, no substitute to in-person delivery where participants can ask
 questions, and successive workshops are continually improving.
 
@@ -200,7 +207,7 @@ but is intended to educate researchers more generally on software engineering pr
 We found it useful during delivery to reference tools and techniques applicable for
 other languages and systems as we went along.
 For example, where we introduce environment and dependency management in Python using
-virtual environments, we also mention spack as an analagous approach for those using HPC
+virtual environments, we also mention spack as an analogous approach for those using HPC
 environments.
 We also discuss other language specific tools for formatting and linting/static analysis
 such as `ClangFormat` and `Clang-Tidy` for C++.
@@ -218,19 +225,13 @@ This was an invaluable teaching tool for showing the effects of changes made by
 formatters, or allowing participants to compare their work to the example solution for
 each exercise.
 
-We have also adapted a modular design for the course material -- using Markdown with
-Quarto, to allow easy inclusion and exlusion of individual sections included in the
-main document.
-This means that the content can be adapted to the length and required focus of the
-sessions, as well as the skill set of the audience.
-
 A more in-depth modification to the course would be to change the domain focus of the
 example code used in the exercises.
 Whilst the course could be taught to any researchers as-is, we felt that that matching
 the code to the domain of the participants allowed them to focus on the content we were
 teaching rather than focussing on the code itself.
 To make this change would require a different example code and then working backwards
-through tthe exercises to introduce 'bad' code to be dealt with.
+through the exercises to introduce 'bad' code to be dealt with.
 
 Finally, we encourage participants to feed experiences back into the project, either via
 a GitHub issue or pull request.
