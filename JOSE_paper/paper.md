@@ -93,7 +93,7 @@ More specifically we cover:
 
 # Teaching materials
 
-All of the teaching materials for this course are available online in a GitHub repository.
+All of the teaching materials for this course are [available online in a GitHub repository](https://github.com/jatkinson1000/rse-skills-workshop).
 
 
 ## Slides
@@ -115,7 +115,8 @@ The slides are broken into separate files by section covering:
 - Code formatting for consistent readable layout,
 - Naming principles for readable, re-useable code,
 - Linting and static analysis of code,
-- Writing docstrings and comments, and
+- Writing docstrings and comments,
+- READMEs and Licenses, and
 - Other general principles including magic numbers, avoiding hard-coded values, etc.
 
 This makes it easy to remove sections to tailor the course, or for additional topics to be added in future.
