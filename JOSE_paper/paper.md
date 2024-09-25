@@ -64,6 +64,7 @@ It is designed to introduce key tools and techniques to facilitate the writing o
 better code, but also to raise awareness of research software engineering and provide pointers
 to allow researchers to continue exploring and learning beyond this material.
 
+In its intend, the course is related to the work of Wilson et al. [wilson2013best, wilson2017goodenough] and the corresponding course by Wallace et al. [wallace2022goodenough]. While some of the content overlaps, our course is not as comprehensive, but a shorter ``What can I do better in my code right now?'' training, which can be taught in 1.5-3 hours, and adapted as needed. 
 
 
 # Learning objectives
