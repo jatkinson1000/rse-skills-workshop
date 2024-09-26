@@ -64,7 +64,14 @@ It is designed to introduce key tools and techniques to facilitate the writing o
 better code, but also to raise awareness of research software engineering and provide pointers
 to allow researchers to continue exploring and learning beyond this material.
 
-In its intend, the course is related to the work of Wilson et al. [wilson2013best, wilson2017goodenough] and the corresponding course by Wallace et al. [wallace2022goodenough]. While some of the content overlaps, our course is not as comprehensive, but a shorter ``What can I do better in my code right now?'' training, which can be taught in 1.5-3 hours, and adapted as needed. 
+In its intent our course is related to the work of
+@wilson2013best, @wilson2017goodenough, and the corresponding course of
+@wallace2022goodenough.
+While some of the content overlaps, our course is not as comprehensive but is intended
+as a shorter "What can I do better in my code right now?" training, which can be taught
+in 1.5--3 hours and adapted as needed.
+Another difference is that our course has a focus on demonstrating practical tools that
+can be used to help achieve the 'good enough' principles of @wallace2022goodenough.
 
 
 # Learning objectives
@@ -127,7 +134,7 @@ This makes it easy to remove sections to tailor the course, or for additional to
 The slides are interspersed with a series of exercises, each one applying techniques
 that have just been taught.
 
-We set up a scenario where users have been provided a working, but poorly written piece
+We set up a scenario where users have been provided a working, but poorly written, piece
 of code that they are now expected to re-use in their work.
 As they progress through the exercises they apply their new skills to transform this
 into a much more readable and understandable piece of code.
@@ -137,24 +144,33 @@ This was chosen as it features typical applications we expect users to encounter
 (reading from a dataset, processing, and plotting).
 The course was originally designed to be taught to geoscientists, and then at a climate
 science summer school, and we wanted participants to be focussed on the changes to the
-code rather than worrying about the application or semantics.
+code rather than worrying about the domain application or semantics.
 
 Exercises roughly match the slide sections above:
 
 - 01: Baseline code to examine, install dependencies, and run.\
-  Users can familiarise themselves with what the code does, see why listing dependencies
-  with a quick setup is useful, and make early observations about how the code is
-  difficult to understand/use.
+  Users set up an environment and familiarise themselves with what the code does.
+  They see why listing dependencies with a setup is useful, and make early observations
+  about how the code is difficult to understand/use.
 - 02: Apply a formatter to standardise code.\
-  We use the black python formatter [@LangaBlack]
-- 03: Improve code clarity with naming and source changes.
-- 04: Linting and static analysis of code.
-- 05: Writing docstrings and best use of comments.
-- 06: General techniques for better code (magic numbers, string formatting).
-- 00: The end point of the workshop - an improved version of the code in exercise 01.
+  We introduce formatting through the black python formatter [@LangaBlack] to standardise
+  code appearance and improve readability.
+- 03: Improve code clarity with naming and source changes.\
+  Users work through the code to find instances where they feel naming can improve clarity.
+- 04: Linting and static analysis of code.\
+  We introduce static analysis and linting through Pylint [@Pylint_contributors_Pylint]
+  to catch errors and points for improvement.
+- 05: Writing docstrings and best use of comments.\
+  Users work through the code adding or improving docstrings.
+- 06: General techniques for better code (magic numbers, string formatting).\
+  Users work through the code to remove magic numbers and hard-coded values, and address
+  other issues.
+- 00: The end point of the workshop\
+  This is provided as an example of an improved version of the code in exercise 01 that
+  users can compare their work to.
 
 Each exercises builds upon the results of the previous one, allowing participants to
-apply what they are learning in a continuous fashion to a code.
+apply what they are learning in a continuous fashion to a cod`e.
 However, each exercise has a dedicated subdirectory meaning that success in a previous
 exercise is not a pre-requisite for continuing to the next one.
 Two additional benefits to this approach are that the starting point for a subsequent
@@ -168,9 +184,8 @@ tailor the course to different emphasis or time constraints.
 
 The course has been designed to be flexible in terms of delivery, allowing
 it to be adapted to and reused in various environments.
-We have adopted a modular design for the course material -- using Quarto for the slides
-with each section in a separate file, and each associated exercise in a separate
-directory.
+We have adopted a modular design for the course material -- each subsection of the slides
+is contained in a separate file, and each associated exercise in a separate directory.
 This allows for easy inclusion or exclusion of particular sections in the
 workshop meaning the content can be adapted to the length and focus of the
 sessions and the skills of the audience.
@@ -209,7 +224,7 @@ but is intended to educate researchers more generally on software engineering pr
 We found it useful during delivery to reference tools and techniques applicable for
 other languages and systems as we went along.
 For example, where we introduce environment and dependency management in Python using
-virtual environments, we also mention spack as an analogous approach for those using HPC
+virtual environments, we also mention Spack as an analogous approach for those using HPC
 environments.
 We also discuss other language specific tools for formatting and linting/static analysis
 such as `ClangFormat` and `Clang-Tidy` for C++.
