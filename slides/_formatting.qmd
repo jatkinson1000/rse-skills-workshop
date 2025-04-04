@@ -1,3 +1,9 @@
+# PEP8 and Formatting
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
 ## Python PEPs {.smaller}
 
 [Python Enhancement Proposals](https://peps.python.org/)
@@ -12,8 +18,8 @@ Relevant to us today are:
 * PEP621 - Packaging [@PEP621]
 
 
+<!-- ------------------------------------------------------------------------------ -->
 
-# PEP8 and Formatting
 
 ## PEP8 & Formatting {.smaller}
 
@@ -33,34 +39,37 @@ By ensuring code aligns with PEP8 we:
 :::
 
 
-## PEP8 & Formatting - Black {.smaller}
+<!-- ------------------------------------------------------------------------------ -->
 
-![]( https://black.readthedocs.io/en/stable/_static/logo2-readme.png ){.absolute top=25% right=0% height=20%}
 
-Black [@black] - [black.readthedocs.io](https://black.readthedocs.io/en/stable/index.html)
+## PEP8 & Formatting - Ruff {.smaller}
+
+![]( https://docs.astral.sh/ruff/assets/bolt.svg ){.absolute top=20% right=20% height=30%}
+
+Ruff [@ruff] - [docs.astral.sh/ruff](https://docs.astral.sh/ruff/)
 
 - a PEP 8 compliant formatter
   - Strict subset of PEP8
   - _"Opinionated so you don't have to be."_
-- For full details see [Black style](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
-- [Try online](https://black.vercel.app/)
+- For full details see [style guide](https://docs.astral.sh/ruff/formatter/#style-guide)
+- [Try online](https://play.ruff.rs/?secondary=Format)
 
 ::: {.panel-tabset}
 
 ### Linux/macOS
 
-```bash
-(myvenv) $ pip install black
-(myvenv) $ black myfile.py
-(myvenv) $ black mydirectory/
+``` default
+(myvenv) $ pip install ruff
+(myvenv) $ ruff format myfile.py
+(myvenv) $ ruff format mydirectory/
 ```
 
 ### Windows
 
-```powershell
-(myvenv) PS> pip install black
-(myvenv) PS> black myfile.py
-(myvenv) PS> black mydirectory/
+```default
+(myvenv) PS> pip install ruff
+(myvenv) PS> ruff format myfile.py
+(myvenv) PS> ruff format mydirectory/
 ```
 :::
 
@@ -70,7 +79,10 @@ Makes life so much easier after a while.
 :::
 
 
-## PEP8 & Formatting - Black - Example {.smaller}
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting - Example {.smaller}
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -135,13 +147,35 @@ def long_func(
 ::::
 
 
-## PEP8 & Formatting - Black {.smaller}
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting - Ruff {.smaller}
+
+- Also runs on jupyter notebooks.
+
+- Highly configurable via configuration files.
 
 - I suggest incorporating into your projects now
-  - Well suited to incorporation into continuous integration of git hooks.
-  - Widely-used standard^[[Black - used by](https://github.com/psf/black#used-by)]
+  - Widely-used standard^[[Who's Using Ruff?](https://github.com/astral-sh/ruff#whos-using-ruff)]
+  - Plugins/lsp available for many editors.
+  - Well suited to incorporation into continuous integration through workflows and git hooks.
 
-- A version for jupyter notebooks exists.
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Other languages {.smaller}
+
+Similar formatting tools exist for other languages:
+
+- Python - [ruff](https://docs.astral.sh/ruff/) or
+  [black](https://black.readthedocs.io/en/stable/index.html)
+- C and C++ - [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+- Fortran - [fortitude](https://github.com/PlasmaFAIR/fortitude) (in development)
+- Rust - [rustfmt](https://github.com/rust-lang/rustfmt)
+- Julia - [JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)
+- R - [styler](https://github.com/r-lib/styler) or [Air](https://github.com/posit-dev/air)
 
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -151,11 +185,12 @@ def long_func(
 
 Go to exercise 2 and:
 
-- install black
-- run black on `precipitation_climatology.py`
+- install ruff
+- run `ruff format` on `precipitation_climatology.py`
 - examine the output
   - Is it more readable?
-  - Is there any aspect of the formatting style you find unintuitive?is it better?
+  - Is there any aspect of the formatting style you find unintuitive?
+- See `exercises/02_formatting/README.md` for more detailed instructions.
 
 
 <!-- ------------------------------------------------------------------------------ -->
