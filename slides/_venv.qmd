@@ -2,6 +2,8 @@
 
 ## Virtual Environments {.smaller}
 
+\
+
 :::: {.columns}
 ::: {.column width="50%"}
 #### What?
@@ -14,19 +16,33 @@
 ::: {.column}
 #### Why?
 
-- Avoid system pollution
-- Allow different versions
+- Avoid system pollution through isolation
+- Allow different versions for different projects
 - Reproducibility - set versions
 
 :::
 ::::
 
+::: aside
+For more information see the [Real Python article](https://realpython.com/python-virtual-environments-a-primer/)
+on virtual environments.  
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Virtual Environments - `venv` {.smaller}
+
+Python has inbuilt support for creating isolated virtual environments through
+[`venv`](https://docs.python.org/3/library/venv.html).
+
+\
 
 ::: {.panel-tabset}
 
 ### Linux/macOS
 
-```bash
+```default
 $ python3 -m venv myvenv
 $ source myvenv/bin/activate
 (myvenv) $ pip install <packagename>
@@ -37,7 +53,7 @@ $
 
 ### Windows
 
-```powershell
+```default
 PS> python -m venv myvenv
 PS> source venv/bin/activate
 (myvenv) PS> pip install <packagename>
@@ -48,8 +64,25 @@ PS>
 
 \
 
-For more information see the [Real Python article](https://realpython.com/python-virtual-environments-a-primer/).  
-For those using conda there are also environments, [set up in a slightly different way](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).
+You will see that a directory `./myvenv/` has been created.\
+Pip will install dependencies into this directory.\
+To remove the venv we delete this directory with `rm -r myvenv`.
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Other Languages {.smaller}
+
+There are various other tools available to manage dependencies:
+
+- Python and more - conda
+- C, C++, Fortran:
+  - Module environments
+  - Spack
+- Rust - cargo
+- Julia - Pkg environments
+- R - renv
 
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -66,6 +99,77 @@ them for a copy of their code (yay, reuse :+1:).
 Go to exercise 1 and:
 
 - Examine the code in `precipitation_climatology.py`
-- Set up a virtual environment
+- Create and load a virtual environment
 - Install the necessary dependencies
 - Run the code - does it do what you thought?
+- Deactivate the environment
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Basic packaging concepts {.smaller}
+
+Code/software will often have several dependencies required to run.
+
+Provide a record of these to users to save time and errors when installing.
+
+\
+
+:::: {.columns}
+::: {.column width="70%"}
+
+Recorded in a `requirements.txt` file:
+
+- name required packages to be installed by pip
+- can apply constraints
+- typically specify top-level^[We can pin everything using `pip freeze`, but there are better ways to do this.]
+
+:::
+::: {.column width="30%"}
+`requirements.txt`
+```default
+netcdf4
+xarray
+scipy==1.13.1
+numpy<2.0
+cartopy
+```
+:::
+::::
+
+\
+
+
+```default
+(myvenv) $ pip install -r requirements.txt
+```
+
+
+::: aside
+We can improve and streamline this process even further through packaging, but this is
+beyond the scope of this discussion.
+:::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 1 revisited {.smaller}
+
+Scenario: you have just finished some simulations with a climate model that should
+improve precipitation modelling and have the output data as a netCDF file.
+
+You know that your colleague has produced relevant figures and analysis before, so ask
+them for a copy of their code (yay, reuse :+1:).
+
+Go to exercise 1 and:
+
+- Examine the code in `precipitation_climatology.py`
+- Create and load a virtual environment
+- Install the requirements from the supplied `requirements.txt`
+- Run the code - does it do what you thought?
+- Deactivate the environment
+
+
+<!-- ------------------------------------------------------------------------------ -->
