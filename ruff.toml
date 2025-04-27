@@ -11,13 +11,13 @@ docstring-code-format = true
 [lint]
 # See https://docs.astral.sh/ruff/rules for full details of each ruleset.
 
-# Enable:  D: `pydocstyle`, PL: `pylint`, I: `isort`, W: `pycodestyle whitespace`
-#          NPY: `numpy`, FLY: `flynt`, RUF: `ruff`
-#          From flake8: "ARG", "SLF", "S", "BLE", "B", "A", "C4", "EM", "ICN",
+# Enable:  D: `pydocstyle`, PL: `pylint`, I: `isort`, E/W: `pycodestyle whitespace`
+#          NPY: `numpy`, FLY: `flynt`, F: `pyflakes`, RUF: `ruff`
+#          From flake8: "ARG", "SLF", "S", "BLE", "B", "A", "C4", "ICN",
 #                       "PIE", "Q", "RSE", "SIM", "TID"
-select = ["D", "PL", "I", "E", "W", "NPY", "FLY", "RUF",
-          "ARG", "SLF", "S", "BLE","B", "A", "C4", "EM", "ICN", "PIE", "Q",
-          "SIM", "TID"]
+select = ["D", "PL", "I", "E", "W", "NPY", "FLY", "F", "RUF",
+          "ARG", "SLF", "S", "BLE","B", "A", "C4", "ICN", 
+          "PIE", "Q", "RSE", "SIM", "TID"]
 
 # Enable D417 (Missing argument description) on top of the NumPy convention.
 extend-select = ["D417"]
