@@ -1,0 +1,23 @@
+# Structuring your code
+
+<!--=================================================================================-->
+
+## Functions {.smaller}
+
+- Avoid code duplication
+    - Bad style
+    - You will forget to update all the copies at one point when you make changes!
+- Readability
+    - A clearly named function replaces a chunk of code.
+- Functions as building blocks
+    - Create generic interface with several exchangable options (e.g. "possion_solver", "gauss_seidel_solver", etc.)
+    
+<!--=================================================================================-->
+
+## Further structuring {.smaller}
+
+ - Breaking code into modules and files instead of having everything in one file
+ - Improves readability and manageability
+
+ 
+<!--=================================================================================-->

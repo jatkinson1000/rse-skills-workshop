@@ -1,0 +1,4 @@
+## Documentation
+
+- Take the time now, it'll pay dividends later.
+- The docstring payoff.
