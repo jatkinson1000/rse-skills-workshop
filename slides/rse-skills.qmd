@@ -84,19 +84,29 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 ## Course structure {.smaller}
 
 :::: {.columns}
-::: {.column width="75%"}
-Today:
-- Tooling for better research software
-    - venv for virtual environments
-    - formatting and linting
-    - structuring code
+::: {.column width="45%"}
+**Today**:
+
+- Tooling for better research software 
+  - venv for virtual environments 
+  - formatting and linting 
+  - structuring code
+  
+::: 
+
+::: {.column width="10%"}
 :::
-Tomorrow:
-- Writing better research software
-    - comments
-    - docstrings
-    - repository documentation - licenses, README, Contributing.md
-    - Other (naming, magic numbers,...)
+
+::: {.column width="45%"}
+
+**Tomorrow**:
+
+- Writing better research software 
+  - comments 
+  - docstrings 
+  - repository documentation - licenses, README, Contributing.md 
+  - Other (naming, magic numbers,...)
+:::    
 ::::
 
 <!--
@@ -137,6 +147,20 @@ My background in this is domain science and numerical modelling on HPC.
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _formatting_with_pylint.qmd >}}
+
+
+<!-- ------------------------------------------------------------------------------ -->
+## That's it for today! {.smaller}
+
+<br><br>
+
+**See you all tomorrow afternoon!**
+
+## Welcome back! {.smaller}
+
+<br><br>
+
+**Let's dive straight into comments and docstrings!**
 
 <!-- ------------------------------------------------------------------------------ -->
 
