@@ -164,7 +164,11 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _comments_docstrings.qmd >}}
+{{< include _code_structure.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _fstrings_magic_config.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -192,8 +196,7 @@ Beyond the scope of today are a few other honourable mentions:
 
 These lessons are beyond the scope of today.
 
- ------------------------------------------------------------------------------ -->
-
+<!-- ------------------------------------------------------------------------------ -->
 
 # Closing
 

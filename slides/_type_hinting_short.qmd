@@ -1,0 +1,9 @@
+# Type Hinting
+
+## Type Hinting {.smaller}
+
+- PEP484
+- A solution to statically indicate the type of a value.
+
+- Yes in larger collaborative projects
+- Not in scripts and hacking
