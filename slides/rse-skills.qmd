@@ -24,9 +24,6 @@ authors:
     orcid: 0000-0001-5001-4812
     affiliations:
       - ref: iccs
-  - name: Amy Pike
-    affiliations:
-      - ref: iccs
   - name: Marion Weinzierl
     orcid: 0000-0002-2302-5476
     affiliations:
@@ -84,6 +81,33 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 :::
 ::::
 
+## Course structure {.smaller}
+
+:::: {.columns}
+::: {.column width="45%"}
+**Today**:
+
+- Tooling for better research software 
+  - venv for virtual environments 
+  - formatting and linting 
+  - structuring code
+  
+::: 
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+
+**Tomorrow**:
+
+- Writing better research software 
+  - comments 
+  - docstrings 
+  - repository documentation - licenses, README, Contributing.md 
+  - Other (naming, magic numbers,...)
+:::    
+::::
 
 <!--
 ## whoami {.smaller}
@@ -124,6 +148,20 @@ My background in this is domain science and numerical modelling on HPC.
 
 {{< include _linting.qmd >}}
 
+
+<!-- ------------------------------------------------------------------------------ -->
+## That's it for today! {.smaller}
+
+<br><br>
+
+**See you all tomorrow afternoon!**
+
+## Welcome back! {.smaller}
+
+<br><br>
+
+**Let's dive straight into comments and docstrings!**
+
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _comments_docstrings.qmd >}}
@@ -154,79 +192,12 @@ Beyond the scope of today are a few other honourable mentions:
 
 These lessons are beyond the scope of today.
 
-<!-- ------------------------------------------------------------------------------ 
-
-## Functions and modules
-
-
-## Documentation
-
-- Take the time now, it'll pay dividends later.
-- The docstring payoff.
-
-
-# Packaging
-
-## Packaging {.smaller}
-
-- Making people's life easier.
-- Historically a mess in python.
-  - The community has now standardised through PEP621 [@PEP621] on the pyproject.toml
-
-setup.py
-```python
-#!usr/bin/env python
-
-from setuptools import setup
-
-if __name__ == "__main__":
-    setup()
-```
-
-__init__.py files for each module.
-
-A minimal example:
-
-```toml
-[build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "myproject"
-version = "0.1.0"
-description = "What my code does"
-authors = [
-  { name="M.E. Myself", email="m.myself@myemail.com" },
-]
-license = "LICENSE"
-requires-python = ">=3.9"
-dependencies = [
-    "numpy>=1.20.0",
-    "scipy",
-]
-```
-
-The Python Packaging Authority has a [guide](https://packaging.python.org/en/latest/guides/writing-pyproject-toml/) to writing the pyproject.toml file.
-
-
-# Type Hinting
-
-## Type Hinting {.smaller}
-
-- PEP484
-- A solution to statically indicate the type of a value.
-
-- Yes in larger collaborative projects
-- Not in scripts and hacking
-
-
  ------------------------------------------------------------------------------ -->
 
 
 # Closing
 
-<!--
+
 ## Where can I get help? {.smaller}
 
 The ICCS RSE team are always keen to support researchers with developing and applying
@@ -238,7 +209,7 @@ an ICCS Climate Code Clinic:
 - 1hr slot
 - RSEs will review code in advance and provide feedback and guidance.
 - [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
--->
+
 
 ## Where can I learn more? {.smaller}
 
@@ -247,7 +218,10 @@ an ICCS Climate Code Clinic:
 ::: {.column width="100%"}
 - References and links in these slides
 - Writing Clean Scientific Software Webinar [@Murphy_2023]
-- RSE slack workspace
+- [RSE Society](https://linktr.ee/researchsofteng) (incl. Slack workspace)
+- Byte-sized RSE: [https://www.universe-hpc.ac.uk/events/byte-sized-rse/](https://www.universe-hpc.ac.uk/events/byte-sized-rse/)
+- [The Carpentries](https://carpentries.org/)
+- [RSE Toolkit](https://rsetoolkit.github.io/) (wip)
 :::
 
 \
@@ -275,13 +249,6 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
 
-\
-
-{{< fa pencil >}} \ Amy Pike
-
-{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
-
-{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
 :::
 
 ::::
