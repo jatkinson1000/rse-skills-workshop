@@ -24,9 +24,6 @@ authors:
     orcid: 0000-0001-5001-4812
     affiliations:
       - ref: iccs
-  - name: Amy Pike
-    affiliations:
-      - ref: iccs
   - name: Marion Weinzierl
     orcid: 0000-0002-2302-5476
     affiliations:
@@ -84,6 +81,33 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 :::
 ::::
 
+## Course structure {.smaller}
+
+:::: {.columns}
+::: {.column width="45%"}
+**Today**:
+
+- Tooling for better research software 
+  - venv for virtual environments 
+  - formatting and linting 
+  - structuring code
+  
+::: 
+
+::: {.column width="10%"}
+:::
+
+::: {.column width="45%"}
+
+**Tomorrow**:
+
+- Writing better research software 
+  - comments 
+  - docstrings 
+  - repository documentation - licenses, README, Contributing.md 
+  - Other (naming, magic numbers,...)
+:::    
+::::
 
 <!--
 ## whoami {.smaller}
@@ -114,7 +138,7 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _formatting_with_black.qmd >}}
+{{< include _formatting.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -122,7 +146,21 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _formatting_with_pylint.qmd >}}
+{{< include _linting.qmd >}}
+
+
+<!-- ------------------------------------------------------------------------------ -->
+## That's it for today! {.smaller}
+
+<br><br>
+
+**See you all tomorrow afternoon!**
+
+## Welcome back! {.smaller}
+
+<br><br>
+
+**Let's dive straight into comments and docstrings!**
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -158,11 +196,11 @@ Beyond the scope of today are a few other honourable mentions:
 
 These lessons are beyond the scope of today.
 
-<!-- ------------------------------------------------------------------------------ 
+<!-- ------------------------------------------------------------------------------ -->
 
 # Closing
 
-<!--
+
 ## Where can I get help? {.smaller}
 
 The ICCS RSE team are always keen to support researchers with developing and applying
@@ -174,7 +212,7 @@ an ICCS Climate Code Clinic:
 - 1hr slot
 - RSEs will review code in advance and provide feedback and guidance.
 - [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
--->
+
 
 ## Where can I learn more? {.smaller}
 
@@ -183,7 +221,10 @@ an ICCS Climate Code Clinic:
 ::: {.column width="100%"}
 - References and links in these slides
 - Writing Clean Scientific Software Webinar [@Murphy_2023]
-- RSE slack workspace
+- [RSE Society](https://linktr.ee/researchsofteng) (incl. Slack workspace)
+- Byte-sized RSE: [https://www.universe-hpc.ac.uk/events/byte-sized-rse/](https://www.universe-hpc.ac.uk/events/byte-sized-rse/)
+- [The Carpentries](https://carpentries.org/)
+- [RSE Toolkit](https://rsetoolkit.github.io/) (wip)
 :::
 
 \
@@ -211,13 +252,6 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
 
-\
-
-{{< fa pencil >}} \ Amy Pike
-
-{{< fa solid envelope >}} \ [ap766[AT]cam.ac.uk](mailto:ap766@cam.ac.uk)
-
-{{< fa brands github >}} \ [AmyOctoCat](https://github.com/AmyOctoCat)
 :::
 
 ::::

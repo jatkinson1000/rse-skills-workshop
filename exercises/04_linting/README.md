@@ -1,20 +1,23 @@
 # Exercise 4 - Linting
 
-This exercise contains the original code after applying black.
+This exercise contains the code after it has been formatted and had naming updates.
 
-## Install pylint
+## Run a linter over the code
 
-```bash
-pip install pylint
+We will start by running the ruff linter over the code.
+Since we already installed ruff in exercise 1 to use its formatting tool there is no
+need to install anything new.
+
+
+Run `ruff check` on the code and observe the warnings.
+
+```console
+ruff check precipitation_climatology.py
 ```
 
-## Run pylint
-
-Run pylint on the code and observe the warnings and ratings.
-
-```bash
-pylint precipitation_climatology.py
-```
+> [!TIP]
+> When re-running ruff to check fixes you may find it useful to use the
+> `--output-format=concise` flag to reduce printed output.
 
 ## Improving the code
 
@@ -22,43 +25,43 @@ Open the source code in your text editor and modifiy it to fix some of
 the linting errors.
 
 We will not deal with all of the errors in this exercise.
-You can ignore any warnings about `Missing docstrings` or `f-strings` as we'll come to
-these in subsequent exercises.
+You can ignore any warnings about `D100`/`D103` (missing docstrings) and
+`PLR2004` (magic values) as we'll come to these in subsequent exercises.
 
 Try and deal with:
 
-- `W0611` - Unused imports - these are straightforward 
-- `C0412` - Ungrouped imports - hopefully this makes sense
-- `W0102` - Dangerous default - recap the notes/slides
+- `F401` - Unused imports - these are straightforward 
+- `I001` - Unsorted imports - hopefully this makes sense
+- `D202` - Blank lines - hopefully this makes sense
+- `B006` - Dangerous default - recap the notes/slides
 
 If you feel like it you could try and fix:
 
-- `W0621` - Redefining name - Why is this not ideal? Beware, addressing this has the
-  potential to introduce bugs if not careful.
-- `W1514` - Unexplicit `open`
+- `B904` - Exceptions raised inside try - Why is this helpful for users?
 
 Unless you are really keen don't worry about:
 
-- `R0913` - Too many arguments - this is a matter of taste and a simple fix could be
+- `PLR0913` - Too many arguments - this is a matter of taste and a simple fix could be
   counterproductive. It usually hints that some refactoring may be required.
-- `C0103` - Unconforming naming style - Again, this could be a matter of taste and
   fixing has the potential to introduce bugs if not careful.
 
 As you work through the errors do you understand how adressing them has improved
 your code?\
 Have you learnt anything new from fixing them?
 
-
-Tip: _Don't forget to re-run `black` after you have finished editing your code to keep
-the formatting rules enforced._
+> [!TIP]
+> Don't forget to re-run `ruff format` after you have finished editing your code to keep
+> the formatting rules enforced.
 
 ## Extension exercises
 
-- See if you can install some form of pylint (or another linter) in your text editor/IDE
-  to highlight mistakes whilst you write!
-- If there are any pylint warnings you are going to ignore, see if you can
-  [supress them](https://pylint.pycqa.org/en/latest/user_guide/messages/message_control.html)
+- See if you can install some form of ruff (or another linter) in your text editor/IDE
+  as a language server to highlight mistakes whilst you write! See [ruff editor integration docs](https://docs.astral.sh/ruff/editors/setup/).
+- If there are any warnings you are going to ignore, see if you can
+  [supress them](https://docs.astral.sh/ruff/linter/#error-suppression)
   so they don't clutter up the report.
 - Explore the option of
-  [altering the configuration settings](https://pylint.pycqa.org/en/latest/user_guide/configuration/index.html)
-  of pylint, either via the command line or using a configuration file.
+  [altering the configuration settings](https://docs.astral.sh/ruff/configuration/)
+  in the configuration file.
+- Explore the different rulesets available in the
+  [ruff rules documentation](https://docs.astral.sh/ruff/rules/).
