@@ -153,13 +153,13 @@ Exercises roughly match the slide sections above:
   They see why listing dependencies with a setup is useful, and make early observations
   about how the code is difficult to understand/use.
 - 02: Apply a formatter to standardise code.\
-  We introduce formatting through the black python formatter [@LangaBlack] to standardise
-  code appearance and improve readability.
+  We introduce formatting to standardise code appearance and improve readability through
+  the ruff Python formatter [@ruff].
 - 03: Improve code clarity with naming and source changes.\
   Users work through the code to find instances where they feel naming can improve clarity.
 - 04: Linting and static analysis of code.\
-  We introduce static analysis and linting through Pylint [@Pylint_contributors_Pylint]
-  to catch errors and points for improvement.
+  We introduce static analysis and linting with ruff [@ruff] to catch errors and
+  highlight areas for improvement.
 - 05: Writing docstrings and best use of comments.\
   Users work through the code adding or improving docstrings.
 - 06: General techniques for better code (magic numbers, string formatting).\

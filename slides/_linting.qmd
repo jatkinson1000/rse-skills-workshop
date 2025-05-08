@@ -1,0 +1,259 @@
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Beyond {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+Static Analysis
+
+- Check the code without running it
+- Catch issues before you run any code
+- Improve code quality^[beyond simply formatting and readability]
+:::
+::: {.column width="50%"}
+There are various tools available:
+
+- ruff
+- Pylint
+- flake8
+- pycodestyle
+:::
+::::
+
+\
+
+We will be using `ruff check` for static analysis, which we already installed as part
+of `ruff` in a previous exercise.
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Code Quality - `ruff check` {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::: {.column style="font-size: 75%;"}
+:::
+::::
+
+
+## Code Quality - `ruff check` {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::: {.column style="font-size: 75%;"}
+```default
+(myvenv) $ ruff check long_func.py
+long_func.py:1:1: D100 Missing docstring in public module
+long_func.py:1:5: PLR0913 Too many arguments in function definition (7 > 5)
+long_func.py:1:5: D103 Missing docstring in public function
+long_func.py:4:5: ARG001 Unused function argument: `param_two`
+long_func.py:4:15: B006 Do not use mutable data structures for argument defaults
+long_func.py:5:5: ARG001 Unused function argument: `param_three`
+long_func.py:12:12: PLR2004 Magic value used in comparison, consider replacing `5` with a constant variable
+long_func.py:24:5: F821 Undefined name `param_2`
+long_func.py:25:12: F821 Undefined name `param_2`
+Found 9 errors.
+
+(myvenv) $
+
+```
+Note: use the <br> `--output-format=concise` <br> flag for this shortened output.
+:::
+::::
+
+::: {.notes}
+Caught a bug - param2\
+Caught unused variable param_three\
+0.0 rating because this is unrunnable!
+:::
+
+
+## Code Quality - `ruff check` {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_two.append(x * val)
+    return param_two
+```
+:::
+::: {.column style="font-size: 75%;"}
+```default
+(myvenv) $ ruff check long_func.py
+long_func.py:1:1: D100 Missing docstring in public module
+long_func.py:1:5: PLR0913 Too many arguments in function definition (6 > 5)
+long_func.py:1:5: D103 Missing docstring in public function
+long_func.py:4:15: B006 Do not use mutable data structures for argument defaults
+long_func.py:11:12: PLR2004 Magic value used in comparison, consider replacing `5` with a constant variable
+Found 5 errors.
+
+(myvenv) $
+
+```
+\
+Use `ruff rule` to understand different rules:
+```
+ruff rule B006
+```
+will display the [docs for B006](https://docs.astral.sh/ruff/rules/mutable-argument-default/)
+
+:::
+::::
+
+::: {.notes}
+We now have runnable code!\
+:::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## IDE Integration {.smaller}
+
+- Catch issues before running ruff
+- Gradually coerces you to become a better programmer
+- See [ruff editor integration docs](https://docs.astral.sh/ruff/editors/setup/) for
+  instructions on setup for:
+  - Vim
+  - pycharm
+  - Sublime
+  - VS Code
+  - Emacs
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Other languages {.smaller}
+
+Similar tools for linting and static analysis exist for other languages:
+
+- C and C++ - [clang-tidy](https://clang.llvm.org/extra/clang-tidy/) and
+  [cppcheck](https://cpp-linter.github.io/)
+- Fortran - [fortitude](https://github.com/PlasmaFAIR/fortitude)
+- Rust - [clippy](https://doc.rust-lang.org/clippy/)
+- R - [lintr](https://lintr.r-lib.org/)
+
+More generally see [this list of static analysis tools](https://github.com/analysis-tools-dev/static-analysis).
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Configuration {.smaller}
+
+The default set of linting rules for ruff is quite simple.
+
+The ruleset to be applied can be configured in a `ruff.toml` file, as we do in this project,
+or `pyproject.toml` for packaged code.
+For full details see the [ruff configuration documentation](https://docs.astral.sh/ruff/configuration/).
+
+Details of the different rules and rulesets that can be selected can be found in the
+[ruff rules documentation](https://docs.astral.sh/ruff/rules/).
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 4 {.smaller}
+
+Go to exercise 4 and:
+
+- run `ruff check` on `precipitation_climatology.py`
+- examine the report and try and address some of the issues.
+  - Try and deal with: `F401` unused imports, `I001` unsorted imports,
+    `B006` dangerous default, and `D202` Blank lines
+  - If you feel like it you could try and fix: `B904` try exceptions
+  - Ignore `D100`/`D103` missing docstrings and `PLR2004` magic values for now - we'll
+    come to them later.
+  - Unless you are really keen don't worry about: `PLR0913` Too many arguments
+
+Extensions:
+
+- try and add linting to your preferred text editor or IDE
+- explore the configuration options for ruff
+- explore the option to supress ruff warnings
+- explore autofixes using the `--fix` flag
+- explore rules in development using the `--preview` flag
+
+<!-- ------------------------------------------------------------------------------ -->

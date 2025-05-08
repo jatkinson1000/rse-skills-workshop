@@ -1,0 +1,196 @@
+# PEP8 and Formatting
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Python PEPs {.smaller}
+
+[Python Enhancement Proposals](https://peps.python.org/)
+
+- Technical documentation for the python community
+- Guidelines, standards, and best-practice
+
+Relevant to us today are:
+
+* PEP8 - Python Style Guide [@PEP8]
+* PEP257 - Docstring Conventions [@PEP257]
+* PEP621 - Packaging [@PEP621]
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting {.smaller}
+
+> _“Readability counts”_\
+> &emsp; &emsp; - Tim Peters in the [Zen of Python](https://peps.python.org/pep-0020/)
+
+By ensuring code aligns with PEP8 we:
+
+- standardise style,
+- conform to best-practices, and
+- improve code readability to
+- make code easier to share, and
+- reduce misinterpretation.
+
+::: {.fragment}
+"But I don't have time to read and memorise all of this..."
+:::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting - Ruff {.smaller}
+
+![]( https://docs.astral.sh/ruff/assets/bolt.svg ){.absolute top=20% right=20% height=30%}
+
+Ruff [@ruff] - [docs.astral.sh/ruff](https://docs.astral.sh/ruff/)
+
+- a PEP 8 compliant formatter
+  - Strict subset of PEP8
+  - _"Opinionated so you don't have to be."_
+- For full details see [style guide](https://docs.astral.sh/ruff/formatter/#style-guide)
+- [Try online](https://play.ruff.rs/?secondary=Format)
+
+::: {.panel-tabset}
+
+### Linux/macOS
+
+``` default
+(myvenv) $ pip install ruff
+(myvenv) $ ruff format myfile.py
+(myvenv) $ ruff format mydirectory/
+```
+
+### Windows
+
+```default
+(myvenv) PS> pip install ruff
+(myvenv) PS> ruff format myfile.py
+(myvenv) PS> ruff format mydirectory/
+```
+:::
+
+::: {.notes}
+May look odd at first, but you soon get used to it.\
+Makes life so much easier after a while.
+:::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting - Example {.smaller}
+
+:::: {.columns}
+::: {.column width="50%"}
+```python
+def long_func(x, param_one, param_two=[], param_three=24, param_four=None,
+        param_five="Empty Report", param_six=123456):
+
+
+    val = 12*16 +(24) -10*param_one +  param_six
+
+    if x > 5:
+        
+        print("x is greater than 5")
+
+
+    else:
+        print("x is less than or equal to 5")
+
+
+    if param_four:
+        print(param_five)
+
+
+
+    print('You have called long_func.')
+    print("This function has several params.")
+
+    param_2.append(x*val)
+    return param_2
+
+```
+:::
+::: {.column}
+```python
+def long_func(
+    x,
+    param_one,
+    param_two=[],
+    param_three=24,
+    param_four=None,
+    param_five="Empty Report",
+    param_six=123456,
+):
+    val = 12 * 16 + (24) - 10 * param_one + param_six
+
+    if x > 5:
+        print("x is greater than 5")
+
+    else:
+        print("x is less than or equal to 5")
+
+    if param_four:
+        print(param_five)
+
+    print("You have called long_func.")
+    print("This function has several params.")
+
+    param_2.append(x * val)
+    return param_2
+```
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## PEP8 & Formatting - Ruff {.smaller}
+
+- Also runs on jupyter notebooks.
+
+- Highly configurable via configuration files.
+
+- I suggest incorporating into your projects now
+  - Widely-used standard^[[Who's Using Ruff?](https://github.com/astral-sh/ruff#whos-using-ruff)]
+  - Plugins/lsp available for many editors.
+  - Well suited to incorporation into continuous integration through workflows and git hooks.
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Other languages {.smaller}
+
+Similar formatting tools exist for other languages:
+
+- Python - [ruff](https://docs.astral.sh/ruff/) or
+  [black](https://black.readthedocs.io/en/stable/index.html)
+- C and C++ - [clang-format](https://clang.llvm.org/docs/ClangFormat.html)
+- Fortran - [fortitude](https://github.com/PlasmaFAIR/fortitude) (in development)
+- Rust - [rustfmt](https://github.com/rust-lang/rustfmt)
+- Julia - [JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)
+- R - [styler](https://github.com/r-lib/styler) or [Air](https://github.com/posit-dev/air)
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 2 {.smaller}
+
+Go to exercise 2 and:
+
+- install ruff
+- run `ruff format` on `precipitation_climatology.py`
+- examine the output
+  - Is it more readable?
+  - Is there any aspect of the formatting style you find unintuitive?
+- See `exercises/02_formatting/README.md` for more detailed instructions.
+
+
+<!-- ------------------------------------------------------------------------------ -->
