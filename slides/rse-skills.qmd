@@ -32,7 +32,7 @@ affiliations:
   - id: iccs
     name: ICCS RSE Team <br> University of Cambridge
 
-date: "2024-07-11"
+date: "July 2025"
 bibliography: references.bib
 ---
 
@@ -142,10 +142,6 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _naming_for_clarity.qmd >}}
-
-<!-- ------------------------------------------------------------------------------ -->
-
 {{< include _linting.qmd >}}
 
 
@@ -172,11 +168,15 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _readme_license.qmd >}}
+{{< include _naming_for_clarity.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _fstrings_magic_config.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _readme_license.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
