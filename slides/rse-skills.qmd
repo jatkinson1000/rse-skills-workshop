@@ -14,7 +14,7 @@ format:
     highlight-style: a11y
     code-overflow: wrap
     code-line-numbers: false
-    logo: https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/iccs_ucam_combined_reverse_colour.png
+    logo: https://iccs.cam.ac.uk/sites/default/files/iccs_ucam_combined_reverse_colour.png
     theme: [dark, custom.scss]
 revealjs-plugins:
   - attribution
