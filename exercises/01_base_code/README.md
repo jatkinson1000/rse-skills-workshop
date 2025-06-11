@@ -50,6 +50,14 @@ rse-venv\Scripts\activate.bat
 You will see that your command prompt is now preceded by `(rse-venv)` indicating
 that you are working in the virtual environment.
 
+To deactivate the environment use the `deactivate` command.
+You can always re-enter it later by running the activate script again.
+
+You will see that a directory `rse-venv/` has been created into which pip will install
+packages.
+To remove the venv (and any installed packages) we delete this directory with
+`rm -r rse-venv` on Unix, or `rmdir /s rse-venv` on Windows.
+
 
 ## Installing dependencies
 

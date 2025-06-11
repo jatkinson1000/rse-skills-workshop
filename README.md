@@ -1,6 +1,6 @@
 # Research Software Engineering Skills Workshop
 
-![GitLab License](https://img.shields.io/gitlab/license/jatkinson1000%2Fpower-up-python)
+![GitLab License](https://img.shields.io/gitlab/license/jatkinson1000%2Frse-skills-workshop)
 
 Materials for a workshop educating academic researchers in research software
 engineering (RSE) principles.
@@ -30,7 +30,7 @@ higher-quality code_.
 
 More specifically we cover:
 
-- Why software engineering principles matter
+- Why software engineering principles matter in research
 - (Virtual) environments and dependencies
 - Code standards and best practice (through PEP)
   - Code formatters and linting/static-analysis tools
@@ -77,10 +77,30 @@ previous exercise allowing participants to validate/compare their work.
 In terms of knowledge this workshop requires:
 
 - Some general programming knowledge
-- Basic familiarity with Python - the course is taught in python but teaches skills that are transferrable to other languages.
+- Basic familiarity with Python - the course is taught in Python but teaches skills that are transferrable to other languages.
 - The ability to clone this repository and work on it locally.
 
-Participants will be expected to have:
+Python and pip:
+
+- A working installation of Python 3.
+  This should come as standard on linux and can be installed on mac and Windows.
+- A working installation of pip for installing Python packages.
+  Often this will come with Python, but some operating systems/distributions disable it.
+  If `pip` is not available on the command line you can add it to a virtual environment
+  ([see below](#virtual-environment-setup)) using `python -m ensurepip --upgrade`
+
+> [!NOTE]
+> For macOS users: Python 3 can be installed through several popular package managers.
+> Alternatively, if you are unfamiliar with this, refer to
+> [Python's getting-started on mac information](https://docs.python.org/3/using/mac.html)
+> for a complete guide to getting set up.
+
+> [!NOTE]
+> For Windows users: you may wish to refer to
+> [Windows' getting-started with Python information](https://learn.microsoft.com/en-us/windows/python/beginners)
+> for a complete guide to getting set up on a Windows system.
+
+Participants will also be expected to have:
 
 - A text editor to open and edit code files.\
    e.g. vim/[neovim](https://neovim.io/), [gedit](https://gedit.en.softonic.com/), [VS code](https://code.visualstudio.com/), [sublimetext](https://www.sublimetext.com/) etc.
@@ -88,12 +108,10 @@ Participants will be expected to have:
   e.g. [GNOME Terminal](https://help.gnome.org/users/gnome-terminal/stable/), [wezterm](https://wezfurlong.org/wezterm/index.html), [Windows Terminal (windows only)](https://learn.microsoft.com/en-us/windows/terminal/), [iTerm (mac only)](https://iterm2.com/) etc.
 - The two of these may be combined in a single IDE e.g. PyCharm, VS Code, IntelliJ IDEA etc.
 
-Note for Windows users: _We have linked suitable applications for windows in the above lists.
-However, you may wish to refer to [Windows' getting-started with python information](https://learn.microsoft.com/en-us/windows/python/beginners)
-for a complete guide to getting set up on a Windows system._
-
 
 ## Setup
+
+### Cloning the materials
 
 Cloning the repository and setting up a virtual environment will be covered in the course,
 but in preparation you can complete these steps as follows:
@@ -101,18 +119,21 @@ but in preparation you can complete these steps as follows:
 Navigate to the location you want to install this repository on your system and clone
 via https by running:
 ```
-git clone https://gitlab.com/jatkinson1000/rse-skills-workshop.git
+git clone https://github.com/jatkinson1000/rse-skills-workshop.git
 ```
 This will create a directory `rse-skills-workshop/` with the contents of this repository.
 
-Please note that if you have a GitLab account and want to preserve any work you do
-we suggest you first [fork the repository](https://github.com/Cambridge-ICCS/practical-ml-with-pytorch/fork) 
+Please note that if you have a GitHub account and want to preserve any work you do
+we suggest you first [fork the repository](https://github.com/Cambridge-ICCS/rse-skills-workshop/fork) 
 and then clone your fork.
 This will allow you to push your changes and progress from the workshop back up to your
 fork for future reference.
-If you would prefer to do this from GitHub you can use the [GitHub mirror](https://github.com/jatkinson1000/rse-skills-workshop).
 
-You can then instantiate a python virtual environment by running:
+If you would prefer to do this from GitHub you can use the [GitHub mirror](https://gitlab.com/jatkinson1000/rse-skills-workshop).
+
+### Virtual environment setup
+
+You can then instantiate a Python virtual environment by running:
 ```
 python3 -m venv myvenv
 ```
@@ -121,14 +142,14 @@ To activate the environment run:
 ```
 source myvenv/bin/activate
 ```
-You can now work on python from within this isolated environment, installing packages
+You can now work on Python from within this isolated environment, installing packages
 as you wish without disturbing your base system environment.
 
 When you have finished working on this project run:
 ```
 deactivate
 ```
-to deactivate the venv and return to the system python environment.
+to deactivate the venv and return to the system Python environment.
 
 You can always boot back into the venv as you left it by running the activate command again.
 
@@ -160,11 +181,11 @@ Contributions and collaborations are welcome from anyone with an
 interest in RSE education.
 
 For bugs, feature requests, and clear suggestions for improvement please
-[open an issue](https://gitlab.com/jatkinson1000/power-up-python/-/issues).
+[open an issue](https://gitlab.com/jatkinson1000/rse-skills-workshop/-/issues).
 
 If you built something upon this that would be useful to others, or can
-address an [open issue](https://gitlab.com/jatkinson1000/power-up-python/-/issues),
-please [fork the repository](https://gitlab.com/jatkinson1000/power-up-python/-/forks/new)
+address an [open issue](https://gitlab.com/jatkinson1000/rse-skills-workshop/-/issues),
+please [fork the repository](https://gitlab.com/jatkinson1000/rse-skills-workshop/-/forks/new)
 and open a merge request.
 If you wish to contribute a new exercise you think would be useful please follow the
 existing format in [exercises/](exercises/), and also try and update the slides in
