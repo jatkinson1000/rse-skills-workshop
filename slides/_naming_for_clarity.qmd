@@ -1,43 +1,51 @@
-## Naming For Clarity {.smaller}
+# Naming Clarity
 
-It may seem inconsequential, but carefully naming variables and methods can improve the
-readability of code massively and can help to make code self-documenting.
+## Naming for clarity {.smaller}
 
-A few naming tips and conventions:
+\
+
+It may seem inconsequential, but carefully naming variables and methods can greatly
+improve the readability of code.
+
+\
+
+Since _"code is read more than it is run"_ this is important for future you, but also
+for anyone you collaborate with or who might use your code in future.
+
+\
+
+It helps to make code self-documenting, reducing future bugs due to misunderstandings.
+
+\
+
+Here we cover some key considerations when writing code.
+
+
+## Naming for clarity {.smaller}
 
 ::: {.incremental}
-- The name should show the intention, think about how someone else might read it (this could be future you)
-- Use pronounceable names e.g.
-- ```
- ms    --> mass
- chclt --> chocolate
- stm   --> stem
- ```
-- avoid abbreviations and single letter variable names where possible
-- Use names that can be searched
-- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
+- Show the intention -- how will someone else (future you) read it?
+- Use readable, pronounceable, memorable, and searchable names:
+  ```
+  ms    --> mass
+  chclt --> chocolate
+  stm   --> stem
+  ```
+  avoid abbreviations and single letters unless clear
+- Employ concept consistency \
+  e.g. only one of `get_`, `retrive_`, `fetch_` in the code base
+- Describe content rather than storage type \
+  Use plurals to indicate groups \
+  Name booleans using prefixes like `is_`, `has_`, `can_` and avoid negations like `not_`:
+  ```
+  array       --> dogs                    float_or_int --> returns_int
+  age_int     --> age                     not_plant    --> is_plant
+  country_set --> countries               sidekick     --> has_sidekick
+  ```
 :::
 
-## Naming For Clarity {.smaller}
 
-::: {.incremental}
-- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
-- Describe content rather than storage type e.g.
-- ```
-array       --> dogs
-age_int     --> age
-country_set --> countries
-```
-- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green` e.g.
-- ```
-purple    --> is_purple
-not_plant --> is_plant
-sidekick  --> has_sidekick
-```
-- Keep it simple and use technical terms where appropriate
-:::
-
-## Explaining Variables
+## Explaining Variables {.smaller}
 
 Without explaining variable: \
 
@@ -48,6 +56,8 @@ def calculate_fare(age):
         return 3
         ...
 ```
+
+\
 
 With explaining variable: \
 
@@ -60,7 +70,7 @@ def calculate_fare(age):
     ...
 ```
 
-## Explaining Variables
+## Explaining Variables {.smaller}
 
 Without an explaining variable, it is hard to see what this code is doing:
 
@@ -70,9 +80,11 @@ import re
 re.search("^\\+?[1-9][0-9]{7,14}$", "Sophie: CV56 9PQ, +12223334444")
 ```
 
-## With explaining variables:
+\
 
-It is easier to see the intention. The code is more self-documenting.
+::: {.fragment}
+With explaining variables it is easier to see the intention. \
+The code is more self-documenting.
 
 ```python
 import re
@@ -80,28 +92,27 @@ import re
 phone_number_regex = "^\\+?[1-9][0-9]{7,14}$"
 re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
 ```
+:::
 
 ## Exercise 3 {.smaller}
 
 ::: {style="font-size: 80%;"}
 
-Look through the code for any names of methods or variables that could be improved or
-clarified and update them. Note if you are using an IDE like Intellij or VSCode,
-you can use automatic renaming.
-Can you find an example from each of the suggestions listed below?
+Look through the code for method or variable names that could be improved or
+clarified and update them.^[Note: if you are using an IDE like Intellij or VSCode you can use automatic renaming.]
+
 Does this make the code easier to follow?
 
-Consider the following:
+\
 
-- The name should show the intention, think about how someone else might read it (this could be future you)
-- Use pronounceable names e.g. `mass` not `ms`, `stem` not `stm`
-- avoid abbreviations and single letter variable names where possible
-- One word per concept e.g. choose one of `put`, `insert`, `add` in the same code base
-- Use names that can be searched
+Consider the following, can you find an example of each:
+
+- Show the intention -- how will someone else (future you) read it
+- Use readable, pronounceable, memorable, and searchable names.
+- Employ concept consistency in the code base
 - Describe content rather than storage type
-- Naming booleans, use prefixes like `is`, `has` or `can` and avoid negations like `not_green`
-- Plurals to indicate groups, e.g. a list of dog objects would be `dogs`, not `dog_list`
+- Use plurals to indicate groups
+- Name booleans using prefixes 
 - Keep it simple and use technical terms where appropriate
 - Use explaining variables
-
 :::
