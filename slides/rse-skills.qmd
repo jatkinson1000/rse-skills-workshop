@@ -156,15 +156,15 @@ My background in this is domain science and numerical modelling on HPC.
 
 <br><br>
 
-**Let's dive straight into comments and docstrings!**
-
-<!-- ------------------------------------------------------------------------------ -->
-
-{{< include _comments_docstrings.qmd >}}
+**Let's dive straight into naming, comments, and docstrings!**
 
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _naming_for_clarity.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _comments_docstrings.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
