@@ -1,21 +1,16 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import xarray as xr
-import scipy
-import cf_xarray
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
 import cmocean
-import regionmask
-
-
+import matplotlib.pyplot as plt
 import matplotlib.ticker as mticker
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
+import numpy as np
+import regionmask
+import xarray as xr
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 
 def convert_pr_units(darray):
     """Convert kg m-2 s-1 to mm day-1."""
-
     darray.data = darray.data * 86400
     darray.attrs["units"] = "mm/day"
 
@@ -141,7 +136,6 @@ def create_plot(clim, model, season, mask=None, gridlines=False, levels=None):
     levels (list): Tick marks on the colorbar
 
     """
-
     # fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12,5), subplot_kw={'projection': "3d"})
     # clim.sel(season=season).T.plot.surface()
     # plt.show()
@@ -227,9 +221,11 @@ def main(
     gridlines=False,
     mask=None,
     cbar_levels=None,
-    countries={"United Kingdom": "GB"},
+    countries=None,
 ):
     """Run the program."""
+    if countries is None:
+        countries = {"United Kingdom": "GB"}
 
     dset = xr.open_dataset(pr_file)
 
@@ -241,10 +237,10 @@ def main(
 
     try:
         input_units = clim.attrs["units"]
-    except KeyError:
+    except KeyError as exc:
         raise KeyError(
             "Precipitation variable in {pr_file} must have a units attribute"
-        )
+        ) from exc
 
     if input_units == "kg m-2 s-1":
         clim = convert_pr_units(clim)
