@@ -1,17 +1,16 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import xarray as xr
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import cmocean
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import numpy as np
 import regionmask
+import xarray as xr
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """Convert kg m-2 s-1 to mm day-1."""
-
     precipitation_in_mm_per_day = precipitation_in_kg_per_m_squared_s * 86400
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
@@ -63,7 +62,9 @@ def get_country_annual_average(precipitation_data, countries):
     # List possible locations to plot
     # [print(k, v) for k, v in regionmask.defined_regions.natural_earth_v5_0_0.countries_110.regions.items()]
 
-    with open("annual_average_precipitation_by_country.txt", "w", encoding="utf-8") as datafile:
+    with open(
+        "annual_average_precipitation_by_country.txt", "w", encoding="utf-8"
+    ) as datafile:
         for country_name, country_code in countries.items():
             # land.plot(ax=geo_axes, add_label=False, fc="white", lw=2, alpha=0.5)
             # clim = clim.where(ocean == "South Pacific Ocean")
@@ -146,7 +147,6 @@ def create_precipitation_climatology_plot(
     levels (list): Tick marks on the colorbar
 
     """
-
     # fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12,5), subplot_kw={'projection': "3d"})
     # clim.sel(season=season).T.plot.surface()
     # plt.show()
@@ -235,7 +235,6 @@ def main(
     countries=None,
 ):
     """Run the program."""
-
     if countries is None:
         countries = {"United Kingdom": "GB"}
 

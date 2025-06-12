@@ -1,14 +1,14 @@
 """Routines for analysing precipitation climatology from ESM runs."""
 
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import xarray as xr
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import cmocean
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import numpy as np
 import regionmask
+import xarray as xr
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):

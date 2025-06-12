@@ -1,4 +1,6 @@
+<!-- ------------------------------------------------------------------------------ -->
 # Naming Clarity
+<!-- ------------------------------------------------------------------------------ -->
 
 ## Naming for clarity {.smaller}
 
@@ -20,6 +22,7 @@ It helps to make code self-documenting, reducing future bugs due to misunderstan
 
 Here we cover some key considerations when writing code.
 
+<!-- ------------------------------------------------------------------------------ -->
 
 ## Naming for clarity {.smaller}
 
@@ -44,6 +47,7 @@ Here we cover some key considerations when writing code.
   ```
 :::
 
+<!-- ------------------------------------------------------------------------------ -->
 
 ## Explaining Variables {.smaller}
 
@@ -70,6 +74,8 @@ def calculate_fare(age):
     ...
 ```
 
+<!-- ------------------------------------------------------------------------------ -->
+
 ## Explaining Variables {.smaller}
 
 Without an explaining variable, it is hard to see what this code is doing:
@@ -94,9 +100,9 @@ re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
 ```
 :::
 
-## Exercise 3 {.smaller}
+<!-- ------------------------------------------------------------------------------ -->
 
-::: {style="font-size: 80%;"}
+## Exercise 4 {.smaller}
 
 Look through the code for method or variable names that could be improved or
 clarified and update them.^[Note: if you are using an IDE like Intellij or VSCode you can use automatic renaming.]
@@ -105,14 +111,25 @@ Does this make the code easier to follow?
 
 \
 
+::: {style="font-size: 80%;"}
+
 Consider the following, can you find an example of each:
 
+:::: {.columns}
+::: {.column width="65%"}
 - Show the intention -- how will someone else (future you) read it
-- Use readable, pronounceable, memorable, and searchable names.
+- Use readable, pronounceable, memorable, and searchable names
+- Keep it simple using technical terms where appropriate
 - Employ concept consistency in the code base
-- Describe content rather than storage type
+:::
+::: {.column width="35%"}
+- Describe content rather than type
 - Use plurals to indicate groups
 - Name booleans using prefixes 
-- Keep it simple and use technical terms where appropriate
 - Use explaining variables
 :::
+::::
+
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
