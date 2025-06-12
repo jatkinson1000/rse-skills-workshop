@@ -144,8 +144,12 @@ My background in this is domain science and numerical modelling on HPC.
 
 {{< include _linting.qmd >}}
 
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _code_structure.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
+
 ## That's it for today! {.smaller}
 
 <br><br>
@@ -156,19 +160,15 @@ My background in this is domain science and numerical modelling on HPC.
 
 <br><br>
 
-**Let's dive straight into comments and docstrings!**
-
-<!-- ------------------------------------------------------------------------------ -->
-
-{{< include _code_structure.qmd >}}
-
-<!-- ------------------------------------------------------------------------------ -->
-
-{{< include _fstrings_magic_config.qmd >}}
+**Let's dive straight into naming, comments, and docstrings!**
 
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _naming_for_clarity.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _comments_docstrings.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
