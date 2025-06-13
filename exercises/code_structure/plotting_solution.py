@@ -11,6 +11,8 @@ def plotting_2x2(array, position):
 	x = np.array([0, 1, 2, 3])
 	plt.subplot(2, 2, position)
 	plt.plot(x, array, color = colors[i], linestyle=linestyles[i], marker=markers[i])
+	plt.xlabel('x')
+	plt.ylabel('y')
 
 # Define value arrays for plotting
 arrays = np.zeros((4,4))
