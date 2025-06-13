@@ -1,14 +1,14 @@
 """Routines for analysing precipitation climatology from ESM runs."""
 
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import xarray as xr
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import cmocean
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import numpy as np
 import regionmask
+import xarray as xr
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
@@ -31,10 +31,14 @@ def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
+    precipitation_upper_bound = 2000  # mm/day
+
     if precipitation_in_mm_per_day.data.min() < 0.0:
         raise ValueError("There is at least one negative precipitation value")
-    if precipitation_in_mm_per_day.data.max() > 2000:
-        raise ValueError("There is a precipitation value/s > 2000 mm/day")
+    if precipitation_in_mm_per_day.data.max() > precipitation_upper_bound:
+        raise ValueError(
+            f"There are precipitation values > {precipitation_upper_bound} mm/day"
+        )
 
     return precipitation_in_mm_per_day
 

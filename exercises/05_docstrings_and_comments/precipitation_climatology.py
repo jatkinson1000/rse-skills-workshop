@@ -1,25 +1,30 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.ticker as mticker
-import xarray as xr
 import cartopy.crs as ccrs
 import cartopy.feature as cfeature
-from cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 import cmocean
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
+import numpy as np
 import regionmask
+import xarray as xr
+from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """Convert kg m-2 s-1 to mm day-1."""
-
+    # density 1000 kg m-3 => 1 kg m-2 == 1 mm
+    # There are 60*60*24 = 86400 seconds per day
     precipitation_in_mm_per_day = precipitation_in_kg_per_m_squared_s * 86400
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
+    precipitation_upper_bound = 2000  # mm/day
+
     if precipitation_in_mm_per_day.data.min() < 0.0:
         raise ValueError("There is at least one negative precipitation value")
-    if precipitation_in_mm_per_day.data.max() > 2000:
-        raise ValueError("There is a precipitation value/s > 2000 mm/day")
+    if precipitation_in_mm_per_day.data.max() > precipitation_upper_bound:
+        raise ValueError(
+            f"There are precipitation values > {precipitation_upper_bound} mm/day"
+        )
 
     return precipitation_in_mm_per_day
 
@@ -63,7 +68,9 @@ def get_country_annual_average(precipitation_data, countries):
     # List possible locations to plot
     # [print(k, v) for k, v in regionmask.defined_regions.natural_earth_v5_0_0.countries_110.regions.items()]
 
-    with open("annual_average_precipitation_by_country.txt", "w", encoding="utf-8") as datafile:
+    with open(
+        "annual_average_precipitation_by_country.txt", "w", encoding="utf-8"
+    ) as datafile:
         for country_name, country_code in countries.items():
             # land.plot(ax=geo_axes, add_label=False, fc="white", lw=2, alpha=0.5)
             # clim = clim.where(ocean == "South Pacific Ocean")
@@ -146,7 +153,6 @@ def create_precipitation_climatology_plot(
     levels (list): Tick marks on the colorbar
 
     """
-
     # fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(12,5), subplot_kw={'projection': "3d"})
     # clim.sel(season=season).T.plot.surface()
     # plt.show()
@@ -235,7 +241,6 @@ def main(
     countries=None,
 ):
     """Run the program."""
-
     if countries is None:
         countries = {"United Kingdom": "GB"}
 
