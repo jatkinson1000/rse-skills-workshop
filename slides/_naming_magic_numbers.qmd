@@ -1,5 +1,5 @@
 <!-- ------------------------------------------------------------------------------ -->
-# Naming Clarity
+# Naming Clarity and Magic Numbers
 <!-- ------------------------------------------------------------------------------ -->
 
 ## Naming for clarity {.smaller}
@@ -34,7 +34,7 @@ Here we cover some key considerations when writing code.
   chclt --> chocolate
   stm   --> stem
   ```
-  avoid abbreviations and single letters unless clear
+  avoid abbreviations and single letters unless commonly used
 - Employ concept consistency \
   e.g. only one of `get_`, `retrive_`, `fetch_` in the code base
 - Describe content rather than storage type \
@@ -102,10 +102,120 @@ re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
 
 <!-- ------------------------------------------------------------------------------ -->
 
+## Magic Numbers {.smaller}
+
+Numbers in code that are not immediately obvious.
+
+- Hard to read
+- Hard to maintain
+- Hard to adapt
+
+Instead:
+
+- Name a variable conveying meaning
+- Set to a constant
+- Use a comment to explain
+
+![]( https://vignette.wikia.nocookie.net/thatmitchellandwebb/images/1/13/Numberwang.jpg ){.absolute top=33% right=0% height=33%}
+
+::: {.attribution}
+numberwang by Mitchell and Webb under fair use
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Handling Magic Numbers {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers=True}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / 9.81)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * 9.81 * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * 9.81 * max_height(l, theta)
+
+def check_small_angle(theta):
+    """..."""
+    if theta <= np.pi / 1800.0:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    return 60.0 / get_period(l)
+
+
+
+
+```
+:::
+:::
+::: {.column}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|4,8,16,20|22,24|30,31"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+GRAV = 9.81
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / GRAV)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * GRAV * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * GRAV * max_height(l, theta)
+
+def check_small_angle(theta, small_ang=np.pi/1800.0):
+    """..."""
+    if theta <= small_ang:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    # Divide 60 seconds by period [s] for beats per minute
+    return 60.0 / get_period(l)
+```
+:::
+:::
+::::
+
+<!-- ------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------ -->
+
 ## Exercise 4 {.smaller}
 
 Look through the code for method or variable names that could be improved or
 clarified and update them.^[Note: if you are using an IDE like Intellij or VSCode you can use automatic renaming.]
+
+Look through the code and identify any magic numbers.\
+Implement what you feel to be the best approach in each case.
+
 
 Does this make the code easier to follow?
 

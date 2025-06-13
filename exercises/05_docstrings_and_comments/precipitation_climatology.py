@@ -11,14 +11,20 @@ from cartopy.mpl.gridliner import LATITUDE_FORMATTER, LONGITUDE_FORMATTER
 
 def convert_precipitation_units(precipitation_in_kg_per_m_squared_s):
     """Convert kg m-2 s-1 to mm day-1."""
+    # density 1000 kg m-3 => 1 kg m-2 == 1 mm
+    # There are 60*60*24 = 86400 seconds per day
     precipitation_in_mm_per_day = precipitation_in_kg_per_m_squared_s * 86400
 
     precipitation_in_mm_per_day.attrs["units"] = "mm/day"
 
+    precipitation_upper_bound = 2000  # mm/day
+
     if precipitation_in_mm_per_day.data.min() < 0.0:
         raise ValueError("There is at least one negative precipitation value")
-    if precipitation_in_mm_per_day.data.max() > 2000:
-        raise ValueError("There is a precipitation value/s > 2000 mm/day")
+    if precipitation_in_mm_per_day.data.max() > precipitation_upper_bound:
+        raise ValueError(
+            f"There are precipitation values > {precipitation_upper_bound} mm/day"
+        )
 
     return precipitation_in_mm_per_day
 
