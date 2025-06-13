@@ -38,10 +38,10 @@ More specifically we cover:
   - Docstrings
   - Advice on commenting
   - The idea of self-documenting code and variable naming
+  - Handling magic numbers in code
   - READMEs and other useful files in your repository
   - Software licenses
 - General principles for better code
-  - Magic Numbers
   - Removal of hard-coded content to config files
   - use of f-strings in Python.
 
@@ -65,10 +65,10 @@ previous exercise allowing participants to validate/compare their work.
 
 - 01: Base code to examine.
 - 02: Apply a formatter to standardise code.
-- 03: Improve code clarity with naming and source changes.
-- 04: Linting and static analysis of code.
+- 03: Linting and static analysis of code.
+- 04: Improve code clarity with naming and removing magic numbers.
 - 05: Writing docstrings and best use of comments.
-- 06: General techniques for better code (magic numbers, string formatting).
+- 06: General techniques for better code.
 - 00: The end point of the workshop - an improved version of the code in exercise 01.
 
 
