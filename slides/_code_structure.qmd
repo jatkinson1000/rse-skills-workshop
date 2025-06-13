@@ -95,3 +95,12 @@ def bpm(l):
 
  
 <!--=================================================================================-->
+
+## Exercise XX {.smaller}
+
+ - Go to Exercise XX and try to think of how you can structure the code to avoid
+ code duplication, and improve readability and reusability.
+ - What enables the improved code you to do?
+
+
+<!--=================================================================================-->
