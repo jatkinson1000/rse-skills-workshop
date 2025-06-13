@@ -1,11 +1,16 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Styles for markers and lines
+colors = ['green', 'blue', 'purple', 'red']
+linestyles = ['--', '-', '-.', ':']
+markers = ['o', 'x', 'v', '*']
+
 # Function to create a subplot in a 4x4 grid
-def plotting_4x4(array, position):
+def plotting_2x2(array, position):
 	x = np.array([0, 1, 2, 3])
 	plt.subplot(2, 2, position)
-	plt.plot(x, array)
+	plt.plot(x, array, color = colors[i], linestyle=linestyles[i], marker=markers[i])
 
 # Define value arrays for plotting
 arrays = np.zeros((4,4))
@@ -16,7 +21,7 @@ arrays[3] = np.array([40, 30, 20, 10])
 
 # Iterate over arrays for plotting
 for i in range(4):
-	plotting_4x4(arrays[i], i+1)
+	plotting_2x2(arrays[i], i+1)
 
 # Render the plot
 plt.show()
