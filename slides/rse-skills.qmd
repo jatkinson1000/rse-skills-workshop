@@ -164,16 +164,16 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _naming_for_clarity.qmd >}}
+{{< include _naming_magic_numbers.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _comments_docstrings.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
-
-{{< include _fstrings_magic_config.qmd >}}
-
+<!-- This section has been removed for the current version of the course
+{{< include _fstrings_config.qmd >}}
+-->
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _readme_license.qmd >}}
