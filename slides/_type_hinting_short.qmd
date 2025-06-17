@@ -2,7 +2,7 @@
 
 ## Type Hinting {.smaller}
 
-- PEP484
+- [PEP484](https://peps.python.org/pep-0484/)
 - A solution to statically indicate the type of a value.
 
 - Yes in larger collaborative projects
