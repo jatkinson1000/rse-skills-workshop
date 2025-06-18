@@ -7,7 +7,7 @@ code as building block to enable advanced functionality.
 
 ## Inspect and change the example code
 
-Look at the code and identify duplicated code blocks as well as other code
+Look at the code in the `plotting.py` file and identify duplicated code blocks as well as other code
 snippets that could be moved into separate functions to increase readability and
 reusability. Make those changes and experiment with the code -- what can you now
 easily do?

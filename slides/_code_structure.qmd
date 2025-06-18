@@ -10,7 +10,8 @@
 - Readability
     - A clearly named function replaces a chunk of code.
 - Functions as building blocks
-    - Create generic interface with several exchangable options (e.g. "possion_solver", "gauss_seidel_solver", etc.)
+    - Create generic interface with several exchangeable options (e.g. "possion_solver", "gauss_seidel_solver", etc.)
+    - Separation of concerns/single responsibility principles
     
     
 ## Functions for readability and maintainability {.smaller}
@@ -91,14 +92,14 @@ def bpm(l):
 ## Further structuring {.smaller}
 
  - Breaking code into modules and files instead of having everything in one file
- - Improves readability and manageability
+ - Improves readability and manageability (-> scalability, extendability, coupling, testing)
 
  
 <!--=================================================================================-->
 
 ## Exercise XX {.smaller}
 
- - Go to Exercise XX and try to think of how you can structure the code to avoid
+ - Go to Exercise XX and try to think of how you can structure the code in the plotting.py file to avoid
  code duplication, and improve readability and reusability.
  - What enables the improved code you to do?
 
