@@ -6,10 +6,10 @@ colors = ['green', 'blue', 'purple', 'red']
 linestyles = ['--', '-', '-.', ':']
 markers = ['o', 'x', 'v', '*']
 
-# Function to create a subplot in a 4x4 grid
-def plotting_2x2(array, position):
+# Function to create a subplot in a 2x2 grid
+def plotting_2x2(array, i):
 	x = np.array([0, 1, 2, 3])
-	plt.subplot(2, 2, position)
+	plt.subplot(2, 2, i+1)
 	plt.plot(x, array, color = colors[i], linestyle=linestyles[i], marker=markers[i])
 	plt.xlabel('x')
 	plt.ylabel('y')

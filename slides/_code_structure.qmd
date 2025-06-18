@@ -102,6 +102,7 @@ def bpm(l):
  - Go to Exercise XX and try to think of how you can structure the code in the plotting.py file to avoid
  code duplication, and improve readability and reusability.
  - What enables the improved code you to do?
+ - Now look at plotting_solution.py . Can you further adapt the code to allow, for example, for customised axis labels?
 
 
 <!--=================================================================================-->
