@@ -1,0 +1,108 @@
+# Structuring your code
+
+<!--=================================================================================-->
+
+## Functions {.smaller}
+
+- Avoid code duplication
+    - Bad style
+    - You will forget to update all the copies at one point when you make changes!
+- Readability
+    - A clearly named function replaces a chunk of code.
+- Functions as building blocks
+    - Create generic interface with several exchangeable options (e.g. "possion_solver", "gauss_seidel_solver", etc.)
+    - Separation of concerns/single responsibility principles
+    
+    
+## Functions for readability and maintainability {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|20,6,10"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * 9.81 *  l * np.cos(theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * 9.81 * l * np.cos(theta)
+
+def check_small_angle(theta):
+    """..."""
+    if theta <= np.pi / 1800.0:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    return 60.0 / 2.0 * np.pi * np.sqrt(l / 9.81)
+
+
+
+
+```
+:::
+:::
+::: {.column}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|6,7,8|10,11,12|16,20,31"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+GRAV = 9.81
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / GRAV)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * GRAV * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * GRAV * max_height(l, theta)
+
+def check_small_angle(theta, small_ang=np.pi/1800.0):
+    """..."""
+    if theta <= small_ang:
+        return True
+    return False
+
+def bpm(l):
+    """..."""
+    # Divide 60 seconds by period [s] for beats per minute
+    return 60.0 / get_period(l)
+```
+:::
+:::
+::::    
+    
+<!--=================================================================================-->
+
+## Further structuring {.smaller}
+
+ - Breaking code into modules and files instead of having everything in one file
+ - Improves readability and manageability (-> scalability, extendability, coupling, testing)
+
+ 
+<!--=================================================================================-->
+
+## Exercise XX {.smaller}
+
+ - Go to Exercise XX and try to think of how you can structure the code in the plotting.py file to avoid
+ code duplication, and improve readability and reusability.
+ - What enables the improved code you to do?
+ - Now look at plotting_solution.py . Can you further adapt the code to allow, for example, for customised axis labels?
+
+
+<!--=================================================================================-->

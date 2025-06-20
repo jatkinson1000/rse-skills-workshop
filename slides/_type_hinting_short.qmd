@@ -1,0 +1,11 @@
+# Type Hinting
+
+## Type Hinting {.smaller}
+
+- [PEP484](https://peps.python.org/pep-0484/)
+- A solution to statically indicate the type of a value.
+- Python does not check type hints at runtime
+    - Needs an external typechecker (e.g. mypy)
+
+- Yes in larger collaborative projects
+- Not in scripts and hacking
