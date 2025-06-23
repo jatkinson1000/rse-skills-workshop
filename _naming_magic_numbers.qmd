@@ -1,0 +1,245 @@
+<!-- ------------------------------------------------------------------------------ -->
+# Naming Clarity and Magic Numbers
+<!-- ------------------------------------------------------------------------------ -->
+
+## Naming for clarity {.smaller}
+
+\
+
+It may seem inconsequential, but carefully naming variables and methods can greatly
+improve the readability of code.
+
+\
+
+Since _"code is read more than it is run"_ this is important for future you, but also
+for anyone you collaborate with or who might use your code in future.
+
+\
+
+It helps to make code self-documenting, reducing future bugs due to misunderstandings.
+
+\
+
+Here we cover some key considerations when writing code.
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Naming for clarity {.smaller}
+
+::: {.incremental}
+- Show the intention -- how will someone else (future you) read it?
+- Use readable, pronounceable, memorable, and searchable names:
+  ```
+  ms    --> mass
+  chclt --> chocolate
+  stm   --> stem
+  ```
+  avoid abbreviations and single letters unless commonly used
+- Employ concept consistency \
+  e.g. only one of `get_`, `retrive_`, `fetch_` in the code base
+- Describe content rather than storage type \
+  Use plurals to indicate groups \
+  Name booleans using prefixes like `is_`, `has_`, `can_` and avoid negations like `not_`:
+  ```
+  array       --> dogs                    float_or_int --> returns_int
+  age_int     --> age                     not_plant    --> is_plant
+  country_set --> countries               sidekick     --> has_sidekick
+  ```
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Explaining Variables {.smaller}
+
+Without explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    if (age < 14):
+        return 3
+        ...
+```
+
+\
+
+With explaining variable: \
+
+```python
+
+def calculate_fare(age):
+    is_child = age < 14
+    if (is_child):
+        return 3
+    ...
+```
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Explaining Variables {.smaller}
+
+Without an explaining variable, it is hard to see what this code is doing:
+
+```python
+import re
+
+re.search("^\\+?[1-9][0-9]{7,14}$", "Sophie: CV56 9PQ, +12223334444")
+```
+
+\
+
+::: {.fragment}
+With explaining variables it is easier to see the intention. \
+The code is more self-documenting.
+
+```python
+import re
+
+phone_number_regex = "^\\+?[1-9][0-9]{7,14}$"
+re.search(phone_number_regex, "Sophie: CV56 9PQ, +12223334444")
+```
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Magic Numbers {.smaller}
+
+Numbers in code that are not immediately obvious.
+
+- Hard to read
+- Hard to maintain
+- Hard to adapt
+
+Instead:
+
+- Name a variable conveying meaning
+- Set to a constant
+- Use a comment to explain
+
+![]( https://vignette.wikia.nocookie.net/thatmitchellandwebb/images/1/13/Numberwang.jpg ){.absolute top=33% right=0% height=33%}
+
+::: {.attribution}
+numberwang by Mitchell and Webb under fair use
+:::
+
+<!-- ------------------------------------------------------------------------------ -->
+
+## Handling Magic Numbers {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers=True}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / 9.81)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * 9.81 * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * 9.81 * max_height(l, theta)
+
+def check_small_angle(theta):
+    """..."""
+    if theta <= np.pi / 1800.0:
+        return True
+    return False
+
+def beats_per_minute(l):
+    """..."""
+    return 60.0 / get_period(l)
+
+
+
+
+```
+:::
+:::
+::: {.column}
+:::{ style="font-size: 85%;"}
+```python {code-line-numbers="|4,8,16,20|22,24|30,31"}
+"""Module implementing pendulum equations."""
+import numpy as np
+
+GRAV = 9.81
+
+def get_period(l):
+    """..."""
+    return 2.0 * np.pi * np.sqrt(l / GRAV)
+
+def max_height(l, theta):
+    """..."""
+    return l * np.cos(theta)
+
+def max_speed(l, theta):
+    """..."""
+    return np.sqrt(2.0 * GRAV * max_height(l, theta))
+
+def energy(m, l, theta):
+    """..."""
+    return m * GRAV * max_height(l, theta)
+
+def check_small_angle(theta, small_ang=np.pi/1800.0):
+    """..."""
+    if theta <= small_ang:
+        return True
+    return False
+
+def beats_per_minute(l):
+    """..."""
+    # Divide 60 seconds by period [s] for beats per minute
+    return 60.0 / get_period(l)
+```
+:::
+:::
+::::
+
+<!-- ------------------------------------------------------------------------------ -->
+<!-- ------------------------------------------------------------------------------ -->
+
+## Exercise 5 {.smaller}
+
+Look through the code for method or variable names that could be improved or
+clarified and update them.^[Note: if you are using an IDE like Intellij or VSCode you can use automatic renaming.]
+
+Look through the code and identify any magic numbers.\
+Implement what you feel to be the best approach in each case.
+
+
+Does this make the code easier to follow?
+
+\
+
+::: {style="font-size: 80%;"}
+
+Consider the following, can you find an example of each:
+
+:::: {.columns}
+::: {.column width="65%"}
+- Show the intention -- how will someone else (future you) read it
+- Use readable, pronounceable, memorable, and searchable names
+- Keep it simple using technical terms where appropriate
+- Employ concept consistency in the code base
+:::
+::: {.column width="35%"}
+- Describe content rather than type
+- Use plurals to indicate groups
+- Name booleans using prefixes 
+- Use explaining variables
+:::
+::::
+
+:::
+
+<!-- ------------------------------------------------------------------------------ -->

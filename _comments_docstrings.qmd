@@ -258,9 +258,9 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 
 
 
-## Exercise 5 {.smaller}
+## Exercise 6 {.smaller}
 
-Go to exercise 5 and examine the comments:
+Go to exercise 6 and examine the comments:
 
 - Is there any dead code?
   - How is it best to handle it?
@@ -271,4 +271,4 @@ Go to exercise 5 and examine the comments:
 Docstrings:
 
 - Work through the file adding docstrings where they are missing.
-- If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 6.
+- If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 7.

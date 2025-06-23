@@ -14,7 +14,7 @@ format:
     highlight-style: a11y
     code-overflow: wrap
     code-line-numbers: false
-    logo: https://iccs.cam.ac.uk/sites/iccs.cam.ac.uk/files/iccs_ucam_combined_reverse_colour.png
+    logo: https://iccs.cam.ac.uk/sites/default/files/iccs_ucam_combined_reverse_colour.png
     theme: [dark, custom.scss]
 revealjs-plugins:
   - attribution
@@ -32,7 +32,7 @@ affiliations:
   - id: iccs
     name: ICCS RSE Team <br> University of Cambridge
 
-date: "2024-07-11"
+date: "July 2025"
 bibliography: references.bib
 ---
 
@@ -142,14 +142,14 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _naming_for_clarity.qmd >}}
-
-<!-- ------------------------------------------------------------------------------ -->
-
 {{< include _linting.qmd >}}
 
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _code_structure.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
+
 ## That's it for today! {.smaller}
 
 <br><br>
@@ -160,19 +160,23 @@ My background in this is domain science and numerical modelling on HPC.
 
 <br><br>
 
-**Let's dive straight into comments and docstrings!**
+**Let's dive straight into naming, comments, and docstrings!**
+
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _naming_magic_numbers.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _comments_docstrings.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
-
-{{< include _readme_license.qmd >}}
-
+<!-- This section has been removed for the current version of the course
+{{< include _fstrings_config.qmd >}}
+-->
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _fstrings_magic_config.qmd >}}
+{{< include _readme_license.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
 
@@ -192,8 +196,7 @@ Beyond the scope of today are a few other honourable mentions:
 
 These lessons are beyond the scope of today.
 
- ------------------------------------------------------------------------------ -->
-
+<!-- ------------------------------------------------------------------------------ -->
 
 # Closing
 

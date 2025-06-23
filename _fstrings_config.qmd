@@ -1,0 +1,107 @@
+# Writing better (Python) code
+
+## f-strings {.smaller}
+
+A better way to format strings since Python 3.6\
+Not catching on because of self-teaching from old code.
+
+Strings are prepended with an `f` allowing variables to be used in-place:
+
+```python {code-line-numbers="|4-5|7-8|10-11"}
+name = "electron"
+mass = 9.1093837015E-31
+
+# modulo
+print("The mass of an %s is %.3e kg." % (name, mass))
+
+# format
+print("The mass of an {} is {:.3e} kg.".format(name, mass))
+
+# f-string
+print(f"The mass of an {name} is {mass:.3e} kg.")
+```
+
+f-strings can take expressions:
+
+```python
+print(f"a={a} and b={b}. Their product is {a * b}, sum is {a + b}, and a/b is {a / b}.")
+```
+
+See [Real Python](https://realpython.com/python-f-strings/) for more information.
+Note: pylint W1203 recommends against using f-strings in logging calls.
+
+
+## Put config in a config file {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+- Ideally we shouldn't have hop in and out of the code (and recompile in higher level
+langs) every time we change a runtime setting
+- No easy record of runs
+
+Instead:
+
+- It's easy to read a json file into python as a dictionary
+  Handle as you wish - create a class, read to variables etc.
+- Could even make config filename a command line argument
+
+:::
+::: {.column width="50%"}
+```json
+{
+  "config_name": "June 2022 m01 n19 run",
+  "start_date": "2022-05-28 00:00:00",
+  "end_date": "2022-06-12 23:59:59",
+  "satellites": ["m01", "n19"],
+  "noise_floor": [3.0, 3.0, 3.0],
+  "check_SNR": true,
+  "L_lim": [1.5, 8.0],
+  "telescopes": [90],
+  "n_bins": 27
+}
+```
+
+
+```python
+import json
+
+
+with open('config.json') as json_file:
+    config = json.load(json_file)
+
+print(config)
+```
+
+```
+{'config_name': 'June 2022 m01 n19 run', 'start_date': '2022-05-28 00:00:00', 'end_date': '2022-06-12 23:59:59', 'satellites': ['m01', 'n19'], 'noise_floor': [3.0, 3.0, 3.0], 'check_SNR': True, 'L_lim': [1.5, 8.0], 'telescopes': [90], 'n_bins': 27}
+```
+
+:::
+::::
+
+
+<!-- ------------------------------------------------------------------------------ -->
+
+
+## Exercise 7 {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+f-strings
+
+- Look for any string handling (currently using the .format() approach) and update it
+  to use f-strings.
+  - Is the intent clearer?
+  - Is the layout of the data written to file easier to understand?
+:::
+::: {.column width="50%"}
+Configuration settings
+
+- There is helpfully a list of configurable inputs at the end of the file under `"__main__"`.\
+  We can improve on this, however, by placing them in a configuration file.
+- Create an appropriate json file to be read in as a dictionary and passed to the main function.
+:::
+::::
