@@ -1,4 +1,4 @@
-# Exercise  - Code Structure
+# Exercise 4 - Code Structure
 
 This exercise is intended to practice spotting where code can be structured, how
 this improves readability and reusability, and how that in turn enables using

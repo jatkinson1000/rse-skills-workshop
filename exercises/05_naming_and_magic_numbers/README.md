@@ -1,4 +1,4 @@
-# Exercise 4 - Naming for code clarity and magic numbers
+# Exercise 5 - Naming for code clarity and magic numbers
 
 It may seem inconsequential, but carefully naming variables and methods can greatly
 improve the readability of code.

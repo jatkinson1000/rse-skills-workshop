@@ -208,7 +208,7 @@ def beats_per_minute(l):
 <!-- ------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------ -->
 
-## Exercise 4 {.smaller}
+## Exercise 5 {.smaller}
 
 Look through the code for method or variable names that could be improved or
 clarified and update them.^[Note: if you are using an IDE like Intellij or VSCode you can use automatic renaming.]
