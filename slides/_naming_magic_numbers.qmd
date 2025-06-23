@@ -156,7 +156,7 @@ def check_small_angle(theta):
         return True
     return False
 
-def bpm(l):
+def beats_per_minute(l):
     """..."""
     return 60.0 / get_period(l)
 
@@ -196,7 +196,7 @@ def check_small_angle(theta, small_ang=np.pi/1800.0):
         return True
     return False
 
-def bpm(l):
+def beats_per_minute(l):
     """..."""
     # Divide 60 seconds by period [s] for beats per minute
     return 60.0 / get_period(l)

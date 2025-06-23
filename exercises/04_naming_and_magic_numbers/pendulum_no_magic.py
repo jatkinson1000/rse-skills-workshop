@@ -103,7 +103,7 @@ def check_small_angle(theta, small_ang=np.pi/1800.0):
     return False
 
 
-def bpm(length):
+def beats_per_minute(length):
     """
     Calculate pendulum frequency in beats per minute.
 
