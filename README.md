@@ -54,7 +54,7 @@ More specifically we cover:
 The main slide deck for the workshop can be viewed [here](https://jatkinson1000.github.io/rse-skills-workshop).
 They are generated from the Quarto materials in the `slides/` directory.
 They are broken into separate sections covering the different topics in the workshop.
-The modulare structure makes the course adaptable, as sections can be included or excluded from the slide deck.
+The modular structure makes the course adaptable, as sections can be included or excluded from the slide deck.
 
 ### Exercises
 
