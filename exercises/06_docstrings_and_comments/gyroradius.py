@@ -12,8 +12,6 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
         velocity perpendicular to magnetic field [m/s]
     charge : float
         particle charge [coulombs]
-    B : float
-        Magnetic field strength [teslas]
     gamma : float, optional
         Lorentz factor for relativistic case. default=None for non-relativistic case.
 

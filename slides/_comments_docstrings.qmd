@@ -77,11 +77,11 @@ Cat code comment image by [35_equal_W](https://www.reddit.com/r/ProgrammerHumor/
 quotes: `"""..."""`.
 - PEP257 [@PEP257] tells us _what_ docstrings should say.\
   Specific conventions tell us _how_ they should say it.
-- Where comments describe how it works, docstrings describe how to use it.\
+- Where comments describe how it _works_, docstrings describe how to _use_ it.\
   Unlike comments, docstrings follow a set format.
 
 Various formatting options exist: numpy, Google, reST, etc.\
-We will use numpydoc as it is readable and widely used in scientific code.\
+We will follow numpydoc as it is readable and widely used in scientific code.\
 Full guidance for [numpydoc is available](https://numpydoc.readthedocs.io/en/latest/format.html).
 
 
@@ -185,32 +185,31 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 :::: {.columns}
 
 ::: {.column width="50%"}
-[pydocstyle](https://www.pydocstyle.org/en/stable/) is a tool we can use to help
-ensure the quality of our docstrings.[^2]
+The `"D": pydocstyle` ruleset in `ruff` provides us with a tool for checking the
+quality of our docstrings.
+
+We enabled this in our ruff configuation at the end of exercise 3, and now we can
+investigate the warnings further.
 
 :::{ style="font-size: 75%;"}
 
 ```bash
-(myvenv) $ pip install pydocstyle
-(myvenv) $ pydocstyle myfile.py
-(myvenv) $ pydocstyle mydirectory/
-(myvenv) $
-(myvenv) $
-(myvenv) $ pydocstyle gyroradius.py
-gyroradius.py:2 in public function `calculate_gyroradius`:
-        D202: No blank lines allowed after function docstring (found 1)
-gyroradius.py:2 in public function `calculate_gyroradius`:
-        D400: First line should end with a period (not 'd')
-gyroradius.py:2 in public function `calculate_gyroradius`:
-        D401: First line should be in imperative mood (perhaps 'Calculate', not 'Calculates')
-(myvenv) $
+(rse-venv) $ ruff check gyroradius.py
+gyroradius.py:3:5:
+        D417 Missing argument description in the docstring for `calculate_gyroradius`: `B`
+gyroradius.py:4:5 in public function `calculate_gyroradius`:
+        D202: No blank lines allowed after function docstring
+gyroradius.py:4:5 in public function `calculate_gyroradius`:
+        D400: First line should end with a period
+gyroradius.py:4:5 in public function `calculate_gyroradius`:
+        D401: First line should be in imperative mood
+(rse-venv) $
 ```
 :::
 
-Note: pydocstyle does not catch missing variables in docstrings.
-This can be done with [Pylint's docparams and docstyle extensions](https://pylint.pycqa.org/en/latest/user_guide/checkers/extensions.html)
-but is left as an exercise to the reader.
+Note: with `"D417"` enabled we can also catch missing variables in numpy docstrings!
 :::
+
 ::: {.column}
 :::{ style="font-size: 75%;"}
 ```python
@@ -226,8 +225,6 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
         velocity perpendicular to magnetic field [m/s]
     charge : float
         particle charge [coulombs]
-    B : float
-        Magnetic field strength [teslas]
     gamma : float, optional
         Lorentz factor for relativistic case. default=None for non-relativistic case.
 
@@ -254,8 +251,71 @@ def calculate_gyroradius(mass, v_perp, charge, B, gamma=None):
 ::::
 
 
-[^2]: Note that pydocstyle is [deprecated](https://github.com/PyCQA/pydocstyle/pull/658) as of the end of 2023. Longer-term look out for a replacement (likely Ruff or Pylint extension).
+## Other languages {.smaller}
 
+:::: {.columns}
+::: {.column width="50%"}
+
+Fortran - [FORD](https://forddocs.readthedocs.io/en/stable/) or [doxygen](https://www.doxygen.nl/index.html):
+```fortran
+subroutine add(a, b, sum)
+    !! Add two integers.
+
+    integer, intent(in) :: a     !! First number, a
+    integer, intent(in) :: b     !! Second number, b
+    integer, intent(out) :: sum  !! Sum of a and b
+
+    sum = a + b
+end subroutine add
+```
+
+Julia - [triple quoted docstrings](https://docs.julialang.org/en/v1/)
+```julia
+"""
+    add(a,b)
+
+Add two numbers `a` and `b`.
+
+# Arguments
+- `a::Number`: The first number.
+- `b::Number`: The second number.
+
+# Returns
+- `Number`: The sum of `a` and `b`.
+"""
+function add(a::Number, b::Number)::Number
+    return a + b
+end
+```
+
+:::
+::: {.column width="50%"}
+C/C++ - [doxygen](https://www.doxygen.nl/index.html):
+```c
+/**
+ * Add two integers.
+ * @param a, First integer.
+ * @param b, Second integer.
+ * @return Sum of a and b.
+ */
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+R - [roxygen2](https://roxygen2.r-lib.org/):
+```r
+#' Add two numbers.
+#'
+#' @param a First number.
+#' @param b Second number.
+#' @return Sum of `a` and `b`.
+add <- function(a, b) {
+    return(a + b)
+}
+```
+:::
+::::
 
 
 ## Exercise 6 {.smaller}
@@ -268,7 +328,9 @@ Go to exercise 6 and examine the comments:
   - Are any redundant and better off being removed?
   - Is there anywhere that would benefit from a comment?
 
-Docstrings:
+Now turn your attention to the docstrings:
 
 - Work through the file adding docstrings where they are missing.
-- If you are unsure about variable types or meanings at any point you can sneak a look ahead to the code in exercise 7.
+- Can you resolve the issues raised by ruff with the pydocstuyle ruleset enabled?
+- If you are unsure about variable types or meanings at any point
+  you can sneak a look ahead to the code in exercise 7.
