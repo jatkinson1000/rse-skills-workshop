@@ -43,7 +43,8 @@ More specifically we cover:
   - Software licenses
 - General principles for better code
   - Removal of hard-coded content to config files
-  - use of f-strings in Python.
+  - Use of f-strings in Python (optional addition)
+  - Improving readability and reusability through better code structure
 
 
 ## Materials
@@ -53,6 +54,7 @@ More specifically we cover:
 The main slide deck for the workshop can be viewed [here](https://jatkinson1000.github.io/rse-skills-workshop).
 They are generated from the Quarto materials in the `slides/` directory.
 They are broken into separate sections covering the different topics in the workshop.
+The modular structure makes the course adaptable, as sections can be included or excluded from the slide deck.
 
 ### Exercises
 
@@ -66,9 +68,10 @@ previous exercise allowing participants to validate/compare their work.
 - 01: Base code to examine.
 - 02: Apply a formatter to standardise code.
 - 03: Linting and static analysis of code.
-- 04: Improve code clarity with naming and removing magic numbers.
-- 05: Writing docstrings and best use of comments.
-- 06: General techniques for better code.
+- 04: Code structure.
+- 05: Improve code clarity with naming and removing magic numbers.
+- 06: Writing docstrings and best use of comments.
+- 07: General techniques for better code.
 - 00: The end point of the workshop - an improved version of the code in exercise 01.
 
 
