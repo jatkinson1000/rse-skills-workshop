@@ -59,17 +59,17 @@ Ruff [@ruff] - [docs.astral.sh/ruff](https://docs.astral.sh/ruff/)
 ### Linux/macOS
 
 ``` default
-(myvenv) $ pip install ruff
-(myvenv) $ ruff format myfile.py
-(myvenv) $ ruff format mydirectory/
+(rse-venv) $ pip install ruff
+(rse-venv) $ ruff format myfile.py
+(rse-venv) $ ruff format mydirectory/
 ```
 
 ### Windows
 
 ```default
-(myvenv) PS> pip install ruff
-(myvenv) PS> ruff format myfile.py
-(myvenv) PS> ruff format mydirectory/
+(rse-venv) PS> pip install ruff
+(rse-venv) PS> ruff format myfile.py
+(rse-venv) PS> ruff format mydirectory/
 ```
 :::
 

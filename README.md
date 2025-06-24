@@ -135,12 +135,12 @@ If you would prefer to do this from GitHub you can use the [GitHub mirror](https
 
 You can then instantiate a Python virtual environment by running:
 ```
-python3 -m venv myvenv
+python3 -m venv rse-venv
 ```
-This will create a directory called `myvenv` containing software for the virtual environment.
+This will create a directory called `rse-venv` containing software for the virtual environment.
 To activate the environment run:
 ```
-source myvenv/bin/activate
+source rse-venv/bin/activate
 ```
 You can now work on Python from within this isolated environment, installing packages
 as you wish without disturbing your base system environment.
