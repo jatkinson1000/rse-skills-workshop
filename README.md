@@ -66,9 +66,10 @@ previous exercise allowing participants to validate/compare their work.
 - 01: Base code to examine.
 - 02: Apply a formatter to standardise code.
 - 03: Linting and static analysis of code.
-- 04: Improve code clarity with naming and removing magic numbers.
-- 05: Writing docstrings and best use of comments.
-- 06: General techniques for better code.
+- 04: Code structure.
+- 05: Improve code clarity with naming and removing magic numbers.
+- 06: Writing docstrings and best use of comments.
+- 07: General techniques for better code.
 - 00: The end point of the workshop - an improved version of the code in exercise 01.
 
 
