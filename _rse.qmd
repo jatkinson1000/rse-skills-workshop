@@ -6,8 +6,8 @@
 ::: {.fragment .fade-in}
 Major Computational Programs  
 
-::: {layout="[-10, 22, -5, 28, -10]" layout-valign="center"}
-![]( https://www.nsf.gov/news/mmg/media/images/easm1_h.jpg )
+::: {layout="[-5, 32, -5, 28, -10]" layout-valign="center"}
+![]( https://jackatkinson.net/research/parameterisations/CCSM.png )
 
 ![]( https://www.hpc.cam.ac.uk/sites/default/files/inline-images/image_0.jpeg )
 :::
@@ -23,10 +23,10 @@ Data processing
 ::: {.fragment .fade-in}
 Experiment support
 
-::: {layout="[-10, 28, -5, 32, -10]" layout-valign="center"}
+::: {layout="[-8, 32, -3, 32, -10]" layout-valign="center"}
 ![]( https://www.whoi.edu/wp-content/uploads/2022/12/ctd-over-side.jpg )
 
-![]( https://aambpublicoceanservice.blob.core.windows.net/oceanserviceprod/facts/efgboblique.jpg )
+![]( https://upload.wikimedia.org/wikipedia/commons/0/0a/Actualidad002.jpg )
 :::
 
 :::
@@ -41,7 +41,7 @@ Experiment support
 
 
 ::: {.attribution}
-Bathymetry by NOAA under public domain
+IAR Telescope by Naperon under public domain
 CTD Bottles by WHOI under public domain\
 Keeling Curve by Scripps under public domain\
 Dawn HPC by Joe Bishop with permission\
