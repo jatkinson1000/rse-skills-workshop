@@ -32,14 +32,14 @@ affiliations:
   - id: iccs
     name: ICCS RSE Team <br> University of Cambridge
 
-date: "July 2025"
+date: "7/7/2025"
 bibliography: references.bib
 ---
 
 ## Precursors {.smaller .nostretch}
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="65%"}
 #### Slides and Materials
 
 To access links or follow on your own device these slides can be found at:  
@@ -51,11 +51,41 @@ All materials are available at:
 
 ::: {.column style="font-size: 95%;"}
 
-- [gitlab.com/jatkinson1000/power-up-python](https://gitlab.com/jatkinson1000/power-up-python)
 - [github.com/jatkinson1000/rse-skills-workshop](https://github.com/jatkinson1000/rse-skills-workshop)
+- [gitlab.com/jatkinson1000/rse-skills-workshop](https://gitlab.com/jatkinson1000/rse-skills-workshop)
 :::
 :::
-::: {.column width="50%"}
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+
+{{< fa solid person-chalkboard >}}:
+{{< qrcode https://github.com/jatkinson1000/rse-skills-workshop fkrycvbsgt width=150 height=150 >}}
+
+\
+
+{{< fa brands github >}}:
+{{< qrcode https://github.com/jatkinson1000/rse-skills-workshop qr7dekity9 width=150 height=150 >}}
+
+:::
+::::
+
+
+## Precursors {.smaller}
+
+:::: {.columns}
+::: {.column width="45%"}
+#### Behaviour
+
+- Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
+- Ask questions whenever they arise.
+  - Someone else is probably wondering the same thing.
+- We will make mistakes.
+  - Not all of them will be intentional.
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="45%"}
 #### Licensing
 
 Except where otherwise noted, these presentation materials are licensed under the Creative Commons
@@ -65,19 +95,6 @@ Except where otherwise noted, these presentation materials are licensed under th
 
 Vectors and icons by [SVG Repo](https://www.svgrepo.com)
 used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
-:::
-::::
-
-
-## Precursors {.smaller}
-
-:::: {.columns}
-::: {.column width="75%"}
-- Be nice ([Python code of conduct](https://www.python.org/psf/conduct/))
-- Ask questions whenever they arise.
-  - Someone else is probably wondering the same thing.
-- We will make mistakes.
-  - Not all of them will be intentional.
 :::
 ::::
 
