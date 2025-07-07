@@ -173,6 +173,36 @@ My background in this is domain science and numerical modelling on HPC.
 
 **See you all tomorrow afternoon!**
 
+<br><br>
+
+:::: {.columns}
+
+::: {.column style="width:20%; font-size: 85%;"}
+Get in touch:
+:::
+::: {.column style="width: 40%; font-size: 85%;"}
+{{< fa pencil >}} \ Jack Atkinson
+
+{{< fa solid globe >}} \ [jackatkinson.net](https://jackatkinson.net)
+
+{{< fa solid envelope >}} \ [jwa34[AT]cam.ac.uk](mailto:jwa34@cam.ac.uk)
+
+{{< fa brands github >}} \ [jatkinson1000](https://github.com/jatkinson1000)
+
+{{< fa brands mastodon >}} \ [\@jatkinson1000\@fosstodon.org](https://fosstodon.org/@jatkinson1000)
+:::
+::: {.column style="width: 40%; font-size: 85%;"}
+{{< fa pencil >}} \ Marion Weinzierl
+
+{{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
+
+{{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
+
+{{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
+
+:::
+
+::::
 ## Welcome back! {.smaller}
 
 <br><br>
