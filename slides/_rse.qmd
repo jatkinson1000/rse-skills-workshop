@@ -23,10 +23,10 @@ Data processing
 ::: {.fragment .fade-in}
 Experiment support
 
-::: {layout="[-8, 32, -3, 32, -10]" layout-valign="center"}
+::: {layout="[-10, 30, -3, 32, -10]" layout-valign="center"}
 ![]( https://www.whoi.edu/wp-content/uploads/2022/12/ctd-over-side.jpg )
 
-![]( https://upload.wikimedia.org/wikipedia/commons/0/0a/Actualidad002.jpg )
+![]( https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpublic.nrao.edu%2Fwp-content%2Fuploads%2F2017%2F01%2FVLAArrayNiteClouds_RGB-2048x1335.jpg&f=1&nofb=1&ipt=68d5635952f27878afc3bc1c4e23d657bdc89b915997c3c859bba981e6d8799a )
 :::
 
 :::
@@ -41,7 +41,7 @@ Experiment support
 
 
 ::: {.attribution}
-IAR Telescope by Naperon under public domain
+VLA Telescope by NROA under public domain
 CTD Bottles by WHOI under public domain\
 Keeling Curve by Scripps under public domain\
 Dawn HPC by Joe Bishop with permission\
