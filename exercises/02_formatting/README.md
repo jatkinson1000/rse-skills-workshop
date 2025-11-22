@@ -20,7 +20,7 @@ We will now run the ruff formatter on the code and observe the changes.
 
 To do this run:
 ```
-ruff format geo.py
+ruff format geo.py astro.py
 ```
 
 Note that the file will be reformatted in-place!
@@ -38,6 +38,10 @@ from exercise 01.
 For example, using `vimdiff` from the command line:
 ```
 vimdiff ../01_base_code/geo.py geo.py
+```
+or
+```
+vimdiff ../01_base_code/astro.py astro.py
 ```
 
 Look at the newly formatted file and note the changes.

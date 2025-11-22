@@ -23,4 +23,3 @@ def long_func(
 
     param_2.append(x * val)
     return param_2
-

@@ -73,6 +73,11 @@ Once the dependencies are installed try to run the code:
 ```bash
 python3 geo.py
 ```
+for the geoscience code, or
+```bash
+python3 astro.py
+```
+for the astrophysics code.
 
 Does everything work as you expected or are there some unexpected dependencies required
 e.g. `netcdf4`?
@@ -99,6 +104,11 @@ You can now run the code from the command line using:
 ```
 python3 geo.py
 ```
+for the geoscience code, or
+```bash
+python3 astro.py
+```
+for the astrophysics code.
 
 Once you have done this take a moment to inspect the outputs.
 Did it do what you were expecting it to based on reading it beforehand?

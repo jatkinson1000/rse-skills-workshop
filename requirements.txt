@@ -7,3 +7,5 @@ cf_xarray
 cartopy
 regionmask
 cmocean
+astropy
+pandas
