@@ -61,6 +61,10 @@ We can now proceed to running ruff on the full code:
 ```
 ruff check geo.py
 ```
+or 
+```
+ruff check astro.py
+```
 
 
 ## Improving the code
@@ -70,7 +74,9 @@ the linting errors:
 
 - Try and deal with: `F401` unused imports, `I001` unsorted imports,
   `B006` dangerous default, and `D202` Blank lines
-- For a challenge try and fix: `B904` try exceptions
+- For a challenge try and fix: `B904` try exceptions (`geo.py`), `RUF059` unused unpack, `A001` shadowing (`astro.py`), `SIM300` Yoda condition (`astro.py`), `F841` unused variables (`astro.py`)
+    - In `geo.py` there is also `B904` try exceptions
+    - In `astro.py` there is also `RUF059` unused unpack, `A001` shadowing, `SIM300` Yoda condition, and `PLR1714` merging comparisons (`F841` we will cover in exercise 5).
 
 Extensions:
 
@@ -119,8 +125,9 @@ sections:
 
 - We will add the entire `"D"` (pydocstyle) ruleset by adding it to the `select` list.
 - We will stop ignoring:
-    - `"PLR2004"` (magic number comparisons) and
-    - `"E501"` (line length).
+    - `"PLR2004"` (magic number comparisons),
+    - `"E501"` (line length), and
+    - `"E741"` (ambiguous name).
   by removing them from the `ignore` list.
 - We will add `"D417"` (Missing argument description) by adding it to the
   `extend-select` list.

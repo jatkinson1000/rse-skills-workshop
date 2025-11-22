@@ -193,6 +193,10 @@ Run ruff with pydocstyle on the code for guidance and to check your docstrings.
 ```bash
 ruff check geo.py
 ```
+or
+```bash
+ruff check astro.py
+```
 
 
 ## Other languages
