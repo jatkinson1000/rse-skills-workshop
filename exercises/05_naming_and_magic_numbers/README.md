@@ -80,7 +80,7 @@ You can look at the updated code in  `pendulum_no_magic.py` for an improved vers
 
 ## Exercise
 
-Look through the precipitation code for any names of variables or methods that could be
+Look through the code for any names of variables or methods that could be
 improved or clarified and update them.^[Note if you are using an IDE like Intellij or
 VSCode you can use automatic renaming. Or try :%s/<old>/<new>/gc in vim.]
 

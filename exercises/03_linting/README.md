@@ -56,10 +56,10 @@ To understand this we can ask ruff to provide some explanation by running
 
 </details>
 
-We can now proceed to running ruff on the full precipitation code:
+We can now proceed to running ruff on the full code:
 
 ```
-ruff check precipitation_climatology.py
+ruff check geo.py
 ```
 
 
