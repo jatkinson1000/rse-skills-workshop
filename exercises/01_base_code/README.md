@@ -71,7 +71,7 @@ pip install numpy matplotlib ...
 Once the dependencies are installed try to run the code:
 
 ```bash
-python3 precipitation_climatology.py
+python3 geo.py
 ```
 
 Does everything work as you expected or are there some unexpected dependencies required
@@ -97,7 +97,7 @@ pip install -r requirements.txt
 You can now run the code from the command line using:
 
 ```
-python3 precipitation_climatology.py
+python3 geo.py
 ```
 
 Once you have done this take a moment to inspect the outputs.

@@ -191,7 +191,7 @@ for examples of any types/structures you are unsure about.
 Run ruff with pydocstyle on the code for guidance and to check your docstrings.
 
 ```bash
-ruff check precipitation_climatology.py
+ruff check geo.py
 ```
 
 

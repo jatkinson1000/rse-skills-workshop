@@ -20,7 +20,7 @@ We will now run the ruff formatter on the code and observe the changes.
 
 To do this run:
 ```
-ruff format precipitation_climatology.py
+ruff format geo.py
 ```
 
 Note that the file will be reformatted in-place!
@@ -37,7 +37,7 @@ from exercise 01.
 
 For example, using `vimdiff` from the command line:
 ```
-vimdiff ../01_base_code/precipitation_climatology.py precipitation_climatology.py
+vimdiff ../01_base_code/geo.py geo.py
 ```
 
 Look at the newly formatted file and note the changes.
