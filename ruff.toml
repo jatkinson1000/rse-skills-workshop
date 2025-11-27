@@ -11,27 +11,31 @@ docstring-code-format = true
 [lint]
 # See https://docs.astral.sh/ruff/rules for full details of each ruleset.
 
-# Enable:  D: `pydocstyle`, PL: `pylint`, I: `isort`, E/W: `pycodestyle whitespace`
+# Enable:  PL: `pylint`, I: `isort`, E/W: `pycodestyle whitespace`
 #          NPY: `numpy`, FLY: `flynt`, F: `pyflakes`, RUF: `ruff`
 #          From flake8: "ARG", "SLF", "S", "BLE", "B", "A", "C4", "ICN",
 #                       "PIE", "Q", "RSE", "SIM", "TID"
+#          Later add D: `pydocstyle`
 select = ["PL", "I", "E", "W", "NPY", "FLY", "F", "RUF",
           "ARG", "SLF", "S", "BLE","B", "A", "C4", "ICN", 
-          "PIE", "Q", "RSE", "SIM", "TID"]
+          "PIE", "Q", "RSE", "SIM", "TID"]  # , "D"]
 
 # Enable D202 (Blank line after function) until we add "D" ruleset after exercise 3.
 extend-select = ["D202"]
-# After exercise 3 we will add "D" and extend to D417 on top for exercise 5
+# After exercise 3 we will add "D" to supercede this but extend to D417 on top.
 # Enable D417 (Missing argument description) on top of the NumPy convention.
 # extend-select = ["D417"]
 
 # Ignore SIM108 (use ternary instead of if-else) as it can arguably obscure intent.
+# Ignore SIM300 (Yoda condition) as can le less ambiguous in scientific contexts.
 # Ignore RUF002 (ambiguous characters) as it does not allow apostrophes in strings.
 # Ignore PLR0913 (too many arguments) as it can be valid in scientific applications.
+# Ignore PLR0915 (too many statements) as it can be valid in scientific applications.
 # Temporarily Ignore PLR2004 (magic number comparison) for early exercises.
 # Temporarily Ignore E501 (line too long) for early exercises.
-ignore = ["SIM108", "RUF002", "PLR0913",
-          "PLR2004", "E501"]
+# Temporarily Ignore E741 (ambiguous name) for early exercises.
+ignore = ["SIM108", "SIM300", "RUF002", "PLR0913", "PLR0915", #]
+          "PLR2004", "E501", "E741"]
 
 [lint.pydocstyle]
 # Use NumPy convention for checking docstrings
