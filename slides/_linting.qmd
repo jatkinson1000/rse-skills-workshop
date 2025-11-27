@@ -219,13 +219,30 @@ More generally see [this list of static analysis tools](https://github.com/analy
 
 ## Exercise 3 {.smaller}
 
+::: {.panel-tabset}
+
+### Geoscience
+
 Go to exercise 3 and:
 
-- run `ruff check` on `precipitation_climatology.py`
+- run `ruff check` on `geo.py`
 - examine the report and try and address some of the issues.
   - Try and deal with: `F401` unused imports, `I001` unsorted imports,
     `B006` dangerous default, and `D202` Blank lines
-  - For a challenge try and fix: `B904` try exceptions
+  - For a challenge try and fix: `B904` try exceptions and `RUF059` unused unpack
+
+### Astrophysics
+
+Go to exercise 3 and:
+
+- run `ruff check` on `astro.py`
+- examine the report and try and address some of the issues.
+  - Try and deal with: `F401` unused imports, `I001` unsorted imports,
+    `B006` dangerous default, and `D202` Blank lines
+  - For a challenge try and fix: `A001` shadowing, and `PLR1714` merging comparisons.
+  - Ignore `F841` for now as we will address it in a later exercise.
+
+:::
 
 Extensions:
 
@@ -252,9 +269,10 @@ Details of the different rules and rulesets that can be selected can be found in
 Let's take a look and make some changes in preparation for the next
 sections:
 
-- We will add the entire `"D"` (pydocstyle) ruleset.
+- We will add the entire `"D"` (pydocstyle) ruleset, extending to `D417`.
 - We will stop ignoring:
     - `"PLR2004"` (magic number comparisons) and
     - `"E501"` (line length).
+    - `"E741"` (ambiguous name).
 
 <!-- ------------------------------------------------------------------------------ -->

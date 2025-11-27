@@ -186,7 +186,7 @@ Similar formatting tools exist for other languages:
 Go to exercise 2 and:
 
 - install ruff
-- run `ruff format` on `precipitation_climatology.py`
+- run `ruff format` on the Python code.
 - examine the output
   - Is it more readable?
   - Is there any aspect of the formatting style you find unintuitive?

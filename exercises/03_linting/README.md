@@ -74,9 +74,10 @@ the linting errors:
 
 - Try and deal with: `F401` unused imports, `I001` unsorted imports,
   `B006` dangerous default, and `D202` Blank lines
-- For a challenge try and fix: `B904` try exceptions (`geo.py`), `RUF059` unused unpack, `A001` shadowing (`astro.py`), `SIM300` Yoda condition (`astro.py`), `F841` unused variables (`astro.py`)
+- For a challenge try and fix: `RUF059` unused unpack
     - In `geo.py` there is also `B904` try exceptions
-    - In `astro.py` there is also `RUF059` unused unpack, `A001` shadowing, `SIM300` Yoda condition, and `PLR1714` merging comparisons (`F841` we will cover in exercise 5).
+    - In `astro.py` there is also `RUF059` unused unpack, `A001` shadowing, and
+      `PLR1714` merging comparisons (`F841` we will cover in exercise 5).
 
 Extensions:
 
