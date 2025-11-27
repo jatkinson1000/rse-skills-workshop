@@ -331,6 +331,6 @@ Go to exercise 6 and examine the comments:
 Now turn your attention to the docstrings:
 
 - Work through the file adding docstrings where they are missing.
-- Can you resolve the issues raised by ruff with the pydocstuyle ruleset enabled?
+- Can you resolve the issues raised by ruff with the pydocstyle ruleset enabled?
 - If you are unsure about variable types or meanings at any point
   you can sneak a look ahead to the code in exercise 7.

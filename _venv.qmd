@@ -102,19 +102,35 @@ There are various other tools available to manage dependencies:
 
 ## Exercise 1 {.smaller}
 
+::: {.panel-tabset}
+
+### Geoscience
+
 Scenario: you have just finished some simulations with a climate model that should
 improve precipitation modelling and have the output data as a netCDF file.
 
 You know that your colleague has produced relevant figures and analysis before, so ask
 them for a copy of their code (yay, reuse :+1:).
 
-Go to exercise 1 and:
+Go to exercise 1 and examine the code in `geo.py`.
 
-- Examine the code in `precipitation_climatology.py`
+### Astrophysics
+
+Scenario: you have just finished preparing a new stellar dataset in a csv file and want
+to visualise the data to see what it tells you.
+
+You know that your colleague has produced relevant figures and analysis for similar data
+before, so ask them for a copy of their code (yay, reuse :+1:).
+
+Go to exercise 1 and examine the code in `astro.py`
+
+:::
+
 - Create and load a virtual environment
 - Install the necessary dependencies
 - Run the code - does it do what you thought?
 - Deactivate the environment
+
 
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -169,15 +185,30 @@ beyond the scope of this discussion.
 
 ## Exercise 1 revisited {.smaller}
 
+::: {.panel-tabset}
+
+### Geoscience
+
 Scenario: you have just finished some simulations with a climate model that should
 improve precipitation modelling and have the output data as a netCDF file.
 
 You know that your colleague has produced relevant figures and analysis before, so ask
 them for a copy of their code (yay, reuse :+1:).
 
-Go to exercise 1 and:
+Go to exercise 1 and examine the code in `geo.py`.
 
-- Examine the code in `precipitation_climatology.py`
+### Astrophysics
+
+Scenario: you have just finished preparing a new stellar dataset in a csv file and want
+to visualise the data to see what it tells you.
+
+You know that your colleague has produced relevant figures and analysis for similar data
+before, so ask them for a copy of their code (yay, reuse :+1:).
+
+Go to exercise 1 and examine the code in `astro.py`
+
+:::
+
 - Create and load a virtual environment
 - Install the requirements from the supplied `requirements.txt`
 - Run the code - does it do what you thought?
