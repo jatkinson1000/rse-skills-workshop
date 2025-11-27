@@ -4,8 +4,9 @@
 
 Materials for a workshop educating academic researchers in research software
 engineering (RSE) principles.
-The example code used in the exercises is geared towards climate scientists,
-but the concepts and material is generally suited for people from various backgrounds.
+The example code used in the exercises is geared towards either climate scientists or
+astrophysicists, but the concepts and material is generally suited for people from
+various backgrounds.
 
 This course is designed to be delivered as a code-along workshop, but you can also follow
 the slides and work through the exercises in your own time.
@@ -80,7 +81,8 @@ previous exercise allowing participants to validate/compare their work.
 In terms of knowledge this workshop requires:
 
 - Some general programming knowledge
-- Basic familiarity with Python - the course is taught in Python but teaches skills that are transferrable to other languages.
+- Basic familiarity with Python - the course is taught in Python but teaches skills that
+  are transferrable to other languages.
 - The ability to clone this repository and work on it locally.
 
 Python and pip:
@@ -172,16 +174,23 @@ license for which the full legal text is [available online](https://creativecomm
 
 ## Acknowledgments
 
-The code used in this teaching is adapted from a script in\
+The geoscience code used in the exercises is adapted from a script in\
 Irving, (2019). Python for Atmosphere and Ocean Scientists.
 Journal of Open Source Education, 2(11), 37,
 [doi.org/10.21105/jose.00037](https://doi.org/10.21105/jose.00037)
+
+The astrophysics code in the exercises is adapted from a notebook provided by
+[@gurjeetjagwani](https://github.com/gurjeetjagwani) and colleagues at the
+Institute of Astronomy in Cambridge.
 
 
 ## Contribution Guidelines
 
 Contributions and collaborations are welcome from anyone with an
 interest in RSE education.
+
+In particular we welcome submission of exercise code for research domains beyond
+those currently catered for.
 
 For bugs, feature requests, and clear suggestions for improvement please
 [open an issue](https://gitlab.com/jatkinson1000/rse-skills-workshop/-/issues).
