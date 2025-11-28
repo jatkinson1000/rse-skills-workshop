@@ -179,9 +179,9 @@ Irving, (2019). Python for Atmosphere and Ocean Scientists.
 Journal of Open Source Education, 2(11), 37,
 [doi.org/10.21105/jose.00037](https://doi.org/10.21105/jose.00037)
 
-The astrophysics code in the exercises is adapted from a notebook provided by
-[@gurjeetjagwani](https://github.com/gurjeetjagwani) and colleagues at the
-Institute of Astronomy in Cambridge.
+The astrophysics code in the exercises is adapted from a notebook kindly provided by
+Anke Ardern-Arentsen ([@ankearentsen](https://github.com/ankearentsen))
+of the Institute of Astronomy at the University of Cambridge.
 
 
 ## Contribution Guidelines
