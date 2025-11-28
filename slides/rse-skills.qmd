@@ -253,8 +253,9 @@ Get in touch:
 ## References {.smaller}
 
 The geoscience code in this workshop is based on a script from [@Irving_2019].
-The astrophysics code in this workshop is based on a notebook provided by
-[\@gurjeetjagwani](https://github.com/gurjeetjagwani).
+The astrophysics code in this workshop is based on a notebook kindly provided by
+Anke Ardern-Arentsen ([\@ankearentsen](https://github.com/ankearentsen))
+of the Institute of Astronomy at the University of Cambridge.
 
 ::: {#refs}
 :::
