@@ -98,13 +98,13 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 
 :::: {.columns}
 ::: {.column width="45%"}
-**Today**:
 
-- Tooling for better research software 
-  - venv for virtual environments 
-  - formatting and linting 
-  - structuring code
-  
+- Why good SE matters in research
+- How to apply these everyday to write higher quality code
+  - Core principles
+  - Key tools
+  - Useful techniques
+
 ::: 
 
 ::: {.column width="10%"}
@@ -112,13 +112,15 @@ used under [CC0(1.0)](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 
 ::: {.column width="45%"}
 
-**Tomorrow**:
-
+- Tooling for better research software 
+  - venv for virtual environments
+  - formatting and linting - best practices
+  - structuring code
 - Writing better research software 
-  - comments 
-  - docstrings 
-  - repository documentation - licenses, README, Contributing.md 
+  - comments and docstrings 
+  - repository documentation - licenses, README
   - Other (naming, magic numbers,...)
+
 :::    
 ::::
 
@@ -159,10 +161,6 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
-{{< include _code_structure.qmd >}}
-
-<!-- ------------------------------------------------------------------------------ -->
-
 {{< include _naming_magic_numbers.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -172,6 +170,10 @@ My background in this is domain science and numerical modelling on HPC.
 <!-- ------------------------------------------------------------------------------ -->
 <!-- This section has been removed for the current version of the course -->
 <!-- {{< include _fstrings_config.qmd >}} -->
+<!-- ------------------------------------------------------------------------------ -->
+
+{{< include _code_structure.qmd >}}
+
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _readme_license.qmd >}}
