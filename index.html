@@ -7168,25 +7168,29 @@ Jack Atkinson <a href="https://orcid.org/0000-0001-5001-4812" class="quarto-titl
 <h2>Course structure</h2>
 <div class="columns">
 <div class="column" style="width:45%;">
-<p><strong>Today</strong>:</p>
 <ul>
-<li>Tooling for better research software
+<li>Why good SE matters in research</li>
+<li>How to apply these everyday to write higher quality code
 <ul>
-<li>venv for virtual environments</li>
-<li>formatting and linting</li>
-<li>structuring code</li>
+<li>Core principles</li>
+<li>Key tools</li>
+<li>Useful techniques</li>
 </ul></li>
 </ul>
 </div><div class="column" style="width:10%;">
 
 </div><div class="column" style="width:45%;">
-<p><strong>Tomorrow</strong>:</p>
 <ul>
+<li>Tooling for better research software
+<ul>
+<li>venv for virtual environments</li>
+<li>formatting and linting - best practices</li>
+<li>structuring code</li>
+</ul></li>
 <li>Writing better research software
 <ul>
-<li>comments</li>
-<li>docstrings</li>
-<li>repository documentation - licenses, README, Contributing.md</li>
+<li>comments and docstrings</li>
+<li>repository documentation - licenses, README</li>
 <li>Other (naming, magic numbers,…)</li>
 </ul></li>
 </ul>
@@ -7988,114 +7992,6 @@ For full details see the <a href="https://docs.astral.sh/ruff/configuration/">ru
 </ul>
 <!-- ------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------ -->
-</section></section>
-<section>
-<section id="structuring-your-code" class="title-slide slide level1 center">
-<h1>Structuring your code</h1>
-<!--=================================================================================-->
-</section>
-<section id="functions" class="slide level2 smaller">
-<h2>Functions</h2>
-<ul>
-<li>Avoid code duplication
-<ul>
-<li>Bad style</li>
-<li>You will forget to update all the copies at one point when you make changes!</li>
-</ul></li>
-<li>Readability
-<ul>
-<li>A clearly named function replaces a chunk of code.</li>
-</ul></li>
-<li>Functions as building blocks
-<ul>
-<li>Create generic interface with several exchangeable options (e.g. “possion_solver”, “gauss_seidel_solver”, etc.)</li>
-<li>Separation of concerns/single responsibility principles</li>
-</ul></li>
-</ul>
-</section>
-<section id="functions-for-readability-and-maintainability" class="slide level2 smaller">
-<h2>Functions for readability and maintainability</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div style="font-size: 85%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-code-line-numbers="|20,6,10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
-<span id="cb18-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb18-3"><a href></a></span>
-<span id="cb18-4"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
-<span id="cb18-5"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb18-6"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span>  l <span class="op">*</span> np.cos(theta))</span>
-<span id="cb18-7"><a href></a></span>
-<span id="cb18-8"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
-<span id="cb18-9"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb18-10"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> l <span class="op">*</span> np.cos(theta)</span>
-<span id="cb18-11"><a href></a></span>
-<span id="cb18-12"><a href></a><span class="kw">def</span> check_small_angle(theta):</span>
-<span id="cb18-13"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb18-14"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> np.pi <span class="op">/</span> <span class="fl">1800.0</span>:</span>
-<span id="cb18-15"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb18-16"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb18-17"><a href></a></span>
-<span id="cb18-18"><a href></a><span class="kw">def</span> bpm(l):</span>
-<span id="cb18-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb18-20"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> <span class="fl">9.81</span>)</span>
-<span id="cb18-21"><a href></a></span>
-<span id="cb18-22"><a href></a></span>
-<span id="cb18-23"><a href></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div><div class="column">
-<div style="font-size: 85%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-code-line-numbers="|6,7,8|10,11,12|16,20,31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
-<span id="cb19-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-3"><a href></a></span>
-<span id="cb19-4"><a href></a>GRAV <span class="op">=</span> <span class="fl">9.81</span></span>
-<span id="cb19-5"><a href></a></span>
-<span id="cb19-6"><a href></a><span class="kw">def</span> get_period(l):</span>
-<span id="cb19-7"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-8"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> GRAV)</span>
-<span id="cb19-9"><a href></a></span>
-<span id="cb19-10"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
-<span id="cb19-11"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-12"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
-<span id="cb19-13"><a href></a></span>
-<span id="cb19-14"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
-<span id="cb19-15"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-16"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta))</span>
-<span id="cb19-17"><a href></a></span>
-<span id="cb19-18"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
-<span id="cb19-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-20"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta)</span>
-<span id="cb19-21"><a href></a></span>
-<span id="cb19-22"><a href></a><span class="kw">def</span> check_small_angle(theta, small_ang<span class="op">=</span>np.pi<span class="op">/</span><span class="fl">1800.0</span>):</span>
-<span id="cb19-23"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-24"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> small_ang:</span>
-<span id="cb19-25"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb19-26"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb19-27"><a href></a></span>
-<span id="cb19-28"><a href></a><span class="kw">def</span> bpm(l):</span>
-<span id="cb19-29"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb19-30"><a href></a>    <span class="co"># Divide 60 seconds by period [s] for beats per minute</span></span>
-<span id="cb19-31"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div></div>
-<!--=================================================================================-->
-</section>
-<section id="further-structuring" class="slide level2 smaller">
-<h2>Further structuring</h2>
-<ul>
-<li>Breaking code into modules and files instead of having everything in one file</li>
-<li>Improves readability and manageability (-&gt; scalability, extendability, coupling, testing)</li>
-</ul>
-<!--=================================================================================-->
-</section>
-<section id="exercise-4" class="slide level2 smaller">
-<h2>Exercise 4</h2>
-<ul>
-<li>Go to Exercise 4 and try to think of how you can structure the code in the plotting.py file to avoid code duplication, and improve readability and reusability.</li>
-<li>What enables the improved code you to do?</li>
-<li>Now look at plotting_solution.py . Can you further adapt the code to allow, for example, for customised axis labels?</li>
-</ul>
-<!--=================================================================================-->
-<!-- ------------------------------------------------------------------------------ -->
 <!-- ------------------------------------------------------------------------------ -->
 </section></section>
 <section>
@@ -8143,38 +8039,38 @@ country_set --&gt; countries               sidekick     --&gt; has_sidekick</cod
 <h2>Explaining Variables</h2>
 <p>Without explaining variable:<br>
 </p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-2"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_fare(age):</span>
-<span id="cb22-3"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (age <span class="op">&lt;</span> <span class="dv">14</span>):</span>
-<span id="cb22-4"><a href aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
-<span id="cb22-5"><a href aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_fare(age):</span>
+<span id="cb20-3"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (age <span class="op">&lt;</span> <span class="dv">14</span>):</span>
+<span id="cb20-4"><a href aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
+<span id="cb20-5"><a href aria-hidden="true" tabindex="-1"></a>        ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><br>
 </p>
 <p>With explaining variable:<br>
 </p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-2"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_fare(age):</span>
-<span id="cb23-3"><a href aria-hidden="true" tabindex="-1"></a>    is_child <span class="op">=</span> age <span class="op">&lt;</span> <span class="dv">14</span></span>
-<span id="cb23-4"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (is_child):</span>
-<span id="cb23-5"><a href aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
-<span id="cb23-6"><a href aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_fare(age):</span>
+<span id="cb21-3"><a href aria-hidden="true" tabindex="-1"></a>    is_child <span class="op">=</span> age <span class="op">&lt;</span> <span class="dv">14</span></span>
+<span id="cb21-4"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (is_child):</span>
+<span id="cb21-5"><a href aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
+<span id="cb21-6"><a href aria-hidden="true" tabindex="-1"></a>    ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <!-- ------------------------------------------------------------------------------ -->
 </section>
 <section id="explaining-variables-1" class="slide level2 smaller">
 <h2>Explaining Variables</h2>
 <p>Without an explaining variable, it is hard to see what this code is doing:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb24-2"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href aria-hidden="true" tabindex="-1"></a>re.search(<span class="st">&quot;^</span><span class="ch">\\</span><span class="st">+?[1-9][0-9]{7,14}$&quot;</span>, <span class="st">&quot;Sophie: CV56 9PQ, +12223334444&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb22-2"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href aria-hidden="true" tabindex="-1"></a>re.search(<span class="st">&quot;^</span><span class="ch">\\</span><span class="st">+?[1-9][0-9]{7,14}$&quot;</span>, <span class="st">&quot;Sophie: CV56 9PQ, +12223334444&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><br>
 </p>
 <div class="fragment">
 <p>With explaining variables it is easier to see the intention.<br>
 The code is more self-documenting.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
-<span id="cb25-2"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href aria-hidden="true" tabindex="-1"></a>phone_number_regex <span class="op">=</span> <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">+?[1-9][0-9]{7,14}$&quot;</span></span>
-<span id="cb25-4"><a href aria-hidden="true" tabindex="-1"></a>re.search(phone_number_regex, <span class="st">&quot;Sophie: CV56 9PQ, +12223334444&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb23-2"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href aria-hidden="true" tabindex="-1"></a>phone_number_regex <span class="op">=</span> <span class="st">&quot;^</span><span class="ch">\\</span><span class="st">+?[1-9][0-9]{7,14}$&quot;</span></span>
+<span id="cb23-4"><a href aria-hidden="true" tabindex="-1"></a>re.search(phone_number_regex, <span class="st">&quot;Sophie: CV56 9PQ, +12223334444&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!-- ------------------------------------------------------------------------------ -->
 </section>
@@ -8203,71 +8099,71 @@ The code is more self-documenting.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="font-size: 85%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" data-code-line-numbers="True"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
-<span id="cb26-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb26-3"><a href></a></span>
-<span id="cb26-4"><a href></a><span class="kw">def</span> get_period(l):</span>
-<span id="cb26-5"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-6"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> <span class="fl">9.81</span>)</span>
-<span id="cb26-7"><a href></a></span>
-<span id="cb26-8"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
-<span id="cb26-9"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-10"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
-<span id="cb26-11"><a href></a></span>
-<span id="cb26-12"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
-<span id="cb26-13"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-14"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> max_height(l, theta))</span>
-<span id="cb26-15"><a href></a></span>
-<span id="cb26-16"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
-<span id="cb26-17"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-18"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> max_height(l, theta)</span>
-<span id="cb26-19"><a href></a></span>
-<span id="cb26-20"><a href></a><span class="kw">def</span> check_small_angle(theta):</span>
-<span id="cb26-21"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-22"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> np.pi <span class="op">/</span> <span class="fl">1800.0</span>:</span>
-<span id="cb26-23"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb26-24"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb26-25"><a href></a></span>
-<span id="cb26-26"><a href></a><span class="kw">def</span> beats_per_minute(l):</span>
-<span id="cb26-27"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb26-28"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span>
-<span id="cb26-29"><a href></a></span>
-<span id="cb26-30"><a href></a></span>
-<span id="cb26-31"><a href></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-code-line-numbers="True"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
+<span id="cb24-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-3"><a href></a></span>
+<span id="cb24-4"><a href></a><span class="kw">def</span> get_period(l):</span>
+<span id="cb24-5"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-6"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> <span class="fl">9.81</span>)</span>
+<span id="cb24-7"><a href></a></span>
+<span id="cb24-8"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
+<span id="cb24-9"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-10"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
+<span id="cb24-11"><a href></a></span>
+<span id="cb24-12"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
+<span id="cb24-13"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-14"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> max_height(l, theta))</span>
+<span id="cb24-15"><a href></a></span>
+<span id="cb24-16"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
+<span id="cb24-17"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-18"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> max_height(l, theta)</span>
+<span id="cb24-19"><a href></a></span>
+<span id="cb24-20"><a href></a><span class="kw">def</span> check_small_angle(theta):</span>
+<span id="cb24-21"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-22"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> np.pi <span class="op">/</span> <span class="fl">1800.0</span>:</span>
+<span id="cb24-23"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb24-24"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb24-25"><a href></a></span>
+<span id="cb24-26"><a href></a><span class="kw">def</span> beats_per_minute(l):</span>
+<span id="cb24-27"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb24-28"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span>
+<span id="cb24-29"><a href></a></span>
+<span id="cb24-30"><a href></a></span>
+<span id="cb24-31"><a href></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column">
 <div style="font-size: 85%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-code-line-numbers="|4,8,16,20|22,24|30,31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
-<span id="cb27-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb27-3"><a href></a></span>
-<span id="cb27-4"><a href></a>GRAV <span class="op">=</span> <span class="fl">9.81</span></span>
-<span id="cb27-5"><a href></a></span>
-<span id="cb27-6"><a href></a><span class="kw">def</span> get_period(l):</span>
-<span id="cb27-7"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-8"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> GRAV)</span>
-<span id="cb27-9"><a href></a></span>
-<span id="cb27-10"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
-<span id="cb27-11"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-12"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
-<span id="cb27-13"><a href></a></span>
-<span id="cb27-14"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
-<span id="cb27-15"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-16"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta))</span>
-<span id="cb27-17"><a href></a></span>
-<span id="cb27-18"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
-<span id="cb27-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-20"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta)</span>
-<span id="cb27-21"><a href></a></span>
-<span id="cb27-22"><a href></a><span class="kw">def</span> check_small_angle(theta, small_ang<span class="op">=</span>np.pi<span class="op">/</span><span class="fl">1800.0</span>):</span>
-<span id="cb27-23"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-24"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> small_ang:</span>
-<span id="cb27-25"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
-<span id="cb27-26"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
-<span id="cb27-27"><a href></a></span>
-<span id="cb27-28"><a href></a><span class="kw">def</span> beats_per_minute(l):</span>
-<span id="cb27-29"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
-<span id="cb27-30"><a href></a>    <span class="co"># Divide 60 seconds by period [s] for beats per minute</span></span>
-<span id="cb27-31"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-code-line-numbers="|4,8,16,20|22,24|30,31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
+<span id="cb25-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-3"><a href></a></span>
+<span id="cb25-4"><a href></a>GRAV <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb25-5"><a href></a></span>
+<span id="cb25-6"><a href></a><span class="kw">def</span> get_period(l):</span>
+<span id="cb25-7"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-8"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> GRAV)</span>
+<span id="cb25-9"><a href></a></span>
+<span id="cb25-10"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
+<span id="cb25-11"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-12"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
+<span id="cb25-13"><a href></a></span>
+<span id="cb25-14"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
+<span id="cb25-15"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-16"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta))</span>
+<span id="cb25-17"><a href></a></span>
+<span id="cb25-18"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
+<span id="cb25-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-20"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta)</span>
+<span id="cb25-21"><a href></a></span>
+<span id="cb25-22"><a href></a><span class="kw">def</span> check_small_angle(theta, small_ang<span class="op">=</span>np.pi<span class="op">/</span><span class="fl">1800.0</span>):</span>
+<span id="cb25-23"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-24"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> small_ang:</span>
+<span id="cb25-25"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb25-26"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb25-27"><a href></a></span>
+<span id="cb25-28"><a href></a><span class="kw">def</span> beats_per_minute(l):</span>
+<span id="cb25-29"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb25-30"><a href></a>    <span class="co"># Divide 60 seconds by period [s] for beats per minute</span></span>
+<span id="cb25-31"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 <!-- ------------------------------------------------------------------------------ -->
@@ -8335,14 +8231,14 @@ Implement what you feel to be the best approach in each case.</p>
 <h2>Comments to avoid</h2>
 <ul>
 <li><p>Dead code e.g.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.plot(time, velocity, &quot;r0&quot;)</span></span>
-<span id="cb28-2"><a href aria-hidden="true" tabindex="-1"></a>plt.plot(time, velocity, <span class="st">&quot;kx&quot;</span>)</span>
-<span id="cb28-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.plot(time, acceleration, &quot;kx&quot;)</span></span>
-<span id="cb28-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel(&quot;acceleration&quot;)</span></span>
-<span id="cb28-5"><a href aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;velocity&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.plot(time, velocity, &quot;r0&quot;)</span></span>
+<span id="cb26-2"><a href aria-hidden="true" tabindex="-1"></a>plt.plot(time, velocity, <span class="st">&quot;kx&quot;</span>)</span>
+<span id="cb26-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.plot(time, acceleration, &quot;kx&quot;)</span></span>
+<span id="cb26-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># plt.ylabel(&quot;acceleration&quot;)</span></span>
+<span id="cb26-5"><a href aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&quot;velocity&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Variable definitions e.g.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># Set Force</span></span>
-<span id="cb29-2"><a href aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> m <span class="op">*</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co"># Set Force</span></span>
+<span id="cb27-2"><a href aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> m <span class="op">*</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Redundant comments e.g. <code>i += 1  # Increment i</code></p></li>
 </ul>
 </section>
@@ -8400,19 +8296,19 @@ Full guidance for <a href="https://numpydoc.readthedocs.io/en/latest/format.html
 <li>Key references</li>
 </ul>
 </div><div class="column">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30" data-code-line-numbers="|2|4-7|9-12"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb30-1" class="hljs-ln-code"><a href></a><span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb30-2" class="hljs-ln-code"><a href></a><span class="co">Short one-line description.</span></span>
-<span id="cb30-3" class="hljs-ln-code"><a href></a></span>
-<span id="cb30-4" class="hljs-ln-code"><a href></a><span class="co">Parameters</span></span>
-<span id="cb30-5" class="hljs-ln-code"><a href></a><span class="co">----------</span></span>
-<span id="cb30-6" class="hljs-ln-code"><a href></a><span class="co">name : type</span></span>
-<span id="cb30-7" class="hljs-ln-code"><a href></a><span class="co">    description of parameter</span></span>
-<span id="cb30-8" class="hljs-ln-code"><a href></a></span>
-<span id="cb30-9" class="hljs-ln-code"><a href></a><span class="co">Returns</span></span>
-<span id="cb30-10" class="hljs-ln-code"><a href></a><span class="co">-------</span></span>
-<span id="cb30-11" class="hljs-ln-code"><a href></a><span class="co">name : type</span></span>
-<span id="cb30-12" class="hljs-ln-code"><a href></a><span class="co">    description of return value</span></span>
-<span id="cb30-13" class="hljs-ln-code"><a href></a><span class="co">&quot;&quot;&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28" data-code-line-numbers="|2|4-7|9-12"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb28-1" class="hljs-ln-code"><a href></a><span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb28-2" class="hljs-ln-code"><a href></a><span class="co">Short one-line description.</span></span>
+<span id="cb28-3" class="hljs-ln-code"><a href></a></span>
+<span id="cb28-4" class="hljs-ln-code"><a href></a><span class="co">Parameters</span></span>
+<span id="cb28-5" class="hljs-ln-code"><a href></a><span class="co">----------</span></span>
+<span id="cb28-6" class="hljs-ln-code"><a href></a><span class="co">name : type</span></span>
+<span id="cb28-7" class="hljs-ln-code"><a href></a><span class="co">    description of parameter</span></span>
+<span id="cb28-8" class="hljs-ln-code"><a href></a></span>
+<span id="cb28-9" class="hljs-ln-code"><a href></a><span class="co">Returns</span></span>
+<span id="cb28-10" class="hljs-ln-code"><a href></a><span class="co">-------</span></span>
+<span id="cb28-11" class="hljs-ln-code"><a href></a><span class="co">name : type</span></span>
+<span id="cb28-12" class="hljs-ln-code"><a href></a><span class="co">    description of return value</span></span>
+<span id="cb28-13" class="hljs-ln-code"><a href></a><span class="co">&quot;&quot;&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
 <section id="docstrings-2" class="slide level2 smaller" data-auto-animate="true">
@@ -8427,40 +8323,40 @@ Full guidance for <a href="https://numpydoc.readthedocs.io/en/latest/format.html
 </ul>
 </div><div class="column">
 <div style="font-size: 75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31" data-code-line-numbers="|1,3|1,5-16|1,7-8|18-21,34|23-26"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb31-1" class="hljs-ln-code"><a href></a><span class="kw">def</span> calculate_gyroradius(mass, v_perp, charge, B, gamma<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb31-2" class="hljs-ln-code"><a href></a>    <span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb31-3" class="hljs-ln-code"><a href></a><span class="co">    Calculates the gyroradius of a charged particle in a magnetic field</span></span>
-<span id="cb31-4" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-5" class="hljs-ln-code"><a href></a><span class="co">    Parameters</span></span>
-<span id="cb31-6" class="hljs-ln-code"><a href></a><span class="co">    ----------</span></span>
-<span id="cb31-7" class="hljs-ln-code"><a href></a><span class="co">    mass : float</span></span>
-<span id="cb31-8" class="hljs-ln-code"><a href></a><span class="co">        The mass of the particle [kg]</span></span>
-<span id="cb31-9" class="hljs-ln-code"><a href></a><span class="co">    v_perp : float</span></span>
-<span id="cb31-10" class="hljs-ln-code"><a href></a><span class="co">        velocity perpendicular to magnetic field [m/s]</span></span>
-<span id="cb31-11" class="hljs-ln-code"><a href></a><span class="co">    charge : float</span></span>
-<span id="cb31-12" class="hljs-ln-code"><a href></a><span class="co">        particle charge [coulombs]</span></span>
-<span id="cb31-13" class="hljs-ln-code"><a href></a><span class="co">    B : float</span></span>
-<span id="cb31-14" class="hljs-ln-code"><a href></a><span class="co">        Magnetic field strength [teslas]</span></span>
-<span id="cb31-15" class="hljs-ln-code"><a href></a><span class="co">    gamma : float, optional</span></span>
-<span id="cb31-16" class="hljs-ln-code"><a href></a><span class="co">        Lorentz factor for relativistic case. default=None for non-relativistic case.</span></span>
-<span id="cb31-17" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-18" class="hljs-ln-code"><a href></a><span class="co">    Returns</span></span>
-<span id="cb31-19" class="hljs-ln-code"><a href></a><span class="co">    -------</span></span>
-<span id="cb31-20" class="hljs-ln-code"><a href></a><span class="co">    r_g : float</span></span>
-<span id="cb31-21" class="hljs-ln-code"><a href></a><span class="co">        Gyroradius of particle [m]</span></span>
-<span id="cb31-22" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-23" class="hljs-ln-code"><a href></a><span class="co">    Notes</span></span>
-<span id="cb31-24" class="hljs-ln-code"><a href></a><span class="co">    -----</span></span>
-<span id="cb31-25" class="hljs-ln-code"><a href></a><span class="co">    .. [1]  Walt, M, &quot;Introduction to Geomagnetically Trapped Radiation,&quot;</span></span>
-<span id="cb31-26" class="hljs-ln-code"><a href></a><span class="co">       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.</span></span>
-<span id="cb31-27" class="hljs-ln-code"><a href></a><span class="co">    &quot;&quot;&quot;</span></span>
-<span id="cb31-28" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-29" class="hljs-ln-code"><a href></a>    r_g <span class="op">=</span> mass <span class="op">*</span> v_perp <span class="op">/</span> (<span class="bu">abs</span>(charge) <span class="op">*</span> B)</span>
-<span id="cb31-30" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-31" class="hljs-ln-code"><a href></a>    <span class="cf">if</span> gamma:</span>
-<span id="cb31-32" class="hljs-ln-code"><a href></a>        r_g <span class="op">=</span> r_g <span class="op">*</span> gamma</span>
-<span id="cb31-33" class="hljs-ln-code"><a href></a></span>
-<span id="cb31-34" class="hljs-ln-code"><a href></a>    <span class="cf">return</span> r_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29" data-code-line-numbers="|1,3|1,5-16|1,7-8|18-21,34|23-26"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb29-1" class="hljs-ln-code"><a href></a><span class="kw">def</span> calculate_gyroradius(mass, v_perp, charge, B, gamma<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb29-2" class="hljs-ln-code"><a href></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb29-3" class="hljs-ln-code"><a href></a><span class="co">    Calculates the gyroradius of a charged particle in a magnetic field</span></span>
+<span id="cb29-4" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-5" class="hljs-ln-code"><a href></a><span class="co">    Parameters</span></span>
+<span id="cb29-6" class="hljs-ln-code"><a href></a><span class="co">    ----------</span></span>
+<span id="cb29-7" class="hljs-ln-code"><a href></a><span class="co">    mass : float</span></span>
+<span id="cb29-8" class="hljs-ln-code"><a href></a><span class="co">        The mass of the particle [kg]</span></span>
+<span id="cb29-9" class="hljs-ln-code"><a href></a><span class="co">    v_perp : float</span></span>
+<span id="cb29-10" class="hljs-ln-code"><a href></a><span class="co">        velocity perpendicular to magnetic field [m/s]</span></span>
+<span id="cb29-11" class="hljs-ln-code"><a href></a><span class="co">    charge : float</span></span>
+<span id="cb29-12" class="hljs-ln-code"><a href></a><span class="co">        particle charge [coulombs]</span></span>
+<span id="cb29-13" class="hljs-ln-code"><a href></a><span class="co">    B : float</span></span>
+<span id="cb29-14" class="hljs-ln-code"><a href></a><span class="co">        Magnetic field strength [teslas]</span></span>
+<span id="cb29-15" class="hljs-ln-code"><a href></a><span class="co">    gamma : float, optional</span></span>
+<span id="cb29-16" class="hljs-ln-code"><a href></a><span class="co">        Lorentz factor for relativistic case. default=None for non-relativistic case.</span></span>
+<span id="cb29-17" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-18" class="hljs-ln-code"><a href></a><span class="co">    Returns</span></span>
+<span id="cb29-19" class="hljs-ln-code"><a href></a><span class="co">    -------</span></span>
+<span id="cb29-20" class="hljs-ln-code"><a href></a><span class="co">    r_g : float</span></span>
+<span id="cb29-21" class="hljs-ln-code"><a href></a><span class="co">        Gyroradius of particle [m]</span></span>
+<span id="cb29-22" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-23" class="hljs-ln-code"><a href></a><span class="co">    Notes</span></span>
+<span id="cb29-24" class="hljs-ln-code"><a href></a><span class="co">    -----</span></span>
+<span id="cb29-25" class="hljs-ln-code"><a href></a><span class="co">    .. [1]  Walt, M, &quot;Introduction to Geomagnetically Trapped Radiation,&quot;</span></span>
+<span id="cb29-26" class="hljs-ln-code"><a href></a><span class="co">       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.</span></span>
+<span id="cb29-27" class="hljs-ln-code"><a href></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb29-28" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-29" class="hljs-ln-code"><a href></a>    r_g <span class="op">=</span> mass <span class="op">*</span> v_perp <span class="op">/</span> (<span class="bu">abs</span>(charge) <span class="op">*</span> B)</span>
+<span id="cb29-30" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-31" class="hljs-ln-code"><a href></a>    <span class="cf">if</span> gamma:</span>
+<span id="cb29-32" class="hljs-ln-code"><a href></a>        r_g <span class="op">=</span> r_g <span class="op">*</span> gamma</span>
+<span id="cb29-33" class="hljs-ln-code"><a href></a></span>
+<span id="cb29-34" class="hljs-ln-code"><a href></a>    <span class="cf">return</span> r_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -8471,52 +8367,52 @@ Full guidance for <a href="https://numpydoc.readthedocs.io/en/latest/format.html
 <p>The <code>&quot;D&quot;: pydocstyle</code> ruleset in <code>ruff</code> provides us with a tool for checking the quality of our docstrings.</p>
 <p>We enabled this in our ruff configuation at the end of exercise 3, and now we can investigate the warnings further.</p>
 <div style="font-size: 75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rse-venv</span><span class="kw">)</span> <span class="ex">$</span> ruff check gyroradius.py</span>
-<span id="cb32-2"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:3:5:</span></span>
-<span id="cb32-3"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D417</span> Missing argument description in the docstring for <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>: <span class="kw">`</span><span class="ex">B</span><span class="kw">`</span></span>
-<span id="cb32-4"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
-<span id="cb32-5"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D202:</span> No blank lines allowed after function docstring</span>
-<span id="cb32-6"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
-<span id="cb32-7"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D400:</span> First line should end with a period</span>
-<span id="cb32-8"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
-<span id="cb32-9"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D401:</span> First line should be in imperative mood</span>
-<span id="cb32-10"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rse-venv</span><span class="kw">)</span> <span class="ex">$</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rse-venv</span><span class="kw">)</span> <span class="ex">$</span> ruff check gyroradius.py</span>
+<span id="cb30-2"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:3:5:</span></span>
+<span id="cb30-3"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D417</span> Missing argument description in the docstring for <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>: <span class="kw">`</span><span class="ex">B</span><span class="kw">`</span></span>
+<span id="cb30-4"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
+<span id="cb30-5"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D202:</span> No blank lines allowed after function docstring</span>
+<span id="cb30-6"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
+<span id="cb30-7"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D400:</span> First line should end with a period</span>
+<span id="cb30-8"><a href aria-hidden="true" tabindex="-1"></a><span class="ex">gyroradius.py:4:5</span> in public function <span class="kw">`</span><span class="ex">calculate_gyroradius</span><span class="kw">`</span>:</span>
+<span id="cb30-9"><a href aria-hidden="true" tabindex="-1"></a>        <span class="ex">D401:</span> First line should be in imperative mood</span>
+<span id="cb30-10"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">rse-venv</span><span class="kw">)</span> <span class="ex">$</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note: with <code>&quot;D417&quot;</code> enabled we can also catch missing variables in numpy docstrings!</p>
 </div><div class="column">
 <div style="font-size: 75%;">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_gyroradius(mass, v_perp, charge, B, gamma<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb33-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
-<span id="cb33-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Calculates the gyroradius of a charged particle in a magnetic field</span></span>
-<span id="cb33-4"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb33-6"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb33-7"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    mass : float</span></span>
-<span id="cb33-8"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        The mass of the particle [kg]</span></span>
-<span id="cb33-9"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    v_perp : float</span></span>
-<span id="cb33-10"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        velocity perpendicular to magnetic field [m/s]</span></span>
-<span id="cb33-11"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    charge : float</span></span>
-<span id="cb33-12"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        particle charge [coulombs]</span></span>
-<span id="cb33-13"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    gamma : float, optional</span></span>
-<span id="cb33-14"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        Lorentz factor for relativistic case. default=None for non-relativistic case.</span></span>
-<span id="cb33-15"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-16"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb33-17"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb33-18"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    r_g : float</span></span>
-<span id="cb33-19"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        Gyroradius of particle [m]</span></span>
-<span id="cb33-20"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-21"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Notes</span></span>
-<span id="cb33-22"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    -----</span></span>
-<span id="cb33-23"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    .. [1]  Walt, M, &quot;Introduction to Geomagnetically Trapped Radiation,&quot;</span></span>
-<span id="cb33-24"><a href aria-hidden="true" tabindex="-1"></a><span class="co">       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.</span></span>
-<span id="cb33-25"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
-<span id="cb33-26"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-27"><a href aria-hidden="true" tabindex="-1"></a>    r_g <span class="op">=</span> mass <span class="op">*</span> v_perp <span class="op">/</span> (<span class="bu">abs</span>(charge) <span class="op">*</span> B)</span>
-<span id="cb33-28"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-29"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gamma:</span>
-<span id="cb33-30"><a href aria-hidden="true" tabindex="-1"></a>        r_g <span class="op">=</span> r_g <span class="op">*</span> gamma</span>
-<span id="cb33-31"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-32"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_gyroradius(mass, v_perp, charge, B, gamma<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb31-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="co">&quot;&quot;&quot;</span></span>
+<span id="cb31-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Calculates the gyroradius of a charged particle in a magnetic field</span></span>
+<span id="cb31-4"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb31-6"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb31-7"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    mass : float</span></span>
+<span id="cb31-8"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        The mass of the particle [kg]</span></span>
+<span id="cb31-9"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    v_perp : float</span></span>
+<span id="cb31-10"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        velocity perpendicular to magnetic field [m/s]</span></span>
+<span id="cb31-11"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    charge : float</span></span>
+<span id="cb31-12"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        particle charge [coulombs]</span></span>
+<span id="cb31-13"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    gamma : float, optional</span></span>
+<span id="cb31-14"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        Lorentz factor for relativistic case. default=None for non-relativistic case.</span></span>
+<span id="cb31-15"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb31-17"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb31-18"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    r_g : float</span></span>
+<span id="cb31-19"><a href aria-hidden="true" tabindex="-1"></a><span class="co">        Gyroradius of particle [m]</span></span>
+<span id="cb31-20"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    Notes</span></span>
+<span id="cb31-22"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    -----</span></span>
+<span id="cb31-23"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    .. [1]  Walt, M, &quot;Introduction to Geomagnetically Trapped Radiation,&quot;</span></span>
+<span id="cb31-24"><a href aria-hidden="true" tabindex="-1"></a><span class="co">       Cambridge Atmospheric and Space Science Series, equation (2.4), 2005.</span></span>
+<span id="cb31-25"><a href aria-hidden="true" tabindex="-1"></a><span class="co">    &quot;&quot;&quot;</span></span>
+<span id="cb31-26"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-27"><a href aria-hidden="true" tabindex="-1"></a>    r_g <span class="op">=</span> mass <span class="op">*</span> v_perp <span class="op">/</span> (<span class="bu">abs</span>(charge) <span class="op">*</span> B)</span>
+<span id="cb31-28"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-29"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gamma:</span>
+<span id="cb31-30"><a href aria-hidden="true" tabindex="-1"></a>        r_g <span class="op">=</span> r_g <span class="op">*</span> gamma</span>
+<span id="cb31-31"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-32"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div></div>
 </section>
@@ -8525,51 +8421,51 @@ Full guidance for <a href="https://numpydoc.readthedocs.io/en/latest/format.html
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Fortran - <a href="https://forddocs.readthedocs.io/en/stable/">FORD</a> or <a href="https://www.doxygen.nl/index.html">doxygen</a>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode fortran code-with-copy"><code class="sourceCode fortranfixed"><span id="cb34-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">subroutine</span> add(a, b, <span class="fu">sum</span>)</span>
-<span id="cb34-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="co">!! Add two integers.</span></span>
-<span id="cb34-3"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(in)</span> <span class="dt">::</span> a     <span class="co">!! First number, a</span></span>
-<span id="cb34-5"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(in)</span> <span class="dt">::</span> b     <span class="co">!! Second number, b</span></span>
-<span id="cb34-6"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(out)</span> <span class="dt">::</span> <span class="fu">sum</span>  <span class="co">!! Sum of a and b</span></span>
-<span id="cb34-7"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span> <span class="kw">=</span> a <span class="kw">+</span> b</span>
-<span id="cb34-9"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">end subroutine</span> add</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode fortran code-with-copy"><code class="sourceCode fortranfixed"><span id="cb32-1"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">subroutine</span> add(a, b, <span class="fu">sum</span>)</span>
+<span id="cb32-2"><a href aria-hidden="true" tabindex="-1"></a>    <span class="co">!! Add two integers.</span></span>
+<span id="cb32-3"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(in)</span> <span class="dt">::</span> a     <span class="co">!! First number, a</span></span>
+<span id="cb32-5"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(in)</span> <span class="dt">::</span> b     <span class="co">!! Second number, b</span></span>
+<span id="cb32-6"><a href aria-hidden="true" tabindex="-1"></a>    <span class="dt">integer</span>, <span class="dt">intent(out)</span> <span class="dt">::</span> <span class="fu">sum</span>  <span class="co">!! Sum of a and b</span></span>
+<span id="cb32-7"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href aria-hidden="true" tabindex="-1"></a>    <span class="fu">sum</span> <span class="kw">=</span> a <span class="kw">+</span> b</span>
+<span id="cb32-9"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">end subroutine</span> add</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Julia - <a href="https://docs.julialang.org/en/v1/">triple quoted docstrings</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb35-1"><a href aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb35-2"><a href aria-hidden="true" tabindex="-1"></a><span class="st">    add(a,b)</span></span>
-<span id="cb35-3"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-4"><a href aria-hidden="true" tabindex="-1"></a><span class="st">Add two numbers `a` and `b`.</span></span>
-<span id="cb35-5"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href aria-hidden="true" tabindex="-1"></a><span class="st"># Arguments</span></span>
-<span id="cb35-7"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `a::Number`: The first number.</span></span>
-<span id="cb35-8"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `b::Number`: The second number.</span></span>
-<span id="cb35-9"><a href aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href aria-hidden="true" tabindex="-1"></a><span class="st"># Returns</span></span>
-<span id="cb35-11"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `Number`: The sum of `a` and `b`.</span></span>
-<span id="cb35-12"><a href aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
-<span id="cb35-13"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">add</span>(a<span class="op">::</span><span class="dt">Number</span>, b<span class="op">::</span><span class="dt">Number</span>)<span class="op">::</span><span class="dt">Number</span></span>
-<span id="cb35-14"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb35-15"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb33-1"><a href aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb33-2"><a href aria-hidden="true" tabindex="-1"></a><span class="st">    add(a,b)</span></span>
+<span id="cb33-3"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href aria-hidden="true" tabindex="-1"></a><span class="st">Add two numbers `a` and `b`.</span></span>
+<span id="cb33-5"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href aria-hidden="true" tabindex="-1"></a><span class="st"># Arguments</span></span>
+<span id="cb33-7"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `a::Number`: The first number.</span></span>
+<span id="cb33-8"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `b::Number`: The second number.</span></span>
+<span id="cb33-9"><a href aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href aria-hidden="true" tabindex="-1"></a><span class="st"># Returns</span></span>
+<span id="cb33-11"><a href aria-hidden="true" tabindex="-1"></a><span class="st">- `Number`: The sum of `a` and `b`.</span></span>
+<span id="cb33-12"><a href aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span></span>
+<span id="cb33-13"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">add</span>(a<span class="op">::</span><span class="dt">Number</span>, b<span class="op">::</span><span class="dt">Number</span>)<span class="op">::</span><span class="dt">Number</span></span>
+<span id="cb33-14"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb33-15"><a href aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:50%;">
 <p>C/C++ - <a href="https://www.doxygen.nl/index.html">doxygen</a>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb36-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
-<span id="cb36-2"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * Add two integers.</span></span>
-<span id="cb36-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">a</span><span class="co">, First integer.</span></span>
-<span id="cb36-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">b</span><span class="co">, Second integer.</span></span>
-<span id="cb36-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@return</span><span class="co"> Sum of a and b.</span></span>
-<span id="cb36-6"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
-<span id="cb36-7"><a href aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb36-8"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
-<span id="cb36-9"><a href aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode c code-with-copy"><code class="sourceCode c"><span id="cb34-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb34-2"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * Add two integers.</span></span>
+<span id="cb34-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">a</span><span class="co">, First integer.</span></span>
+<span id="cb34-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">b</span><span class="co">, Second integer.</span></span>
+<span id="cb34-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@return</span><span class="co"> Sum of a and b.</span></span>
+<span id="cb34-6"><a href aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb34-7"><a href aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> add<span class="op">(</span><span class="dt">int</span> a<span class="op">,</span> <span class="dt">int</span> b<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-8"><a href aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb34-9"><a href aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>R - <a href="https://roxygen2.r-lib.org/">roxygen2</a>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Add two numbers.</span></span>
-<span id="cb37-2"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
-<span id="cb37-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param a First number.</span></span>
-<span id="cb37-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param b Second number.</span></span>
-<span id="cb37-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return Sum of `a` and `b`.</span></span>
-<span id="cb37-6"><a href aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
-<span id="cb37-7"><a href aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(a <span class="sc">+</span> b)</span>
-<span id="cb37-8"><a href aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Add two numbers.</span></span>
+<span id="cb35-2"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39;</span></span>
+<span id="cb35-3"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param a First number.</span></span>
+<span id="cb35-4"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param b Second number.</span></span>
+<span id="cb35-5"><a href aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return Sum of `a` and `b`.</span></span>
+<span id="cb35-6"><a href aria-hidden="true" tabindex="-1"></a>add <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b) {</span>
+<span id="cb35-7"><a href aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(a <span class="sc">+</span> b)</span>
+<span id="cb35-8"><a href aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></div>
 </section>
 <section id="exercise-6" class="slide level2 smaller">
@@ -8595,6 +8491,114 @@ Full guidance for <a href="https://numpydoc.readthedocs.io/en/latest/format.html
 <!-- ------------------------------------------------------------------------------ -->
 <!-- This section has been removed for the current version of the course -->
 <!-- {{< include _fstrings_config.qmd >}} -->
+<!-- ------------------------------------------------------------------------------ -->
+</section></section>
+<section>
+<section id="structuring-your-code" class="title-slide slide level1 center">
+<h1>Structuring your code</h1>
+<!--=================================================================================-->
+</section>
+<section id="functions" class="slide level2 smaller">
+<h2>Functions</h2>
+<ul>
+<li>Avoid code duplication
+<ul>
+<li>Bad style</li>
+<li>You will forget to update all the copies at one point when you make changes!</li>
+</ul></li>
+<li>Readability
+<ul>
+<li>A clearly named function replaces a chunk of code.</li>
+</ul></li>
+<li>Functions as building blocks
+<ul>
+<li>Create generic interface with several exchangeable options (e.g. “possion_solver”, “gauss_seidel_solver”, etc.)</li>
+<li>Separation of concerns/single responsibility principles</li>
+</ul></li>
+</ul>
+</section>
+<section id="functions-for-readability-and-maintainability" class="slide level2 smaller">
+<h2>Functions for readability and maintainability</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size: 85%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36" data-code-line-numbers="|20,6,10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
+<span id="cb36-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb36-3"><a href></a></span>
+<span id="cb36-4"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
+<span id="cb36-5"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb36-6"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span>  l <span class="op">*</span> np.cos(theta))</span>
+<span id="cb36-7"><a href></a></span>
+<span id="cb36-8"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
+<span id="cb36-9"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb36-10"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> <span class="fl">9.81</span> <span class="op">*</span> l <span class="op">*</span> np.cos(theta)</span>
+<span id="cb36-11"><a href></a></span>
+<span id="cb36-12"><a href></a><span class="kw">def</span> check_small_angle(theta):</span>
+<span id="cb36-13"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb36-14"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> np.pi <span class="op">/</span> <span class="fl">1800.0</span>:</span>
+<span id="cb36-15"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb36-16"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb36-17"><a href></a></span>
+<span id="cb36-18"><a href></a><span class="kw">def</span> bpm(l):</span>
+<span id="cb36-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb36-20"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> <span class="fl">9.81</span>)</span>
+<span id="cb36-21"><a href></a></span>
+<span id="cb36-22"><a href></a></span>
+<span id="cb36-23"><a href></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div><div class="column">
+<div style="font-size: 85%;">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37" data-code-line-numbers="|6,7,8|10,11,12|16,20,31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href></a><span class="co">&quot;&quot;&quot;Module implementing pendulum equations.&quot;&quot;&quot;</span></span>
+<span id="cb37-2"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb37-3"><a href></a></span>
+<span id="cb37-4"><a href></a>GRAV <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb37-5"><a href></a></span>
+<span id="cb37-6"><a href></a><span class="kw">def</span> get_period(l):</span>
+<span id="cb37-7"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-8"><a href></a>    <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">*</span> np.pi <span class="op">*</span> np.sqrt(l <span class="op">/</span> GRAV)</span>
+<span id="cb37-9"><a href></a></span>
+<span id="cb37-10"><a href></a><span class="kw">def</span> max_height(l, theta):</span>
+<span id="cb37-11"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-12"><a href></a>    <span class="cf">return</span> l <span class="op">*</span> np.cos(theta)</span>
+<span id="cb37-13"><a href></a></span>
+<span id="cb37-14"><a href></a><span class="kw">def</span> max_speed(l, theta):</span>
+<span id="cb37-15"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-16"><a href></a>    <span class="cf">return</span> np.sqrt(<span class="fl">2.0</span> <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta))</span>
+<span id="cb37-17"><a href></a></span>
+<span id="cb37-18"><a href></a><span class="kw">def</span> energy(m, l, theta):</span>
+<span id="cb37-19"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-20"><a href></a>    <span class="cf">return</span> m <span class="op">*</span> GRAV <span class="op">*</span> max_height(l, theta)</span>
+<span id="cb37-21"><a href></a></span>
+<span id="cb37-22"><a href></a><span class="kw">def</span> check_small_angle(theta, small_ang<span class="op">=</span>np.pi<span class="op">/</span><span class="fl">1800.0</span>):</span>
+<span id="cb37-23"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-24"><a href></a>    <span class="cf">if</span> theta <span class="op">&lt;=</span> small_ang:</span>
+<span id="cb37-25"><a href></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb37-26"><a href></a>    <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb37-27"><a href></a></span>
+<span id="cb37-28"><a href></a><span class="kw">def</span> bpm(l):</span>
+<span id="cb37-29"><a href></a>    <span class="co">&quot;&quot;&quot;...&quot;&quot;&quot;</span></span>
+<span id="cb37-30"><a href></a>    <span class="co"># Divide 60 seconds by period [s] for beats per minute</span></span>
+<span id="cb37-31"><a href></a>    <span class="cf">return</span> <span class="fl">60.0</span> <span class="op">/</span> get_period(l)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div></div>
+<!--=================================================================================-->
+</section>
+<section id="further-structuring" class="slide level2 smaller">
+<h2>Further structuring</h2>
+<ul>
+<li>Breaking code into modules and files instead of having everything in one file</li>
+<li>Improves readability and manageability (-&gt; scalability, extendability, coupling, testing)</li>
+</ul>
+<!--=================================================================================-->
+</section>
+<section id="exercise-4" class="slide level2 smaller">
+<h2>Exercise 4</h2>
+<ul>
+<li>Go to Exercise 4 and try to think of how you can structure the code in the plotting.py file to avoid code duplication, and improve readability and reusability.</li>
+<li>What enables the improved code you to do?</li>
+<li>Now look at plotting_solution.py . Can you further adapt the code to allow, for example, for customised axis labels?</li>
+</ul>
+<!--=================================================================================-->
 <!-- ------------------------------------------------------------------------------ -->
 </section></section>
 <section>
