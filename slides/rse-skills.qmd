@@ -24,11 +24,15 @@ authors:
     orcid: 0000-0001-5001-4812
     affiliations:
       - ref: iccs
+  - name: Marion Weinzierl
+    orcid: 0000-0002-2302-5476
+    affiliations:
+      - ref: iccs
 affiliations:
   - id: iccs
     name: ICCS RSE Team <br> University of Cambridge
 
-date: "2025/11/28"
+date: "2026/07/13"
 bibliography: references.bib
 ---
 
@@ -161,6 +165,51 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
+# RSE Skills Day 2 {.smaller}
+
+Jack Atkinson and Marion Weinzierl
+
+ICCS RSE
+
+## RSE Skills - Day 2 {.smaller}
+
+:::: {.columns}
+::: {.column width="65%"}
+
+Welcome back.
+
+Today we will cover making software easier to read and use through:
+
+- comments,
+- documentation,
+- naming, and
+- repository structuring.
+
+\
+
+#### Slides and Materials {.smaller}
+
+To access links or follow on your own device these slides can be found at:  
+[jatkinson1000.github.io/rse-skills-workshop](https://jatkinson1000.github.io/rse-skills-workshop/)
+
+:::
+::: {.column width="5%"}
+:::
+::: {.column width="30%"}
+
+{{< fa solid person-chalkboard >}}:
+{{< qrcode https://github.com/jatkinson1000/rse-skills-workshop fkrycvbsgt width=175 height=175 >}}
+
+\
+
+{{< fa brands github >}}:
+{{< qrcode https://github.com/jatkinson1000/rse-skills-workshop qr7dekity9 width=175 height=175 >}}
+
+:::
+::::
+
+<!-- ------------------------------------------------------------------------------ -->
+
 {{< include _naming_magic_numbers.qmd >}}
 
 <!-- ------------------------------------------------------------------------------ -->
@@ -203,20 +252,21 @@ These lessons are beyond the scope of today.
 
 ## Where can I get help? {.smaller}
 
-Get in touch with resident IoA RSE Gurjeet Jagwani ([gj329](mailto:gj329@cam.ac.uk)).
-
-The university RSE team are always keen to support researchers with developing and
-applying the principles discussed today.
-They run regular clinics that are advertised on the C2D3 Users' mailing list.
-
-<!--
 If you would like to discuss applying this to your own codebase consider signing up for
 an ICCS Climate Code Clinic:
 
 - 1hr slot
 - RSEs will review code in advance and provide feedback and guidance.
 - [Online booking form](https://iccs.cam.ac.uk/resources-vesri-members/climate-code-clinic)
--->
+
+There is also the option of booking in all week during the summer school via the
+[Booking Sheet](https://docs.google.com/spreadsheets/d/1v8y2GodI9JZoHrFRpLW2tD135MurDBMIcr-ArBFIT3A/edit?usp=sharing).
+
+\
+
+We will also be available during the mini-project slots on Thursday to help you apply
+these principles to any code, existing or new.
+
 
 ## Where can I learn more? {.smaller}
 
@@ -247,15 +297,26 @@ Get in touch:
 
 {{< fa brands mastodon >}} \ [\@jatkinson1000\@hachyderm.io](https://hachyderm.io/@jatkinson1000)
 :::
+::: {.column style="width: 40%; font-size: 85%;"}
+{{< fa pencil >}} \ Marion Weinzierl
+
+{{< fa solid envelope >}} \ [mw925[AT]cam.ac.uk](mailto:mw925@cam.ac.uk)
+
+{{< fa brands github >}} \ [MarionBWeinzierl](https://github.com/MarionBWeinzierl)
+
+{{< fa brands mastodon >}} \ [\@MarionBWeinzierl\@mast.hpc.social](https://mast.hpc.social/@MarionBWeinzierl)
+:::
 
 ::::
 
 ## References {.smaller}
 
-The geoscience code in this workshop is based on a script from [@Irving_2019].
+The geoscience code in this workshop is based on a script from @Irving_2019.
 The astrophysics code in this workshop is based on a notebook kindly provided by
 Anke Ardern-Arentsen ([\@ankearentsen](https://github.com/ankearentsen))
 of the Institute of Astronomy at the University of Cambridge.
+
+\
 
 ::: {#refs}
 :::
