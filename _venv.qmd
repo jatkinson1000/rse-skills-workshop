@@ -149,9 +149,9 @@ Provide a record of these to users to save time and errors when installing.
 
 Recorded in a `requirements.txt` file:
 
-- list required packages to be installed by pip
-- version constraints
-- typically specify top-level^[We can pin everything using `pip freeze`, but there are better ways to do this.]
+- list of required packages to be installed by pip
+- typically specify top-level, not subdependencies
+- can enforce version constraints
 
 :::
 ::: {.column width="30%"}
@@ -177,6 +177,8 @@ cartopy
 ::: aside
 We can improve and streamline this process even further through packaging, but this is
 beyond the scope of this discussion.
+
+We can use `pip freeze` to get a list of all dependencies and versions, though this includes subdependencies.
 :::
 
 
