@@ -165,6 +165,10 @@ My background in this is domain science and numerical modelling on HPC.
 
 <!-- ------------------------------------------------------------------------------ -->
 
+{{< include _code_structure.qmd >}}
+
+<!-- ------------------------------------------------------------------------------ -->
+
 # RSE Skills Day 2 {.smaller}
 
 Jack Atkinson and Marion Weinzierl
@@ -219,10 +223,6 @@ To access links or follow on your own device these slides can be found at:
 <!-- ------------------------------------------------------------------------------ -->
 <!-- This section has been removed for the current version of the course -->
 <!-- {{< include _fstrings_config.qmd >}} -->
-<!-- ------------------------------------------------------------------------------ -->
-
-{{< include _code_structure.qmd >}}
-
 <!-- ------------------------------------------------------------------------------ -->
 
 {{< include _readme_license.qmd >}}
