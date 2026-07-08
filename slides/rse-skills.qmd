@@ -229,6 +229,11 @@ To access links or follow on your own device these slides can be found at:
 
 <!-- ------------------------------------------------------------------------------ -->
 
+
+
+# Closing
+
+
 ## Other things {.smaller}
 
 Beyond the scope of today are a few other honourable mentions:
@@ -246,9 +251,14 @@ Beyond the scope of today are a few other honourable mentions:
 These lessons are beyond the scope of today.
 
 <!-- ------------------------------------------------------------------------------ -->
+## Discussion {.smaller}
 
-# Closing
+- What have you learnt that you wish you knew earlier?
+- Do you have alternatives/disagreements?
+- What would you have hoped to learn that wasn't covered?
+- What problems are you having?
 
+<!-- ------------------------------------------------------------------------------ -->
 
 ## Where can I get help? {.smaller}
 
